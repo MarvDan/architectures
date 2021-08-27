@@ -12,7 +12,18 @@ jobs:
         #TODO: webseite repo angeben
         with:
           submodules: recursive
+          repository: 'devonfw.github.io'
           
+      - name: Remove architectures
+        run: |
+          rm architectures || true
+      
+      
+      - name: Clone new architecture
+        uses: actions/checkout@v1
+        with:
+          destination: devonfw.github.io/
+      
       - name: Cache local Maven repository
         uses: actions/cache@v2
         with:
