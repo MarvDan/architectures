@@ -12,7 +12,7 @@ jobs:
         #TODO: webseite repo angeben
         with:
           submodules: recursive
-          repository: 'https://github.com/MarvDan/devonfw.github.io.git'
+          repository: 'MarvDan/devonfw.github.io'
           
       - name: Remove architectures
         run: |
