@@ -13,6 +13,7 @@ jobs:
         with:
           repository: 'MarvDan/devonfw.github.io'
           ref: develop
+          submodules: recursiv
           
       - name: Remove architectures
         run: |
