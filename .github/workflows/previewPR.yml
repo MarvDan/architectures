@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v1        
         #TODO: webseite repo angeben
         with:
-          repository: 'MarvDan/devonfw.github.io'
+          repository: devonfw/devonfw.github.io
           ref: develop
           submodules: recursiv
           
