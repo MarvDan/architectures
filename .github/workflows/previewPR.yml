@@ -7,23 +7,38 @@ jobs:
   previewPR:
     runs-on: ubuntu-latest
     steps:
-      - name: Clone
-        uses: actions/checkout@v1        
+    
+      #- name: Clone
+       # uses: actions/checkout@v1        
         #TODO: webseite repo angeben
-        with:
-          repository: MarvDan/devonfw.github.io
-          ref: develop
+        #with:
+         # repository: MarvDan/devonfw.github.io
+          #ref: develop
           #submodules: recursiv
           
-      - name: Remove architectures
-        run: |
-          rm architectures || true
+      #- name: Remove architectures
+       # run: |
+        #  rm architectures || true
       
       
       - name: Clone new architecture
         uses: actions/checkout@v1
         with:
           destination: devonfw.github.io/
+          
+      - name: artifacts1
+        run: mkdir testFolder
+        
+      - name: artifacts2
+        run: cd testFolder
+             echo 'testEcho' > testFile.html
+             cd ..
+        
+      - name: artifacts3
+        uses: action/upload-artifact@v2
+        with: 
+          name: download-asset
+          path: testFolder
       
       - name: Cache local Maven repository
         uses: actions/cache@v2
