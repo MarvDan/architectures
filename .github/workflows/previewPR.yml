@@ -25,7 +25,7 @@ jobs:
         uses: actions/checkout@v1
         with:
           destination: devonfw.github.io/
-          submodules: recursiv
+          submodules: false
           
       - name: artifacts1
         run: mkdir testFolder
