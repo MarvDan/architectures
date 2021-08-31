@@ -21,12 +21,21 @@ jobs:
         #  rm architectures || true
       
       
-      - name: Clone new architecture
+     # - name: Clone new architecture
+      #  uses: actions/checkout@v1
+       # with:
+        #  destination: devonfw.github.io/
+        #  fetch-depth: 1
+        #  submodules: true
+          
+      - name: Configure git
+        run: |
+          git config --global fetch.parallel 20
+          
+      - name: Clone
         uses: actions/checkout@v1
         with:
-          destination: devonfw.github.io/
-          fetch-depth: 1
-          submodules: true
+          submodules: recursive
           
       - name: artifacts1
         run: mkdir testFolder
