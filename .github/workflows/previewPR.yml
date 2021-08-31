@@ -35,7 +35,7 @@ jobs:
              cd ..
         
       - name: artifacts3
-        uses: action/upload-artifact@v2
+        uses: actions/upload-artifact@v2
         with: 
           name: download-asset
           path: testFolder
