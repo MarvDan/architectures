@@ -33,8 +33,22 @@ jobs:
           git config --global fetch.parallel 20
           
       - name: Clone
+        uses: actions/checkout@v1        
+        #TODO: webseite repo angeben
+        with:
+          repository: MarvDan/devonfw.github.io
+          ref: develop
+          submodules: recursiv
+          
+      - name: Remove architectures
+        run: |
+          rm architectures || true
+      
+          
+      - name: Clone new architecture
         uses: actions/checkout@v1
         with:
+          destination: devonfw.github.io/
           submodules: recursive
           
       - name: artifacts1
