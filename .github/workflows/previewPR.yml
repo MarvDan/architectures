@@ -63,7 +63,9 @@ jobs:
              cd ..
           
       - name: artifacts1
-        run: mkdir testerFolder
+        run: 
+            ls
+            mkdir testerFolder
         
       - name: artifacts2
         run: |
