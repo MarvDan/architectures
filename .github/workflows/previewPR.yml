@@ -51,12 +51,24 @@ jobs:
           destination: devonfw.github.io/
           submodules: recursive
           
+      - name: Run maven generate
+        run: |
+             cd testFolder
+             mvn clean package
+             cd ..
+             
+      - name: Run image generate
+        run: |
+             cd testFolder/target/generated-docs
+             node-html-to-image-cli index.html image.png  
+             cd ..
+          
       - name: artifacts1
-        run: mkdir testFolder
+        run: mkdir testerFolder
         
       - name: artifacts2
         run: |
-             cd testFolder
+             cd testerFolder
              echo 'testEcho' > testFile.html
              cd ..
         
