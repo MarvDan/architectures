@@ -54,11 +54,8 @@ jobs:
           submodules: recursive
           
       - name: Run maven generate
-        run: |
-             cd testFolder
-             mvn clean package
-             cd ..
-             
+        run: mvn clean package
+        
       - name: Run image generate
         run: |
              cd testFolder/target/generated-docs
