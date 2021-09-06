@@ -55,6 +55,7 @@ jobs:
           
       - name: Run maven generate
         run: |
+             cd testFolder
              ls
              mvn clean package
         
