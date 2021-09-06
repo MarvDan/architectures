@@ -30,9 +30,9 @@ jobs:
         
         ########################
           
-      - name: Configure git
-        run: |
-          git config --global fetch.parallel 20
+     # - name: Configure git
+  #      run: |
+    #      git config --global fetch.parallel 20
           
     #  - name: Clone
      #   uses: actions/checkout@v1        
@@ -59,7 +59,7 @@ jobs:
              ls
              mvn clean package
         
-      #- uses: actions/checkout@v2
+      - uses: actions/checkout@v2
       - name: Run image generate
         uses: actions/setup-node@v2
         with:
