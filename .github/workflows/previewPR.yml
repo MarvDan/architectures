@@ -58,6 +58,7 @@ jobs:
              cd testFolder
              ls
              chmod +x pom.xml
+             mvn install
              mvn -s pom.xml clean package
 
 
