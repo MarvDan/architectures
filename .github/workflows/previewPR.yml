@@ -66,7 +66,7 @@ jobs:
           node-version: '14'
       - run: npm install
       - run: cd testFolder
-      - run: node mvn clean package 
+      - run: mvn clean package 
 
 
       - uses: actions/checkout@v2
