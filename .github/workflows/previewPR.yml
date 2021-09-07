@@ -53,12 +53,22 @@ jobs:
           destination: devonfw.github.io/
           submodules: recursive
           
+      #- name: Run maven generate
+       # run: |
+    #         cd testFolder
+        #     ls
+        #     mvn clean package
+
+      - uses: actions/checkout@v2
       - name: Run maven generate
-        run: |
-             cd testFolder
-             ls
-             mvn clean package
-        
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run: npm install
+      - run: cd testFolder
+      - run: node mvn clean package 
+
+
       - uses: actions/checkout@v2
       - name: Run image generate
         uses: actions/setup-node@v2
