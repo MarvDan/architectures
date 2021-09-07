@@ -57,7 +57,7 @@ jobs:
         run: |
              cd testFolder
              ls
-             chmod +x architectures/testFolder/pom.xml
+             chmod +x pom.xml
              mvn -s architectures/testFolder/pom.xml clean package
 
 
