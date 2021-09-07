@@ -58,7 +58,7 @@ jobs:
              cd testFolder
              ls
              chmod +x pom.xml
-             mvn -s architectures/testFolder/pom.xml clean package
+             mvn -s pom.xml clean package
 
 
       - uses: actions/checkout@v2
