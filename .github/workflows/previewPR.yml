@@ -86,7 +86,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with: 
           name: download-asset
-          path: testFolder
+          path: testerFolder
       
       - name: Cache local Maven repository
         uses: actions/cache@v2
