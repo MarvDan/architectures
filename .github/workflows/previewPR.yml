@@ -55,10 +55,10 @@ jobs:
           
       - name: Run maven generate
         run: |
-             cd testFolder
-             ls
-             chmod +x pom.xml
-             mvn clean package
+              #cd testFolder
+              #ls
+              #chmod +x pom.xml
+              mvn clean package
 
 
     #  - uses: actions/checkout@v2
