@@ -55,9 +55,9 @@ jobs:
           
       - name: Run maven generate
         run: |
-              #cd testFolder
-              #ls
-              #chmod +x pom.xml
+              cd testFolder
+              ls
+              chmod +x pom.xml
               mvn clean package
 
 
