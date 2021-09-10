@@ -53,13 +53,12 @@ jobs:
           destination: devonfw.github.io/
           submodules: recursive
           
-    #  - name: Run maven generate
-    #    run: |
-     #        cd testFolder
-     #        ls
-     #        chmod +x pom.xml
-     #        mvn install
-     #        mvn -s pom.xml clean package
+      - name: Run maven generate
+        run: |
+             cd testFolder
+             ls
+             chmod +x pom.xml
+             mvn clean package
 
 
     #  - uses: actions/checkout@v2
