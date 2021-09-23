@@ -26,10 +26,10 @@ jobs:
 
       - uses: actions/checkout@v2
       - name: Run image generate
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-      - run: |
+      #  uses: actions/setup-node@v2
+      #  with:
+      #    node-version: '14'
+        run: |
               npm install
               cd testFolder/target/generated-docs
               node-html-to-image-cli index.html image.png 
