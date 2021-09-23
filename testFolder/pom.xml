@@ -13,17 +13,6 @@
   <version>1.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>My Cool Wiki</name>
-  
-  <build>
-    <plugins>
-        <plugin>
-            <artifactId>maven-jar-plugin</artifactId>
-            <configuration>
-                <classesDirectory>dummy</classesDirectory>
-            </configuration>
-        </plugin>
-    </plugins>
-</build>
 
   <properties>
     <docgen.asciidoc.page>index</docgen.asciidoc.page>
