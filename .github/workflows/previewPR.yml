@@ -8,50 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
-      #- name: Clone
-       # uses: actions/checkout@v1        
-        #TODO: webseite repo angeben
-        #with:
-         # repository: MarvDan/devonfw.github.io
-          #ref: develop
-          #submodules: recursiv
-          
-      #- name: Remove architectures
-       # run: |
-        #  rm architectures || true
-      
-      
-     # - name: Clone new architecture
-      #  uses: actions/checkout@v1
-       # with:
-        #  destination: devonfw.github.io/
-        #  fetch-depth: 1
-        #  submodules: true
-        
-        ########################
-          
-     # - name: Configure git
-  #      run: |
-    #      git config --global fetch.parallel 20
-          
-    #  - name: Clone
-     #   uses: actions/checkout@v1        
-        #TODO: webseite repo angeben
-     #   with:
-     #     repository: MarvDan/devonfw.github.io
-     #     ref: develop
-          #submodules: recursiv
-          
- #    - name: Remove architectures
- #       run: |
-  #        rm architectures || true
-      
-          
+    
       - name: Clone new architecture
         uses: actions/checkout@v1
         with:
           destination: devonfw.github.io/
           submodules: recursive
+          
           
       - name: Run maven generate
         run: |
@@ -61,14 +24,15 @@ jobs:
               mvn clean package
 
 
-    #  - uses: actions/checkout@v2
-    #  - name: Run image generate
-    #    uses: actions/setup-node@v2
-    #    with:
-    #      node-version: '14'
-    #  - run: npm install
-    #  - run: cd testFolder/target/generated-docs
-    #  - run: node-html-to-image-cli index.html image.png 
+      - uses: actions/checkout@v2
+      - name: Run image generate
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run: npm install
+      - run: cd testFolder/target/generated-docs
+      - run: node-html-to-image-cli index.html image.png 
+      
       
      
       - name: artifacts1
@@ -86,6 +50,7 @@ jobs:
         with: 
           name: download-asset
           path: testerFolder
+      
       
       - name: Cache local Maven repository
         uses: actions/cache@v2
