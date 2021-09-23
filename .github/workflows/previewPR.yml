@@ -42,13 +42,15 @@ jobs:
      
       - name: artifacts1
         run: 
-            mkdir testerFolder
+            #mkdir testerFolder
+            ls
         
       - name: artifacts2
         run: |
-             cd testerFolder
-             echo 'testEcho' > testFile.html
-             cd ..
+             #cd testerFolder
+             #echo 'testEcho' > testFile.html
+             #cd ..
+             
         
       - name: artifacts3
         uses: actions/upload-artifact@v2
