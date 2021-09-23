@@ -43,6 +43,7 @@ jobs:
       - name: artifacts1
         run: 
             #mkdir testerFolder
+            pwd
             ls
         
       - name: artifacts2
