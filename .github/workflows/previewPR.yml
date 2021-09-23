@@ -41,7 +41,7 @@ jobs:
       
      
       - name: artifacts1
-        run: 
+        run: |
             #mkdir testerFolder
             pwd
             ls
@@ -57,7 +57,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with: 
           name: download-asset
-          path: testerFoldertarget/generated-docs/image.png
+          path: testerFolder/target/generated-docs/image.png
       
       
       - name: Cache local Maven repository
