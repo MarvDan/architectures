@@ -32,7 +32,7 @@ jobs:
       #    node-version: '14'
         run: |
               cd testFolder
-              npm install
+              npm install node-html-to-image-cli -g
               pwd 
               ls target
               cd target/generated-docs
