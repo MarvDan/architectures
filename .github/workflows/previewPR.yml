@@ -20,7 +20,7 @@ jobs:
         run: |
               cd testFolder
               ls
-              chmod +x pom.xml
+              #chmod +x pom.xml
               mvn clean package
 
 
