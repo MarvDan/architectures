@@ -22,6 +22,7 @@ jobs:
               ls
               #chmod +x pom.xml
               mvn clean package
+              ls
 
 
       - uses: actions/checkout@v2
