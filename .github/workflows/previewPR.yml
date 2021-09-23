@@ -44,7 +44,9 @@ jobs:
         run: |
             #mkdir testerFolder
             pwd
-            ls
+            ls testFolder
+            pwd
+            ls testerFolder/target/generated-docs
         
       - name: artifacts2
         run: |
