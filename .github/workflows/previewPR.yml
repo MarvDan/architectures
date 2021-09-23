@@ -46,7 +46,7 @@ jobs:
             pwd
             ls testFolder
             pwd
-            ls testerFolder/target/generated-docs
+            ls testerFolder/target
         
       - name: artifacts2
         run: |
