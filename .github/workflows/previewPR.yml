@@ -57,7 +57,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with: 
           name: download-asset
-          path: testerFolder/target/generated-docs/image.png
+          path: testerFolder/target/generated-docs
       
       
       - name: Cache local Maven repository
