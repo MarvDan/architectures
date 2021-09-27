@@ -85,8 +85,8 @@ jobs:
         run: |
           pwd 
           ls
-          chmod +x architectures/scripts/copyPomFiles.sh
-          architectures/scripts/copyPomFiles.sh
+          chmod +x scripts/copyPomFiles.sh
+          scripts/copyPomFiles.sh
           
       - name: npm install for architectures
         run: |
