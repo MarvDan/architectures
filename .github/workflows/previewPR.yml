@@ -44,6 +44,11 @@ jobs:
           name: download-asset
           path: testFolder/target/generated-docs/image.png
           
+          
+    
+          
+          
+          
       - name: Copy pom files for architectures
         run: |
           chmod +x scripts/copyPomFiles.sh
