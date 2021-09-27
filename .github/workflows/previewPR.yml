@@ -62,6 +62,16 @@ jobs:
           path: testFolder/target/generated-docs/image.png
       
       
+      - name: add artifact links to pull request and related issues step
+        uses: tonyhallett/artifacts-url-comments@v1.1.0
+        env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+              prefix: Here are the artifacts 
+              suffix: Have a nice day.
+              format: name
+              addTo: pullandissues
+      
       #- name: Cache local Maven repository
        # uses: actions/cache@v2
         #with:
