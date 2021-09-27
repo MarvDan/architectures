@@ -40,16 +40,16 @@ jobs:
       
       
      
-      - name: artifacts1
-        run: |
-            #mkdir testerFolder
-            pwd
-            ls testFolder
-            pwd
-            ls testFolder/target
+      #- name: artifacts1
+       # run: |
+        #    #mkdir testerFolder
+         #   pwd
+          #  ls testFolder
+           # pwd
+            #ls testFolder/target
         
-      - name: artifacts2
-        run: |
+      #- name: artifacts2
+       # run: |
              #cd testerFolder
              #echo 'testEcho' > testFile.html
              #cd ..
@@ -62,24 +62,24 @@ jobs:
           path: testFolder/target/generated-docs/image.png
       
       
-      - name: Cache local Maven repository
-        uses: actions/cache@v2
-        with:
-          path: ~/.m2/repository
-          key: ${{runner.os}}-maven-${{hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{runner.os }}-maven-
-      - name: Setup Node
-        uses: actions/setup-node@v2
+      #- name: Cache local Maven repository
+       # uses: actions/cache@v2
+        #with:
+          #path: ~/.m2/repository
+         # key: ${{runner.os}}-maven-${{hashFiles('**/pom.xml') }}
+          #restore-keys: |
+           # ${{runner.os }}-maven-
+      #- name: Setup Node
+       # uses: actions/setup-node@v2
 
 
-      - name: Solutions from Stack repositories
-        run: |
-          #cd architectures/scripts
-          cd scripts
-          npm install 
-          node copySolutionsFromStack.js ../../devonfw-guide
-          cd ../../
+      #- name: Solutions from Stack repositories
+       # run: |
+         #cd architectures/scripts
+         # cd scripts
+          #npm install 
+          #node copySolutionsFromStack.js ../../devonfw-guide
+          #cd ../../
           
       - name: Copy pom files for architectures
         run: |
