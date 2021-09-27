@@ -111,4 +111,4 @@ jobs:
             #  cd ../../../../../
               pwd
               ls /home         
-              mvn -s .m2/unblock-rubygem-proxy-settings.xml clean package
+           #   mvn -s .m2/unblock-rubygem-proxy-settings.xml clean package
