@@ -83,6 +83,8 @@ jobs:
           
       - name: Copy pom files for architectures
         run: |
+          pwd 
+          ls
           chmod +x architectures/scripts/copyPomFiles.sh
           architectures/scripts/copyPomFiles.sh
           
