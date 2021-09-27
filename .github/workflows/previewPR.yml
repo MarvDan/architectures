@@ -83,8 +83,6 @@ jobs:
           
       - name: Copy pom files for architectures
         run: |
-          pwd 
-          ls
           chmod +x scripts/copyPomFiles.sh
           scripts/copyPomFiles.sh
           
@@ -109,4 +107,7 @@ jobs:
           rm index.scss || true
           
       - name: Build
-        run: mvn -s ./.m2/unblock-rubygem-proxy-settings.xml clean package
+        run: |
+              pwd
+               ls testFolder        
+               mvn -s ./.m2/unblock-rubygem-proxy-settings.xml clean package
