@@ -108,6 +108,7 @@ jobs:
           
       - name: Build
         run: |
+              cd ../../
               pwd
-               ls testFolder        
-               mvn -s ./.m2/unblock-rubygem-proxy-settings.xml clean package
+              ls         
+              mvn -s ./.m2/unblock-rubygem-proxy-settings.xml clean package
