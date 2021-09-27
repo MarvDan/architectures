@@ -62,15 +62,45 @@ jobs:
           path: testFolder/target/generated-docs/image.png
       
       
-      - name: add artifact links to pull request and related issues step
-        uses: tonyhallett/artifacts-url-comments@v1.1.0
-        env:
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-              prefix: Here are the artifacts 
-              suffix: Have a nice day.
-              format: name
-              addTo: pullandissues
+  -name: workflow artifact pull request comment
+      # You may pin to the exact commit or the version.
+      # uses: tonyhallett/artifacts-url-comments@0965ff1a7ae03c5c1644d3c30f956effea4e05ef
+  uses: tonyhallett/artifacts-url-comments@v1.1.0
+  with:
+        # used to restrict the number of pull requests for pull workflow - all | closed | open
+        pullState: # optional, default is open
+        # payload if using https://github.com/tonyhallett/workflow-run-conclusion-dispatch-action
+        workflowPayload: # optional
+        # fail if no artifacts
+        errorNoArtifacts: # optional, default is true
+        # add to pull or issues or pullandissues
+        addTo: # default is pull
+        # prefix the comment
+        prefix: # optional
+        # suffix the comment
+        suffix: # optional
+        # comma delimited names of artifacts to include
+        includes: # optional
+        # format to be applied to all
+        format: # optional, default is url
+        # instead of applying same format to all - array of objects {name:string,format?:string}
+        includesFormatted: # optional
+        # should matching be case sensitive
+        caseSensitive: # optional, default is false
+        # words that indicate associated issue
+        closeWords: # optional, default is close, closes, closed, fix, fixes, fixed, resolve, resolves, resolved
+        # look in the pull request title for issues
+        usePullTitle: # optional, default is true
+        # look in the pull request body for issues
+        usePullBody: # optional, default is true
+        # look in the pull request commit messages for issues
+        useCommitMessages: # optional, default is true
+        # look in the pull request branch name for issues
+        useBranch: # optional, default is true
+        # words that form part of an issue branch name
+        branchIssuesWords: # optional, default is issue, issues
+        # delimiters of a matching branch name
+        branchDelimiters: # optional, default is _, -
       
       #- name: Cache local Maven repository
        # uses: actions/cache@v2
