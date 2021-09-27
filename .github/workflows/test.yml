@@ -1,0 +1,23 @@
+        -name: workflow artifact pull request comment
+         # You may pin to the exact commit or the version.
+         # uses: tonyhallett/artifacts-url-comments@0965ff1a7ae03c5c1644d3c30f956effea4e05ef
+         name: add artifact links to pull request and related issues
+        on:
+          workflow_run:
+            workflows: pull_request_target  
+          #  types: [completed]
+
+        jobs:
+          artifacts-url-comments:
+            name: add artifact links to pull request and related issues job
+            runs-on: windows-2019
+            steps:
+              - name: add artifact links to pull request and related issues step
+                uses: tonyhallett/artifacts-url-comments@v1.1.0
+                env:
+                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                with:
+                    prefix: Here are the artifacts 
+                    suffix: Have a nice day.
+                    format: name
+                    addTo: pullandissues
