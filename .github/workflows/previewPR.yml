@@ -18,10 +18,10 @@ jobs:
           
       - name: Run maven generate
         run: |
-              cd testFolder
               ls
+              cd testFolder              
               mvn clean package
-              ls
+
 
 
       #- uses: actions/checkout@v2
