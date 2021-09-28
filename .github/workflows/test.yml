@@ -1,8 +1,10 @@
     name: add artifact links to pull request and related issues
     on:
       workflow_run:
-        workflows: previewPR.yml
-        types: completed
+        workflows: 
+         - previewPR
+        types:
+         - completed
 
     jobs:
       artifacts-url-comments:
