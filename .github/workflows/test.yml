@@ -16,7 +16,7 @@
             env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             with:
-                prefix: Here are the artifacts 
+                prefix: Here is the preview of your PR.
                 suffix: Have a nice day.
                 format: name
                 addTo: pullandissues
