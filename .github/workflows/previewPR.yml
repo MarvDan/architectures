@@ -1,7 +1,7 @@
 name: previewPR
 
 on:
-  pull_request   
+  pull_request_target   
   
 jobs:
   previewPR:
@@ -20,7 +20,6 @@ jobs:
         run: |
               cd testFolder
               ls
-              #chmod +x pom.xml
               mvn clean package
               ls
 
@@ -42,7 +41,9 @@ jobs:
         uses: actions/upload-artifact@v2
         with: 
           name: download-asset
-          path: testFolder/target/generated-docs/image.png
+          path: |
+                testFolder/target/generated-docs/image.png
+                testFolder/target/generated-docs/index.html
           
           
           
@@ -73,7 +74,6 @@ jobs:
           
       - name: Build
         run: |
-            #  cd ../../../../../
               pwd
               ls /home         
            #   mvn -s .m2/unblock-rubygem-proxy-settings.xml clean package
