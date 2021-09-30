@@ -8,27 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
-    #  - name: Create Folders for different architectures
-     #   run: |
-         #    pwd
-         #     mkdir newArch
-          #   pwd
-          #    mkdir masterArch
-           #  pwd
-           #  ls
-    
-    #  - name: Clone master architecture
-     #   uses: actions/checkout@v1
-     #   with:
-      #    path: masterArch
-       #   submodules: recursiv
-    
       - name: Clone new architecture
         uses: actions/checkout@v1
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-          path: newArch
-          #submodules: recursive
           
           
       - name: Run maven generate
@@ -41,12 +24,7 @@ jobs:
               mvn clean package
 
 
-
-      #- uses: actions/checkout@v2
       - name: Run image generate
-      #  uses: actions/setup-node@v2
-      #  with:
-      #    node-version: '14'
         run: |
               cd PR_preview
               npm install node-html-to-image-cli -g
@@ -54,45 +32,14 @@ jobs:
               cd target/generated-docs
               node-html-to-image-cli index.html image.png              
         
-      - name: artifacts3
+        
+      - name: Artifact build
         uses: actions/upload-artifact@v2
         with: 
           name: download-asset
           path: |
                 PR_preview/target/generated-docs/image.png
                 PR_preview/target/generated-docs/index.html
-          
-          
-          
-      - name: Copy pom files for architectures
-        run: |
-          chmod +x scripts/copyPomFiles.sh
-          scripts/copyPomFiles.sh
-          
-      - name: npm install for architectures
-        run: |
-            cd scripts
-            npm install
-            cd ../../
-          
-      - name: Compile sass for architectures
-        uses: gha-utilities/sass-build@v0.4.2
-        with:
-          source: index.scss
-          destination: index.css
 
-
-      # asciidoctor tries to load gems dynamically to convert md and scss files.
-      # As this gems are not installed this is breaking the build.
-      - name: Remove files that are breaking the build
-        run: |
-          rm README.md || true
-          rm index.scss || true
-          
-      - name: Build
-        run: |
-              pwd
-              ls /home         
-           #   mvn -s .m2/unblock-rubygem-proxy-settings.xml clean package
 
 
