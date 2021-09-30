@@ -8,12 +8,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
+      - name: Create Folders for different architectures
+        run: |
+             cd devonfw.github.io/
+             ls
+             mkdir newArch
+             mkdir masterArch
+             ls
+    
+      - name: Clone master architecture
+        uses: actions/checkout@v1
+        with:
+          destination: devonfw.github.io/masterArch
+          submodules: recursiv
     
       - name: Clone new architecture
         uses: actions/checkout@v1
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-          #destination: devonfw.github.io/
+          destination: devonfw.github.io/newArch
           #submodules: recursive
           
           
