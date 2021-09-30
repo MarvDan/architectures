@@ -10,6 +10,8 @@ jobs:
     
       - name: Create Folders for different architectures
         run: |
+             mkdir newArch
+             mkdir masterArch
              pwd
              ls
     
