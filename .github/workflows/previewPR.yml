@@ -33,9 +33,9 @@ jobs:
           
       - name: Run maven generate
         run: |
-              ls newArch
               mkdir PR_preview
               cp -r solutions PR_preview
+              ls
               ls /home/runner/work/architectures/masterArch
               cd PR_preview
               #touch pom.xml
