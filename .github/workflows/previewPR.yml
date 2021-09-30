@@ -15,6 +15,7 @@ jobs:
              pwd
              mkdir masterArch
              pwd
+             ls
     
       - name: Clone master architecture
         uses: actions/checkout@v1
@@ -32,7 +33,8 @@ jobs:
           
       - name: Run maven generate
         run: |
-              cd ../
+              ls
+              cd ./
               ls
               cd newArch
               ls
