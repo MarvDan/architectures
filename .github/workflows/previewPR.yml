@@ -34,7 +34,7 @@ jobs:
       - name: Run maven generate
         run: |
               ls
-              cd ./
+              cd ../../
               ls
               cd newArch
               ls
