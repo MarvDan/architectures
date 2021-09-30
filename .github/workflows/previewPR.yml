@@ -8,20 +8,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
-      - name: Create Folders for different architectures
-        run: |
+    #  - name: Create Folders for different architectures
+     #   run: |
          #    pwd
-              mkdir newArch
+         #     mkdir newArch
           #   pwd
-              mkdir masterArch
+          #    mkdir masterArch
            #  pwd
            #  ls
     
-      - name: Clone master architecture
-        uses: actions/checkout@v1
-        with:
-          path: masterArch
-          submodules: recursiv
+    #  - name: Clone master architecture
+     #   uses: actions/checkout@v1
+     #   with:
+      #    path: masterArch
+       #   submodules: recursiv
     
       - name: Clone new architecture
         uses: actions/checkout@v1
@@ -35,10 +35,8 @@ jobs:
         run: |
               mkdir PR_preview
               cp -r solutions PR_preview
-              ls
-              ls /home/runner/work/architectures/masterArch
+              cp -r PRfiles PR_preview
               cd PR_preview
-              #touch pom.xml
               ls
               mvn clean package
 
