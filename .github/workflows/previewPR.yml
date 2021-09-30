@@ -16,14 +16,14 @@ jobs:
       - name: Clone master architecture
         uses: actions/checkout@v1
         with:
-          destination: masterArch
+          path: masterArch
           submodules: recursiv
     
       - name: Clone new architecture
         uses: actions/checkout@v1
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-          destination: newArch
+          path: newArch
           #submodules: recursive
           
           
