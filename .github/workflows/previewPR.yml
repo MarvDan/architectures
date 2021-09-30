@@ -11,7 +11,7 @@ jobs:
       - name: Create Folders for different architectures
         run: |
          #    pwd
-          #   mkdir newArch
+              mkdir newArch
           #   pwd
               mkdir masterArch
            #  pwd
@@ -27,16 +27,16 @@ jobs:
         uses: actions/checkout@v1
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-          #path: newArch
+          path: newArch
           #submodules: recursive
           
           
       - name: Run maven generate
         run: |
-              ls
+              ls newArch
               mkdir PR_preview
               cp -r solutions PR_preview
-              ls
+              ls /home/runner/work/architectures/masterArch
               cd PR_preview
               #touch pom.xml
               ls
