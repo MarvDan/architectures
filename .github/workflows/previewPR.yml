@@ -29,7 +29,9 @@ jobs:
           
       - name: Run maven generate
         run: |
+              cd ../
               ls
+              cd masterArch
               cd testFolder              
               mvn clean package
 
