@@ -8,39 +8,34 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
-      - name: Create Folders for different architectures
-        run: |
-             pwd
-             mkdir newArch
-             pwd
-             mkdir masterArch
-             pwd
-             ls
+     # - name: Create Folders for different architectures
+     #   run: |
+         #    pwd
+          #   mkdir newArch
+          #   pwd
+          #   mkdir masterArch
+           #  pwd
+           #  ls
     
-      - name: Clone master architecture
-        uses: actions/checkout@v1
-        with:
-          path: masterArch
-          submodules: recursiv
+     # - name: Clone master architecture
+     #   uses: actions/checkout@v1
+     #   with:
+      #    path: masterArch
+        #  submodules: recursiv
     
       - name: Clone new architecture
         uses: actions/checkout@v1
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-          path: newArch
+          #path: newArch
           #submodules: recursive
           
           
       - name: Run maven generate
         run: |
               ls
-              cd ../../
-              ls
-              cd architectures
-              ls
-              cd newArch
-              ls
-              cd testFolder              
+              mkdir PR_preview
+              cd PR_preview           
               mvn clean package
 
 
