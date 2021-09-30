@@ -9,7 +9,9 @@ jobs:
     steps:
     
       - name: Create Folders for different architectures
-        run: ls
+        run: |
+             pwd
+             ls
     
       - name: Clone master architecture
         uses: actions/checkout@v1
