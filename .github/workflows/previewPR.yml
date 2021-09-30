@@ -31,7 +31,8 @@ jobs:
         run: |
               cd ../
               ls
-              cd masterArch
+              cd newArch
+              ls
               cd testFolder              
               mvn clean package
 
