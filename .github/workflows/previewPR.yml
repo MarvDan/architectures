@@ -1,7 +1,7 @@
 name: previewPR
 
 on:
-  pull_request   
+  pull_request_target   
   
 jobs:
   previewPR:
@@ -12,8 +12,9 @@ jobs:
       - name: Clone new architecture
         uses: actions/checkout@v1
         with:
-          destination: devonfw.github.io/
-          submodules: recursive
+          ref: ${{ github.event.pull_request.head.sha }}
+          #destination: devonfw.github.io/
+          #submodules: recursive
           
           
       - name: Run maven generate
