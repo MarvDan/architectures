@@ -48,10 +48,9 @@ jobs:
       #  with:
       #    node-version: '14'
         run: |
-              cd testFolder
+              cd PR_preview
               npm install node-html-to-image-cli -g
               pwd 
-              ls target
               cd target/generated-docs
               node-html-to-image-cli index.html image.png              
         
@@ -60,8 +59,8 @@ jobs:
         with: 
           name: download-asset
           path: |
-                testFolder/target/generated-docs/image.png
-                testFolder/target/generated-docs/index.html
+                PR_preview/target/generated-docs/image.png
+                PR_preview/target/generated-docs/index.html
           
           
           
