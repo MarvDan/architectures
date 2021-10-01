@@ -18,5 +18,5 @@
             with:
                 prefix: Here is the preview of your PR
                 suffix: Have a nice day.
-                #format: name
-                #addTo: pullandissues
+                format: name
+                addTo: pullandissues
