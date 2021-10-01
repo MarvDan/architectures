@@ -1,7 +1,7 @@
 name: previewPR
 
 on:
-  pull_request_target   
+  pull_request   
   
 jobs:
   previewPR:
@@ -20,7 +20,6 @@ jobs:
               cp -r solutions PR_preview
               cp -a PRfiles/. PR_preview
               cd PR_preview
-              ls
               mvn clean package
 
 
@@ -28,7 +27,6 @@ jobs:
         run: |
               cd PR_preview
               npm install node-html-to-image-cli -g
-              pwd 
               cd target/generated-docs
               node-html-to-image-cli index.html image.png              
         
