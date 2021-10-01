@@ -15,8 +15,8 @@
             uses: tonyhallett/artifacts-url-comments@v1.1.0
             env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            #with:
-                #prefix: Here is the preview of your PR
-                #suffix: Have a nice day.
+            with:
+                prefix: Here is the preview of your PR
+                suffix: Have a nice day.
                 #format: name
                 #addTo: pullandissues
