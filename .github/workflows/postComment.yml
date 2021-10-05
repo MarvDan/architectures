@@ -16,7 +16,9 @@
             env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             with:
-                prefix: Here is the preview of your changes at 'solutions' with asciidoc
-                suffix: Have a nice day. Result is as html and png file.
+                #prefix: Here is the preview of your changes at 'solutions' with asciidoc
+                #suffix: Have a nice day. Result is as html and png file.
+                prefix: X
+                suffix: Y
                 format: name
                 addTo: pullandissues
