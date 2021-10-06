@@ -10,8 +10,8 @@ jobs:
     
       - name: Clone new architecture
         uses: actions/checkout@v1
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
+        #with:
+          #ref: ${{ github.event.pull_request.head.sha }}
           
           
       - name: Run maven generate
@@ -21,6 +21,7 @@ jobs:
               cp -a PRfiles/. PR_preview
               cd PR_preview
               mvn clean package
+              
       - name: Run image generate
         run: |
               cd PR_preview
