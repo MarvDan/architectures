@@ -1,4 +1,4 @@
-    name: add artifact links to pull request and related issues
+name: add artifact links to pull request and related issues
     on:
       workflow_run:
         workflows: 
