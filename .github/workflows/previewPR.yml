@@ -13,6 +13,7 @@ jobs:
         uses: actions/checkout@v1
         with:
           repository: devonfw/devonfw.github.io
+          ref: develop
           submodules: recursive
       #website repo
 
