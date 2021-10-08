@@ -11,8 +11,9 @@ jobs:
     
       - name: Clone
         uses: actions/checkout@v1
-        #with:
-        #submodules: recursive
+        with:
+          repository: devonfw/devonfw.github.io
+          submodules: recursive
       #website repo
 
       #delete architectures
