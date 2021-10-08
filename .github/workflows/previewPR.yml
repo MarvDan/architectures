@@ -26,6 +26,7 @@ jobs:
 
       - name: Solutions from Stack repositories
         run: |
+          cd ../../
           ls
           pwd
           ls architectures
