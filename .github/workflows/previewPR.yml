@@ -39,8 +39,17 @@ jobs:
       - name: Move new architecure to right place
         run: |
           cd ../../
+          ls
+          pwd
+          ls architectures/devonfw.github.io/
+          pwd
           cp -a architectures/devonfw.github.io/. devonfw.github.io
           rm -r architectures/devonfw.github.io
+          ls
+          pwd
+          ls architectures
+          pwd 
+          ls architectures/devonfw.github.io/
 
       #- name: Setup Node
        # uses: actions/setup-node@v2
