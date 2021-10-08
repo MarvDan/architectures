@@ -24,6 +24,8 @@ jobs:
 
       - name: Solutions from Stack repositories
         run: |
+          ls
+          pwd
           cd architectures/scripts
           npm install
           node copySolutionsFromStack.js ../../devonfw-guide
