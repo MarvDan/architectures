@@ -48,9 +48,10 @@ jobs:
           pwd
           ls architectures
           pwd
-          ls architectures/architectures
+          ls devonfw.github.io
           pwd
           ls architectures/devonfw.github.io
+          
           
           cd architectures/devonfw.github.io
           cd architectures/scripts
