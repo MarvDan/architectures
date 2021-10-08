@@ -29,9 +29,9 @@ jobs:
           cd ../../
           ls
           pwd
-          ls devonfw.github.io
-          pwd
           ls architectures
+          pwd
+          ls devonfw.github.io
           cd architectures/scripts
           npm install
           node copySolutionsFromStack.js ../../devonfw-guide
