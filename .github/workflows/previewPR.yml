@@ -26,7 +26,7 @@ jobs:
           cd architectures/devonfw.github.io
           ls 
           pwd
-          rm architectures
+          rm -r architectures
           ls
           pwd
           
