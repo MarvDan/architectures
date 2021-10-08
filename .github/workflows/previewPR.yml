@@ -18,7 +18,23 @@ jobs:
       #website repo
 
       #delete architectures
+      - name: Delete old architectures
+        run: |
+          ls
+          pwd
+          cd architectures/devonfw.github.io
+          ls 
+          pwd
+          rm architectures
+          ls
+          pwd
+          
       #clone architectures repo (path = architectures)
+      - name: Add new architectures
+        uses: actions/checkout@v1
+        with:
+          path: architectures/devonfw.github.io
+          
 
 
       - name: Setup Node
@@ -34,6 +50,8 @@ jobs:
           ls architectures/architectures
           pwd
           ls architectures/devonfw.github.io
+          
+          cd architectures/devonfw.github.io
           cd architectures/scripts
           npm install
           node copySolutionsFromStack.js ../../devonfw-guide
@@ -56,8 +74,6 @@ jobs:
           source: architectures/index.scss
           destination: architectures/index.css
 
-
-
       # asciidoctor tries to load gems dynamically to convert md and scss files.
       # As this gems are not installed this is breaking the build.
       - name: Remove files that are breaking the build
@@ -76,6 +92,8 @@ jobs:
       - name: Copy output of architectures
         run: |
          cp -avr architectures/target/generated-docs/ target/generated-docs/website/pages/architectures/
+    
+    
     
     
     
