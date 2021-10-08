@@ -20,6 +20,7 @@ jobs:
       #delete architectures
       - name: Delete old architectures
         run: |
+          cd ../../
           ls
           pwd
           cd architectures/devonfw.github.io
