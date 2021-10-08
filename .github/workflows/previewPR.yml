@@ -44,15 +44,11 @@ jobs:
           ls architectures/devonfw.github.io/
           pwd
           cp -a architectures/devonfw.github.io/. devonfw.github.io
-          rm -r architectures/devonfw.github.io
-          ls
-          pwd
-          ls architectures
-          pwd 
           ls architectures/devonfw.github.io/
+          rm -r architectures/devonfw.github.io
 
-      #- name: Setup Node
-       # uses: actions/setup-node@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2
 
       - name: Solutions from Stack repositories
         run: |
@@ -62,8 +58,6 @@ jobs:
           ls architectures
           pwd
           ls devonfw.github.io
-          pwd
-          ls architectures/devonfw.github.io
           
           cd architectures/devonfw.github.io
           cd architectures/scripts
