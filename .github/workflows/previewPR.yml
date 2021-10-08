@@ -56,7 +56,6 @@ jobs:
           pwd
           ls architectures/devonfw.github.io
           
-          
           cd architectures/devonfw.github.io
           cd architectures/scripts
           npm install
