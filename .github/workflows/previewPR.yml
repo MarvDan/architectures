@@ -35,7 +35,7 @@ jobs:
           cd ../../
           cp -a architectures/devonfw.github.io/. devonfw.github.io
           #cd architectures
-          rm -r architectures
+          #rm -r architectures
           pwd
           ls
           
