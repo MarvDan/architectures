@@ -21,14 +21,8 @@ jobs:
       - name: Delete old architectures
         run: |
           cd ../../
-          ls
-          pwd
           cd architectures/devonfw.github.io
-          ls 
-          pwd
           rm -r architectures
-          ls
-          pwd
           
       #clone architectures repo (path = architectures)
       - name: Add new architectures
