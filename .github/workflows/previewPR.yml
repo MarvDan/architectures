@@ -89,8 +89,6 @@ jobs:
       - name: Create output for architectures
         run: |
           pwd
-          cd architectures
-          pwd
           ls
           chmod +x scripts/createOutput.sh
           scripts/createOutput.sh
