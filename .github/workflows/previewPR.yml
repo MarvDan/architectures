@@ -33,7 +33,8 @@ jobs:
       - name: Move new architecure to right place
         run: |
           cd ../../
-          cp -a architectures/devonfw.github.io/. devonfw.github.io
+          mkdir architectures devonfw.github.io
+          cp -a architectures/devonfw.github.io/. devonfw.github.io/architectures
           #rm -r architectures
           pwd
           ls
