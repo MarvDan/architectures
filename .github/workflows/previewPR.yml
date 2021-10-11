@@ -34,12 +34,12 @@ jobs:
         run: |
           cd ../../
           cp -a architectures/devonfw.github.io/. devonfw.github.io
-          rm -r architectures
+          #rm -r architectures
           pwd
           ls
           
-      #- name: Setup Node
-        #uses: actions/setup-node@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2
 
       - name: Solutions from Stack repositories
         run: |
