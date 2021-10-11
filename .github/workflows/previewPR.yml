@@ -33,15 +33,11 @@ jobs:
       - name: Move new architecure to right place
         run: |
           cd ../../
-          ls
           cd devonfw.github.io
           mkdir architectures 
           cd ../
-          ls
           cp -a architectures/devonfw.github.io/. devonfw.github.io/architectures
           #rm -r architectures
-          pwd
-          ls
           
       - name: Setup Node
         uses: actions/setup-node@v2
@@ -50,7 +46,6 @@ jobs:
         run: |
           cd ../../
           cd devonfw.github.io
-          ls
           cd architectures/scripts
           npm install
           node copySolutionsFromStack.js ../../devonfw-guide
@@ -58,11 +53,13 @@ jobs:
 
       - name: Copy pom files for architectures
         run: |
+          ls
           chmod +x architectures/scripts/copyPomFiles.sh
           architectures/scripts/copyPomFiles.sh
 
       - name: npm install for architectures
         run: |
+          ls
           cd architectures/scripts
           npm install
           cd ../../
@@ -77,6 +74,7 @@ jobs:
       # As this gems are not installed this is breaking the build.
       - name: Remove files that are breaking the build
         run: |
+          ls
           rm architectures/README.md || true
           rm architectures/index.scss || true
 
@@ -94,7 +92,7 @@ jobs:
     
     
     
-    
+    ##############
     
     
     
