@@ -47,21 +47,18 @@ jobs:
           cd ../../
           cd devonfw.github.io
           cd architectures/scripts
+          
           npm install
           node copySolutionsFromStack.js ../../devonfw-guide
           cd ../../
 
       - name: Copy pom files for architectures
         run: |
-          pwd
-          ls
           chmod +x scripts/copyPomFiles.sh
           scripts/copyPomFiles.sh
 
       - name: npm install for architectures
         run: |
-          pwd
-          ls
           cd scripts
           npm install
           cd ../../
@@ -69,28 +66,28 @@ jobs:
       - name: Compile sass for architectures
         uses: gha-utilities/sass-build@v0.4.2
         with:
-          source: architectures/index.scss
-          destination: architectures/index.css
+          source: index.scss
+          destination: index.css
 
       # asciidoctor tries to load gems dynamically to convert md and scss files.
       # As this gems are not installed this is breaking the build.
       - name: Remove files that are breaking the build
         run: |
           ls
-          rm architectures/README.md || true
-          rm architectures/index.scss || true
+          rm README.md || true
+          rm index.scss || true
 
       - name: Build
         run: mvn -s ./.m2/unblock-rubygem-proxy-settings.xml clean package
 
       - name: Create output for architectures
         run: |
-          chmod +x architectures/scripts/createOutput.sh
-          architectures/scripts/createOutput.sh
+          chmod +x scripts/createOutput.sh
+          scripts/createOutput.sh
 
       - name: Copy output of architectures
         run: |
-         cp -avr architectures/target/generated-docs/ target/generated-docs/website/pages/architectures/
+         cp -avr target/generated-docs/ target/generated-docs/website/pages/architectures/
     
     
     
