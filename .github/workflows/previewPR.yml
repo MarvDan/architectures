@@ -36,7 +36,7 @@ jobs:
           ls
           cd devonfw.github.io
           mkdir architectures 
-          cd ../../
+          cd ../
           ls
           cp -a architectures/devonfw.github.io/. devonfw.github.io/architectures
           #rm -r architectures
