@@ -90,10 +90,16 @@ jobs:
 
       - name: Create output for architectures
         run: |
+          cd ../../
           pwd
           ls
-          chmod +x scripts/createOutput.sh
-          scripts/createOutput.sh
+          pwd
+          ls devonfw.github.io
+          cd devonfw.github.io
+          pwd
+          ls architectures
+          chmod +x architectures/scripts/createOutput.sh
+          architectures/scripts/createOutput.sh
 
       - name: Copy output of architectures
         run: |
