@@ -48,6 +48,7 @@ jobs:
           #ls architectures
           #ls devonfw.github.io
           cd architectures/devonfw.github.io
+          ls
           cd architectures/scripts
           npm install
           node copySolutionsFromStack.js ../../devonfw-guide
