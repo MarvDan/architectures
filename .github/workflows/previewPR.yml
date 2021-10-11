@@ -103,9 +103,15 @@ jobs:
 
       - name: Copy output of architectures
         run: |
-         pwd
-         ls
-         cp -avr target/generated-docs/ target/generated-docs/website/pages/architectures/
+          cd ../../
+          pwd
+          ls
+          pwd
+          ls devonfw.github.io
+          cd devonfw.github.io
+          pwd
+          ls architectures
+          cp -avr target/generated-docs/ target/generated-docs/website/pages/architectures/
     
     
     
