@@ -34,8 +34,7 @@ jobs:
         run: |
           cd ../../
           cp -a architectures/devonfw.github.io/. devonfw.github.io
-          #cd architectures
-          #rm -r architectures
+          rm -r architectures
           pwd
           ls
           
@@ -45,9 +44,7 @@ jobs:
       - name: Solutions from Stack repositories
         run: |
           cd ../../
-          #ls architectures
-          #ls devonfw.github.io
-          cd architectures/devonfw.github.io
+          cd devonfw.github.io
           ls
           cd architectures/scripts
           npm install
