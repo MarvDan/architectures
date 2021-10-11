@@ -53,14 +53,16 @@ jobs:
 
       - name: Copy pom files for architectures
         run: |
+          pwd
           ls
-          chmod +x architectures/scripts/copyPomFiles.sh
-          architectures/scripts/copyPomFiles.sh
+          chmod +x scripts/copyPomFiles.sh
+          scripts/copyPomFiles.sh
 
       - name: npm install for architectures
         run: |
+          pwd
           ls
-          cd architectures/scripts
+          cd scripts
           npm install
           cd ../../
 
