@@ -86,7 +86,7 @@ jobs:
           ls
           cd ../
           pwd 
-          ls
+          ls devonfw.github.io
           mvn -s ./.m2/unblock-rubygem-proxy-settings.xml clean package
 
       - name: Create output for architectures
