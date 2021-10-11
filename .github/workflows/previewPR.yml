@@ -84,6 +84,9 @@ jobs:
           cd ../
           pwd 
           ls
+          cd ../
+          pwd 
+          ls
           mvn -s ./.m2/unblock-rubygem-proxy-settings.xml clean package
 
       - name: Create output for architectures
