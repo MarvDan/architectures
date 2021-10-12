@@ -51,6 +51,8 @@ jobs:
           ls
           sudo apt-get install xmlstarlet
           echo "----"
+          pwd
+          ls
           xmlstarlet sel -t -c "/" pom.xml 
           pwd
           ls
