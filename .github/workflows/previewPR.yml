@@ -103,9 +103,11 @@ jobs:
           ls devonfw.github.io
           cd devonfw.github.io
           ls
+          xmlstarlet sel -t -c "/" pom.xml 
           mvn -s ./.m2/unblock-rubygem-proxy-settings.xml clean package
           pwd 
           ls
+          xmlstarlet sel -t -c "/" pom.xml 
 
       - name: Create output for architectures
         run: |
