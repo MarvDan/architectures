@@ -98,7 +98,7 @@ jobs:
           cd ../
           pwd 
           ls
-          cd../
+          cd ../
           pwd 
           ls
           cd devonfw.github.io
