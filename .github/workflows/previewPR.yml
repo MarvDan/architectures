@@ -42,6 +42,13 @@ jobs:
           ls devonfw.github.io/architectures
           #rm -r architectures
           
+      - name: Edit pom.xml File 
+        run: |
+          pwd
+          ls
+          cd ../../
+          cd devonfw.github.io
+          
       - name: Setup Node
         uses: actions/setup-node@v2
 
@@ -119,7 +126,7 @@ jobs:
           cd devonfw.github.io
           pwd
           ls architectures
-          cp -avr target/generated-docs/ target/generated-docs/website/pages/architectures/
+          cp -avr architectures/target/generated-docs/ target/generated-docs/website/pages/architectures/
     
     
     
