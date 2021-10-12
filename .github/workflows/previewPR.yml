@@ -49,8 +49,9 @@ jobs:
           cd ../
           pwd
           ls
+          sudo apt-get install xmlstarlet
           echo "----"
-          echo pom.xml
+          xmlstarlet sel pom.xml
           xmlstarlet edit --update "project/modules/module/@website" --value "" pom.xml 
           echo "----"
           echo pom.xml
