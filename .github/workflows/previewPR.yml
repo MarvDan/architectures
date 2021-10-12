@@ -35,8 +35,12 @@ jobs:
           cd ../../
           cd devonfw.github.io
           mkdir architectures 
+          pwd 
+          ls
           cd ../
+          pwd
           cp -a architectures/devonfw.github.io/. devonfw.github.io/architectures
+          ls devonfw.github.io/architectures
           #rm -r architectures
           
       - name: Setup Node
