@@ -44,9 +44,9 @@ jobs:
           
       - name: Edit pom.xml File 
         run: |
-          pwd
-          ls
-          cd ../
+          #pwd
+          #ls
+          #cd ../
           pwd
           ls
           sudo apt-get install xmlstarlet
