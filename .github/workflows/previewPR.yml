@@ -46,8 +46,18 @@ jobs:
         run: |
           pwd
           ls
-          cd ../../
-          cd devonfw.github.io
+          cd ../
+          pwd
+          ls
+          echo "----"
+          echo pom.xml
+          xmlstarlet edit --update "project/modules/module/@website" --value "" pom.xml 
+          echo "----"
+          echo pom.xml
+          xmlstarlet edit --update "project/modules/module/@search-engine" --value "" pom.xml 
+          echo "----"
+          echo pom.xml
+          #cd devonfw.github.io
           
       - name: Setup Node
         uses: actions/setup-node@v2
