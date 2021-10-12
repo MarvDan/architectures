@@ -44,25 +44,19 @@ jobs:
           
       - name: Edit pom.xml File 
         run: |
-          #pwd
-          #ls
-          #cd ../
-          pwd
-          ls
           sudo apt-get install xmlstarlet
-          echo "----"
-          pwd
-          ls
+          
           xmlstarlet sel -t -c "/" pom.xml 
-          pwd
-          ls
           xmlstarlet edit --update "project/modules/module/@website" --value "" pom.xml 
+          
           echo "----"
-          echo pom.xml
+          
+          xmlstarlet sel -t -c "/" pom.xml 
           xmlstarlet edit --update "project/modules/module/@search-engine" --value "" pom.xml 
+          
           echo "----"
-          echo pom.xml
-          #cd devonfw.github.io
+          
+          xmlstarlet sel -t -c "/" pom.xml 
           
       - name: Setup Node
         uses: actions/setup-node@v2
