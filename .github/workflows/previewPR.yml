@@ -35,11 +35,10 @@ jobs:
           cd ../../
           cd devonfw.github.io
           mkdir architectures 
-          pwd 
-          ls
           cd ../
-          pwd
           cp -a architectures/devonfw.github.io/. devonfw.github.io/architectures
+          ls
+          pwd
           ls devonfw.github.io/architectures
           #rm -r architectures
           
@@ -94,16 +93,21 @@ jobs:
 
       - name: Create output for architectures
         run: |
-          cd ../../
           pwd
           ls
-          pwd
-          ls devonfw.github.io
+          cd ../
+          pwd 
+          ls
+          cd../
+          pwd 
+          ls
           cd devonfw.github.io
           pwd
-          ls architectures
+          ls
           chmod +x architectures/scripts/createOutput.sh
           architectures/scripts/createOutput.sh
+          pwd
+          ls
 
       - name: Copy output of architectures
         run: |
