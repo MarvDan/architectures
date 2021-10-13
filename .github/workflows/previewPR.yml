@@ -80,7 +80,7 @@ jobs:
       #delete architectures
       - name: Delete old architectures
         run: |
-          echo matrix
+          echo $matrix
           cd ../../
           cd architectures/devonfw.github.io
           rm -r architectures
@@ -177,45 +177,27 @@ jobs:
       - name: Build
         run: |
           cd ../../
-          pwd 
-          ls devonfw.github.io
           cd devonfw.github.io
-          ls
           xmlstarlet sel -t -c "/" pom.xml 
           mvn -s ./.m2/unblock-rubygem-proxy-settings.xml clean package
-          pwd 
-          ls
+
           xmlstarlet sel -t -c "/" pom.xml 
 
       - name: Create output for architectures
         run: |
-          pwd
-          ls
-          cd ../
-          pwd 
-          ls
-          cd ../
-          pwd 
-          ls
+          cd ../../
           cd devonfw.github.io
-          pwd
-          ls
+
           chmod +x architectures/scripts/createOutput.sh
           architectures/scripts/createOutput.sh
-          pwd
-          ls
 
       - name: Copy output of architectures
         run: |
           cd ../../
-          pwd
-          ls
-          pwd
-          ls devonfw.github.io
           cd devonfw.github.io
-          pwd
-          ls architectures
+
           cp -avr architectures/target/generated-docs/ target/generated-docs/website/pages/architectures/
+          
 
       - name: run buildRun.sh
         run: sh buildRun.sh --user ${{ github.actor }} --branch ${{ github.event.pull_request.head.ref }} -p ${{ matrix.tutorial }}
