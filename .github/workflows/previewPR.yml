@@ -51,7 +51,7 @@ jobs:
           
           xmlstarlet sel -t -c "/" pom.xml 
           #xmlstarlet edit --update "project/modules/module/@website" --value "" pom.xml 
-          xmlstarlet ed -u "project/modules/module" -v "test" simpsons.xml 
+          xmlstarlet ed -u "project/modules/module" -v "test" pom.xml 
           
           echo "---------------------------------------------------------------------------------"
           pwd
