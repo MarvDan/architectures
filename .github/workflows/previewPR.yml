@@ -42,22 +42,6 @@ jobs:
           ls devonfw.github.io/architectures
           #rm -r architectures
           
-      - name: Edit pom.xml File 
-        run: |
-          sudo apt-get install xmlstarlet
-          
-          xmlstarlet sel -t -c "/" pom.xml 
-          xmlstarlet edit --update "project/modules/module/@website" --value "" pom.xml 
-          
-          echo "----"
-          
-          xmlstarlet sel -t -c "/" pom.xml 
-          xmlstarlet edit --update "project/modules/module/@search-engine" --value "" pom.xml 
-          
-          echo "----"
-          
-          xmlstarlet sel -t -c "/" pom.xml 
-          
       - name: Setup Node
         uses: actions/setup-node@v2
 
@@ -81,6 +65,24 @@ jobs:
           cd scripts
           npm install
           cd ../../
+          
+          
+      - name: Edit pom.xml File 
+        run: |
+          sudo apt-get install xmlstarlet
+          
+          xmlstarlet sel -t -c "/" pom.xml 
+          xmlstarlet edit --update "project/modules/module/@website" --value "" pom.xml 
+          
+          echo "----"
+          
+          xmlstarlet sel -t -c "/" pom.xml 
+          xmlstarlet edit --update "project/modules/module/@search-engine" --value "" pom.xml 
+          
+          echo "----"
+          
+          xmlstarlet sel -t -c "/" pom.xml 
+          
 
       - name: Compile sass for architectures
         uses: gha-utilities/sass-build@v0.4.2
