@@ -80,6 +80,7 @@ jobs:
       #delete architectures
       - name: Delete old architectures
         run: |
+          echo matrix
           cd ../../
           cd architectures/devonfw.github.io
           rm -r architectures
