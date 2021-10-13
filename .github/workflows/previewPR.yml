@@ -66,6 +66,12 @@ jobs:
           npm install
           cd ../../
           
+
+      - name: Compile sass for architectures
+        uses: gha-utilities/sass-build@v0.4.2
+        with:
+          source: index.scss
+          destination: index.css
           
       - name: Edit pom.xml File 
         run: |
@@ -82,13 +88,6 @@ jobs:
           echo "----"
           
           xmlstarlet sel -t -c "/" pom.xml 
-          
-
-      - name: Compile sass for architectures
-        uses: gha-utilities/sass-build@v0.4.2
-        with:
-          source: index.scss
-          destination: index.css
 
       # asciidoctor tries to load gems dynamically to convert md and scss files.
       # As this gems are not installed this is breaking the build.
