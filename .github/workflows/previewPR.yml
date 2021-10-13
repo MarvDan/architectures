@@ -52,7 +52,8 @@ jobs:
           
           #xmlstarlet edit --update "project/modules/module/@website" --value "" pom.xml 
           #xmlstarlet ed -d "//project/modules[last()]" pom.xml 
-          xmlstarlet ed -d "//project[last()]" pom.xml 
+          #xmlstarlet ed -d "//project[last()]" pom.xml 
+          xmlstarlet ed -r "/project/*/modules" -v "TESTEN" pom.xml  
           echo "---------------------------------------------------------------------------------"
           pwd
           echo "---------------------------------------------------------------------------------"
