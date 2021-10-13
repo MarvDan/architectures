@@ -49,9 +49,17 @@ jobs:
           
           sudo apt-get install xmlstarlet
           
-          xmlstarlet sel -t -c "/" pom.xml 
+          
           #xmlstarlet edit --update "project/modules/module/@website" --value "" pom.xml 
+          xmlstarlet ed -d "//project/modules[last()]" pom.xml 
+          echo "---------------------------------------------------------------------------------"
+          pwd
+          echo "---------------------------------------------------------------------------------"
           xmlstarlet ed -u "project/modules" -v "test" pom.xml 
+          echo "---------------------------------------------------------------------------------"
+          pwd
+          echo "---------------------------------------------------------------------------------"
+          xmlstarlet sel -t -c "/" pom.xml 
           
           echo "---------------------------------------------------------------------------------"
           pwd
