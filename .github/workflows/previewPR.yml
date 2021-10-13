@@ -50,7 +50,8 @@ jobs:
           sudo apt-get install xmlstarlet
           
           xmlstarlet sel -t -c "/" pom.xml 
-          xmlstarlet edit --update "project/modules/module/@website" --value "" pom.xml 
+          #xmlstarlet edit --update "project/modules/module/@website" --value "" pom.xml 
+          xmlstarlet ed -u "project/modules/module" -v "test" simpsons.xml 
           
           echo "---------------------------------------------------------------------------------"
           pwd
@@ -94,6 +95,7 @@ jobs:
       # As this gems are not installed this is breaking the build.
       - name: Remove files that are breaking the build
         run: |
+          pwd
           ls
           rm README.md || true
           rm index.scss || true
