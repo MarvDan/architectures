@@ -55,7 +55,7 @@ jobs:
           for changed_file in ${{ steps.changedfiles.outputs.all }}; do
             dir="$(echo $changed_file | cut -d/ -f1)"
             if [[ ! " ${dirs[@]} " =~ " ${dir} " ]]; then
-              MATRIX_PARAMS_COMBINATIONS=$MATRIX_PARAMS_COMBINATIONS'{"tutorial": "'$dir'"},'
+              MATRIX_PARAMS_COMBINATIONS=$MATRIX_PARAMS_COMBINATIONS'{"solution": "'$dir'"},'
             fi
             dirs+=($dir)
           done
@@ -200,4 +200,4 @@ jobs:
           
 
       - name: run buildRun.sh
-        run: sh buildRun.sh --user ${{ github.actor }} --branch ${{ github.event.pull_request.head.ref }} -p ${{ matrix.tutorial }}
+        run: sh buildRun.sh --user ${{ github.actor }} --branch ${{ github.event.pull_request.head.ref }} -p ${{ matrix.solution }}
