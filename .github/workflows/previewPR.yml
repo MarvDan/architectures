@@ -187,6 +187,12 @@ jobs:
         run: |
           cd ../../
           cd devonfw.github.io
+          pwd
+          ls
+          pwd
+          ls architectures
+          pwd
+          ls architectures/solutions
 
           chmod +x architectures/scripts/createOutput.sh
           architectures/scripts/createOutput.sh
@@ -194,9 +200,26 @@ jobs:
       - name: Copy output of architectures
         run: |
           cd ../../
+          echo ${matrix}
           cd devonfw.github.io
 
           cp -avr architectures/target/generated-docs/ target/generated-docs/website/pages/architectures/
+          
+      - name: Run image generate
+        run: |
+              cd PR_preview
+              npm install node-html-to-image-cli -g
+              cd target/generated-docs
+              node-html-to-image-cli index.html image.png              
+        
+        
+      - name: Artifact build
+        uses: actions/upload-artifact@v2
+        with: 
+          name: download-asset
+          path: |
+                PR_preview/target/generated-docs/image.png
+                PR_preview/target/generated-docs/index.html
           
 
       #- name: run buildRun.sh
