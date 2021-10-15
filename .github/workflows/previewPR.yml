@@ -201,13 +201,17 @@ jobs:
         run: |
           cd ../../
           echo ${matrix}
+          pwd
+          echo ${matrix.solutions}
           cd devonfw.github.io
 
           cp -avr architectures/target/generated-docs/ target/generated-docs/website/pages/architectures/
           
       - name: Run image generate
         run: |
-              cd PR_preview
+              pwd
+              ls
+              cd architectures/solutions
               npm install node-html-to-image-cli -g
               cd target/generated-docs
               node-html-to-image-cli index.html image.png              
@@ -218,8 +222,8 @@ jobs:
         with: 
           name: download-asset
           path: |
-                PR_preview/target/generated-docs/image.png
-                PR_preview/target/generated-docs/index.html
+                architectures/solutions/target/generated-docs/image.png
+                architectures/solutions/target/generated-docs/index.html
           
 
       #- name: run buildRun.sh
