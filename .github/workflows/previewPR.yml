@@ -220,6 +220,7 @@ jobs:
               node-html-to-image-cli index.html image.png 
               pwd
               ls 
+              cd ../../
         
         
       - name: Artifact build
@@ -227,8 +228,8 @@ jobs:
         with: 
           name: download-asset
           path: |
-                image.png
-                index.html
+                architectures/target/image.png
+                architectures/target/index.html
           
 
       #- name: run buildRun.sh
