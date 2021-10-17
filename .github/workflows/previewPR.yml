@@ -214,11 +214,11 @@ jobs:
               pwd
               #ls
               #cd architectures/solutions
-              ls architectures
+              ls architectures/target
               pwd 
-              ls architectures/solutions
+              ls target
               npm install node-html-to-image-cli -g
-              cd target/generated-docs
+              cd architectures/target/generated-docs
               node-html-to-image-cli index.html image.png              
         
         
@@ -227,8 +227,8 @@ jobs:
         with: 
           name: download-asset
           path: |
-                target/generated-docs/image.png
-                target/generated-docs/index.html
+                architectures/target/generated-docs/image.png
+                architectures/target/generated-docs/index.html
           
 
       #- name: run buildRun.sh
