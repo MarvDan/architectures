@@ -202,7 +202,7 @@ jobs:
           cd ../../
           echo ${matrix}
           pwd
-          #echo ${matrix.solution}
+          echo ${matrix.solution}
           cd devonfw.github.io
 
           cp -avr architectures/target/generated-docs/ target/generated-docs/website/pages/architectures/
