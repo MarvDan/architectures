@@ -212,14 +212,14 @@ jobs:
               cd ../../
               cd devonfw.github.io
               pwd
-              #ls
-              #cd architectures/solutions
-              ls architectures/target
+              ls architectures/target/generated-docs
               pwd 
-              ls target
+              ls target/generated-docs
               npm install node-html-to-image-cli -g
               cd architectures/target/generated-docs
-              node-html-to-image-cli index.html image.png              
+              node-html-to-image-cli index.html image.png 
+              pwd
+              ls architectures/target/generated-docs
         
         
       - name: Artifact build
