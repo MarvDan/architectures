@@ -178,10 +178,10 @@ jobs:
         run: |
           cd ../../
           cd devonfw.github.io
-          xmlstarlet sel -t -c "/" pom.xml 
+          #xmlstarlet sel -t -c "/" pom.xml 
           mvn -s ./.m2/unblock-rubygem-proxy-settings.xml clean package
 
-          xmlstarlet sel -t -c "/" pom.xml 
+          #xmlstarlet sel -t -c "/" pom.xml 
 
       - name: Create output for architectures
         run: |
@@ -211,21 +211,9 @@ jobs:
         run: |
               cd ../../
               cd devonfw.github.io
-              pwd
-              ls architectures/target/generated-docs
-              pwd 
-              ls target/generated-docs
               npm install node-html-to-image-cli -g
               cd architectures/target/generated-docs
               node-html-to-image-cli index.html image.png 
-              pwd
-              ls 
-              cd ../../
-        
-      - name: Run image generate
-        run: |
-              pwd
-              ls
         
       - name: Artifact build
         uses: actions/upload-artifact@v2
