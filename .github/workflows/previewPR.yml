@@ -232,8 +232,8 @@ jobs:
         with: 
           name: download-asset
           path: |
-                devonfw.github.io/architectures/target/generated-docs/image.png
-                devonfw.github.io/architectures/target/generated-docs/index.html
+                architectures/devonfw.github.io/architectures/target/generated-docs/image.png
+                architectures/devonfw.github.io/architectures/target/generated-docs/index.html
           
 
       #- name: run buildRun.sh
