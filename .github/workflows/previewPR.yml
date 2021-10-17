@@ -222,14 +222,18 @@ jobs:
               ls 
               cd ../../
         
+      - name: Run image generate
+        run: |
+              pwd
+              ls
         
       - name: Artifact build
         uses: actions/upload-artifact@v2
         with: 
           name: download-asset
           path: |
-                architectures/target/image.png
-                architectures/target/index.html
+                devonfw.github.io/architectures/target/generated-docs/image.png
+                devonfw.github.io/architectures/target/generated-docs/index.html
           
 
       #- name: run buildRun.sh
