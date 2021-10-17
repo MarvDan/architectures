@@ -212,8 +212,9 @@ jobs:
               cd ../../
               cd devonfw.github.io
               pwd
-              ls
-              cd architectures/solutions
+              #ls
+              #cd architectures/solutions
+              #ls
               npm install node-html-to-image-cli -g
               cd target/generated-docs
               node-html-to-image-cli index.html image.png              
