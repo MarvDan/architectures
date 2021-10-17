@@ -227,6 +227,8 @@ jobs:
         with: 
           name: download-asset
           path: |
+                pwd
+                ls
                 architectures/target/generated-docs/image.png
                 architectures/target/generated-docs/index.html
           
