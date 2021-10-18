@@ -125,7 +125,7 @@ jobs:
           pwd
           echo "---------------------------------------------------------------------------------"
           xmlstarlet sel -t -c "/" pom.xml 
-          xml ed -d "/project/modules" pom/project/module.xml
+          #xml ed -d "/project/modules" pom/project/module.xml
           
           echo "---------------------------------------------------------------------------------"
           pwd
@@ -208,7 +208,7 @@ jobs:
           cd ../../
           echo ${matrix.*}
           pwd
-          echo ${matrix.solution}
+          #echo ${matrix.solution}
           cd devonfw.github.io
 
           cp -avr architectures/target/generated-docs/ target/generated-docs/website/pages/architectures/
