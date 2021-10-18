@@ -114,15 +114,18 @@ jobs:
           #xmlstarlet ed -d "//project/modules[last()]" pom.xml 
           #xmlstarlet ed -d "//project[last()]" pom.xml 
           #xmlstarlet ed -r "/project/modules" -v "TESTEN" pom.xml  
-          xmlstarlet ed -d "project/modules/module" pom.xml
+          xmlstarlet ed -d "xml/project/modules/module" pom.xml
           echo "---------------------------------------------------------------------------------"
           pwd
           echo "---------------------------------------------------------------------------------"
           #xmlstarlet ed -u "project/modules/@module" -v 5 pom.xml 
-          xml ed -d "/project/modules" pom.xml
+          #xml ed -d "/project/modules" pom.xml
+          xmlstarlet ed -d "/project/modules/module" pom.xml
           echo "---------------------------------------------------------------------------------"
           pwd
           echo "---------------------------------------------------------------------------------"
+          
+          xmlstarlet sel -t -c "/" pom.xml 
           xml ed -d "/project/modules" pom/project/module.xml
           
           echo "---------------------------------------------------------------------------------"
