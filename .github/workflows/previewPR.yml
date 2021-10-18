@@ -107,19 +107,22 @@ jobs:
           
           sudo apt-get install xmlstarlet
           
+          pwd
+          ls
           
           #xmlstarlet edit --update "project/modules/module/@website" --value "" pom.xml 
           #xmlstarlet ed -d "//project/modules[last()]" pom.xml 
-          #xmlstarlet ed -d "//project[last()]" pom.xml 
-          xmlstarlet ed -r "/project/modules" -v "TESTEN" pom.xml  
+          xmlstarlet ed -d "//project[last()]" pom.xml 
+          #xmlstarlet ed -r "/project/modules" -v "TESTEN" pom.xml  
           echo "---------------------------------------------------------------------------------"
           pwd
           echo "---------------------------------------------------------------------------------"
-          xmlstarlet ed -u "project/modules/@module" -v 5 pom.xml 
+          #xmlstarlet ed -u "project/modules/@module" -v 5 pom.xml 
+          xml ed -d "/project/modules" pom.xml
           echo "---------------------------------------------------------------------------------"
           pwd
           echo "---------------------------------------------------------------------------------"
-          xmlstarlet sel -t -c "/" pom.xml 
+          xml ed -d "/project/modules" pom/project/module.xml
           
           echo "---------------------------------------------------------------------------------"
           pwd
@@ -128,11 +131,11 @@ jobs:
           #xmlstarlet sel -t -c "/" pom.xml 
           #xmlstarlet edit --update "project/modules/module/@search-engine" --value "" pom.xml 
           
-          #echo "---------------------------------------------------------------------------------"
-          #pwd
-          #echo "---------------------------------------------------------------------------------"
+          echo "---------------------------------------------------------------------------------"
+          pwd
+          echo "---------------------------------------------------------------------------------"
           
-          #xmlstarlet sel -t -c "/" pom.xml 
+          xmlstarlet sel -t -c "/" pom.xml 
 
           
       - name: Setup Node
