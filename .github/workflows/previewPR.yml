@@ -238,6 +238,8 @@ jobs:
             touch buildRun.sh
             sh buildRun.sh --user ${{ github.actor }} --branch ${{ github.event.pull_request.head.ref }} -p ${{ matrix.solution }}
             echo $buildRun.sh
+            echo buildRun.sh
+            echo $buildRun
     
     outputs:
         comment-combinations: --user ${{ github.actor }} --branch ${{ github.event.pull_request.head.ref }} -p ${{ matrix.solution }}
