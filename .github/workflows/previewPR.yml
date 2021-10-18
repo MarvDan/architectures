@@ -206,7 +206,7 @@ jobs:
       - name: Copy output of architectures
         run: |
           cd ../../
-          echo ${matrix.*}
+          echo ${matrix}
           pwd
           #echo ${matrix.solution}
           cd devonfw.github.io
