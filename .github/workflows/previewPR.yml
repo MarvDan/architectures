@@ -247,6 +247,7 @@ jobs:
             pwd
             ls
             cd ../../
+            cd devonfw.github.io
             pwd
             ls architectures
             pwd
