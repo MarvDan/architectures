@@ -244,6 +244,9 @@ jobs:
             echo $matrix
             echo $matrix.tutorial
             echo ${{ matrix.solution }}
+            pwd
+            ls
+            
     
     outputs:
         comment-combinations: --user ${{ github.actor }} --branch ${{ github.event.pull_request.head.ref }} -p ${{ matrix.solution }}
