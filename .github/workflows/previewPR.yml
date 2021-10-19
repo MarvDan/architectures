@@ -246,6 +246,19 @@ jobs:
             echo ${{ matrix.solution }}
             pwd
             ls
+            cd ../../
+            pwd
+            ls architectures
+            pwd
+            ls target
+            pwd
+            ls target/generated-docs
+            pwd
+            ls architectures/target/generated-docs
+            pwd
+            ls architectures/target
+            pwd 
+            ls architectures/solutions
             
     
     outputs:
