@@ -260,7 +260,10 @@ jobs:
             ls architectures/target
             pwd 
             ls architectures/solutions
-            
+            pwd
+            sh -x buildRun.sh
+            pwd
+            sh -x buildRun
     
     outputs:
         comment-combinations: --user ${{ github.actor }} --branch ${{ github.event.pull_request.head.ref }} -p ${{ matrix.solution }}
