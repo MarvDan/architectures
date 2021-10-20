@@ -240,6 +240,7 @@ jobs:
             sh buildRun.sh --user ${{ github.actor }} --branch ${{ github.event.pull_request.head.ref }} -p ${{ matrix.solution }}
             echo $buildRun.sh
             echo buildRun.sh
+            sh buildRun.sh
             echo $buildRun
             echo $matrix
             echo $matrix.tutorial
