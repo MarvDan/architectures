@@ -244,6 +244,9 @@ jobs:
             echo $matrix
             echo $matrix.tutorial
             echo ${{ matrix.solution }}
+            echo ${matrix.solution}
+            echo $matrix.solution
+            
             pwd
             ls
             cd ../../
