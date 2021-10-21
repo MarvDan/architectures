@@ -59,7 +59,7 @@ jobs:
               echo $dir + 1
               dirs+=($dir)
               echo $dir + 2
-              echo ${changed_file: /}
+              echo ${changed_file: //}
               #echo $changed_file + 1
               #echo ${changed_file/#solutions/}
               #echo ${changed_file/#dir/}
