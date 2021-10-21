@@ -60,7 +60,7 @@ jobs:
               dirs+=($dir)
               echo $dir + 2
               echo ${changed_file: o}
-              echo ${changed_file#*/**/*}
+              echo ${changed_file#*/}
               $changed_file = *"$SUB"*
               #echo $changed_file + 1
               #echo ${changed_file/#solutions/}
