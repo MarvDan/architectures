@@ -58,7 +58,8 @@ jobs:
               MATRIX_PARAMS_COMBINATIONS=$MATRIX_PARAMS_COMBINATIONS'{"solution": "'$dir'"},'
               dirs+=($dir)#
               echo $changed_file + 1
-              cf=${changed_file}:$(find ~/code -type d | tr '\n' ':' | sed 's/:$//')
+              echo $(changed_file/#solutions/)
+              echo $(changed_file/#dir/)
               echo $cf + 1.1
               echo $dir + 2
               echo ${dir} + 3
