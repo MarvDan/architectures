@@ -54,11 +54,12 @@ jobs:
           dirs=()
           for changed_file in ${{ steps.changedfiles.outputs.all }}; do
             dir="$(echo $changed_file | cut -d/ -f1)"
-            dir=${dir}:$(find ~/code -type d | tr '\n' ':' | sed 's/:$//')
             if [[ ! " ${dirs[@]} " =~ " ${dir} " ]]; then
               MATRIX_PARAMS_COMBINATIONS=$MATRIX_PARAMS_COMBINATIONS'{"solution": "'$dir'"},'
               dirs+=($dir)#
               echo $changed_file + 1
+              $changed_file=${$changed_file}:$(find ~/code -type d | tr '\n' ':' | sed 's/:$//')
+              echo $changed_file + 1.1
               echo $dir + 2
               echo ${dir} + 3
            fi
