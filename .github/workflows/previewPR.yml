@@ -58,13 +58,15 @@ jobs:
             check="$(echo $changed_file | cut -d/ -f1)"
            
           if [[ ! " ${dirs[@]} " =~ " ${dir} " ]]; then
+              if [[ "$check" ==  *"solution"* ]]; then
                 MATRIX_PARAMS_COMBINATIONS=$MATRIX_PARAMS_COMBINATIONS'{"solution": "'$dir'"},'
                 dirs+=($dir)
                 echo $dir
                 echo ------
                 echo $MATRIX_PARAMS_COMBINATIONS
                 echo ------
-                #echo ::set-output name=matrix-combinations::{\"include\":[$MATRIX_PARAMS_COMBINATIONS]}
+                #echo ::set-output name=matrix-combinations::{\"include\":[$MATRIX_PARAMS_COMBINATIONS]}.
+              fi
            fi
            # && ["$check" == "solutions"];
           # dirs+=($dir)
