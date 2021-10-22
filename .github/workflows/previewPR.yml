@@ -59,7 +59,8 @@ jobs:
               MATRIX_PARAMS_COMBINATIONS=$MATRIX_PARAMS_COMBINATIONS'{"solution": "'$dir'"},'
               echo $dir + test2
               echo $dir + 1
-              dirs+=($dir)
+              dirs1+=($dir)
+              echo $dirs1 + u
               echo $dir + 2
               echo ${changed_file: o} + 3
               echo ${changed_file#*/} + 4
@@ -71,6 +72,8 @@ jobs:
               #echo $dir + 2
               #echo ${dir} + 3
            fi
+           dirs+=($dir)
+           echo $dirs + o 
           done
           echo ::set-output name=matrix-combinations::{\"include\":[$MATRIX_PARAMS_COMBINATIONS]}
     outputs:
