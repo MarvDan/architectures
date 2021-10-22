@@ -54,28 +54,12 @@ jobs:
           dirs=()
           for changed_file in ${{ steps.changedfiles.outputs.all }}; do
             dir="$(echo ${changed_file} | cut -d/ -f2)"
-            echo $dir
-            echo $changed_file
-            if [[ ! " ${dirs[@]} " =~ " ${dir} " ]]; then
+            check = "$(echo ${changed_file} | cut -d/ -f1)"
+            if [[ ! " ${dirs[@]} " =~ " ${dir} " ] && [ "$check" = "solution" ]]; then
               MATRIX_PARAMS_COMBINATIONS=$MATRIX_PARAMS_COMBINATIONS'{"solution": "'$dir'"},'
-            #  echo $dir + test2
-            #  echo $dir + 1
               dirs+=($dir)
-              echo $MATRIX_PARAMS_COMBINATIONS
-             # echo $dirs1 + u
-             # echo $dir + 2
-              #echo ${changed_file: o} + 3
-             # echo ${changed_file#*/} + 4
-              #SUB = solution
-              #$changed_file = *"solution"* + 5
-              #echo $changed_file + 1
-              #echo ${changed_file/#solutions/}
-              #echo ${changed_file/#dir/}
-              #echo $dir + 2
-              #echo ${dir} + 3
            fi
           # dirs+=($dir)
-          # echo $dirs + o 
           done
           echo ::set-output name=matrix-combinations::{\"include\":[$MATRIX_PARAMS_COMBINATIONS]}
     outputs:
