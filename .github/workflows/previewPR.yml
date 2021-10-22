@@ -56,10 +56,8 @@ jobs:
           
             dir="$(echo ${changed_file} | cut -d/ -f2)"           
             check="$(echo $changed_file | cut -d/ -f1)"
-            solution = $(echo solution)
-            echo $solution
            
-          if [[ "$check" ==  "$solution" ]]; then
+          if [[ "$check" ==  "solution" ]]; then
                 MATRIX_PARAMS_COMBINATIONS=$MATRIX_PARAMS_COMBINATIONS'{"solution": "'$dir'"},'
                 dirs+=($dir)
                 echo $dir
