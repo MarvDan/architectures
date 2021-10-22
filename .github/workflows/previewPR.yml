@@ -91,7 +91,7 @@ jobs:
       #delete architectures
       - name: Delete old architectures
         run: |
-          echo $matrix
+          echo ${{ matrix.solution }}
           cd ../../
           cd architectures/devonfw.github.io
           rm -r architectures
