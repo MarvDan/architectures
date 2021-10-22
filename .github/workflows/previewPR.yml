@@ -62,7 +62,7 @@ jobs:
               echo ${changed_file: o} + 3
               echo ${changed_file#*/} + 4
               SUB = solution
-              $changed_file = *"$SUB"* + 5
+              $changed_file = *"solution"* + 5
               #echo $changed_file + 1
               #echo ${changed_file/#solutions/}
               #echo ${changed_file/#dir/}
