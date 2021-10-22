@@ -59,9 +59,10 @@ jobs:
               echo $dir + 1
               dirs+=($dir)
               echo $dir + 2
-              echo ${changed_file: o}
-              echo ${changed_file#*/}
-              $changed_file = *"$SUB"*
+              echo ${changed_file: o} + 3
+              echo ${changed_file#*/} + 4
+              SUB = solution
+              $changed_file = *"$SUB"* + 5
               #echo $changed_file + 1
               #echo ${changed_file/#solutions/}
               #echo ${changed_file/#dir/}
