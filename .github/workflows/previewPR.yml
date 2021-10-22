@@ -53,7 +53,7 @@ jobs:
         run: |
           dirs=()
           for changed_file in ${{ steps.changedfiles.outputs.all }}; do
-            dir="$(echo ${changed_file} | cut -d/ -f1)"
+            dir="$(echo ${changed_file} | cut -d/ -f2)"
             echo $dir
             echo $changed_file
             if [[ ! " ${dirs[@]} " =~ " ${dir} " ]]; then
