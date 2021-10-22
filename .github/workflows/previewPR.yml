@@ -54,8 +54,10 @@ jobs:
           dirs=()
           for changed_file in ${{ steps.changedfiles.outputs.all }}; do
             dir="$(echo ${changed_file} | cut -d/ -f1)"
+            echo $dir + test1
             if [[ ! " ${dirs[@]} " =~ " ${dir} " ]]; then
               MATRIX_PARAMS_COMBINATIONS=$MATRIX_PARAMS_COMBINATIONS'{"solution": "'$dir'"},'
+              echo $dir + test2
               echo $dir + 1
               dirs+=($dir)
               echo $dir + 2
