@@ -63,9 +63,9 @@ jobs:
            
            check = "$(echo ${changed_file} | cut -d/ -f1)"
            
-           if [[ "$check" == "solution" ]]; then
-              echo TEST BESTANDEN
-           fi
+           #if [[ "$check" == "solution" ]]; then
+           #   echo TEST BESTANDEN
+           #fi
            
           # dirs+=($dir)
           done
