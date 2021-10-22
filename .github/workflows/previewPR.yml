@@ -64,7 +64,7 @@ jobs:
               echo ------
               echo MATRIX_PARAMS_COMBINATIONS
               echo ------
-              echo ::set-output name=matrix-combinations::{\"include\":[$MATRIX_PARAMS_COMBINATIONS]}
+              #echo ::set-output name=matrix-combinations::{\"include\":[$MATRIX_PARAMS_COMBINATIONS]}
            fi
            
           # dirs+=($dir)
