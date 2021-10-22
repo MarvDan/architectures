@@ -62,7 +62,7 @@ jobs:
            fi
            
            check="$(echo $changed_file | cut -d/ -f1)"
-           
+           echo $check
            if [[ "$check" == "solution" ]]; then
               echo TEST BESTANDEN
            fi
