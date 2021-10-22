@@ -58,7 +58,8 @@ jobs:
             check="$(echo $changed_file | cut -d/ -f1)"
            
             if [[ ! " ${dirs[@]} " =~ " ${dir} " ]];  then
-              if [["t" == "solutions"]]; then
+              if "t" == "solutions"
+              then
                 MATRIX_PARAMS_COMBINATIONS=$MATRIX_PARAMS_COMBINATIONS'{"solution": "'$dir'"},'
                 dirs+=($dir)
                 echo $dir
