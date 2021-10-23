@@ -239,13 +239,13 @@ jobs:
               pwd
               ls target/generated-docs/architectures
               pwd
-              ls target/generated-docs/architectures/solutions
+              ls target/generated-docs/architectures/solutions/communication
               pwd
               ls architectures
               pwd
               ls architectures/target
               pwd
-              ls architectures/target/generated-docs
+              ls architectures/target/generated-docs/solutions/communication
               pwd
               ls architectures/solutions
               pwd
