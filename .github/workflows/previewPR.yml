@@ -255,16 +255,16 @@ jobs:
               npm install node-html-to-image-cli -g
               #cd architectures/target/generated-docs
               #cd architectures/solutions/${matrix.solution}
-              cd target/generated-docs/
-              node-html-to-image-cli index.html ${matrix.solution}.png 
+              cd target/generated-docs/architectures/solutions/${{ matrix.solution }}
+              node-html-to-image-cli index.html ${{ matrix.solution }}.png 
         
       - name: Artifact build
         uses: actions/upload-artifact@v2
         with: 
           name: download-asset
           path: |
-                /home/runner/work/architectures/devonfw.github.io/target/generated-docs/${matrix.solution}.png
-                /home/runner/work/architectures/devonfw.github.io/target/generated-docs/index.html
+                /home/runner/work/architectures/devonfw.github.io/target/generated-docs/architectures/solutions/${{ matrix.solution }}/image.png
+                /home/runner/work/architectures/devonfw.github.io/target/generated-docs/architectures/solutions/${{ matrix.solution }}/index.html
           
 
       #- name: run buildRun.sh
