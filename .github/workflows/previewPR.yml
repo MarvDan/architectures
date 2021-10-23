@@ -263,8 +263,14 @@ jobs:
         with: 
           name: download-asset
           path: |
-                /home/runner/work/architectures/devonfw.github.io/target/generated-docs/architectures/solutions/${{ matrix.solution }}/image.png
+                /home/runner/work/architectures/devonfw.github.io/target/generated-docs/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
                 /home/runner/work/architectures/devonfw.github.io/target/generated-docs/architectures/solutions/${{ matrix.solution }}/index.html
+                
+      - name: Test
+        run: |
+         cd /home/runner/work/architectures/devonfw.github.io/target/generated-docs/architectures/solutions/${{ matrix.solution }}
+         pwd
+         ls
           
 
       #- name: run buildRun.sh
