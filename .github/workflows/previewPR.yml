@@ -239,6 +239,8 @@ jobs:
               pwd
               ls target/generated-docs/architectures
               pwd
+              ls target/generated-docs/architectures/solutions
+              pwd
               ls architectures
               pwd
               ls architectures/target
@@ -252,15 +254,16 @@ jobs:
               
               npm install node-html-to-image-cli -g
               #cd architectures/target/generated-docs
-              cd target/generated-docs
-              node-html-to-image-cli index.html image.png 
+              #cd architectures/solutions/${matrix.solution}
+              cd target/generated-docs/
+              node-html-to-image-cli index.html ${matrix.solution}.png 
         
       - name: Artifact build
         uses: actions/upload-artifact@v2
         with: 
           name: download-asset
           path: |
-                /home/runner/work/architectures/devonfw.github.io/target/generated-docs/image.png
+                /home/runner/work/architectures/devonfw.github.io/target/generated-docs/${matrix.solution}.png
                 /home/runner/work/architectures/devonfw.github.io/target/generated-docs/index.html
           
 
@@ -271,3 +274,4 @@ jobs:
        # run: |
           #  touch buildRun.sh
           # sh buildRun.sh ${{ matrix.solution }
+          
