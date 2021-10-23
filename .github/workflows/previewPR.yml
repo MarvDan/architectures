@@ -250,7 +250,7 @@ jobs:
               ls architectures/solutions
               pwd
               ls architectures/solutions/communication
-              pwd
+              #pwd
               
               npm install node-html-to-image-cli -g
               #cd architectures/target/generated-docs
