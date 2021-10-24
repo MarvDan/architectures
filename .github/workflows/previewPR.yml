@@ -97,7 +97,7 @@ jobs:
           
           #sed "/modules/, /\/modules/d" pom.xml
           
-          sed "/modules/, /\/modules/module/d" pom.xml
+          sed "/modules/, /\/modules/d/module" pom.xml
           
           sed "/modules/module/, /\/modules/module/website/d" pom.xml
           
