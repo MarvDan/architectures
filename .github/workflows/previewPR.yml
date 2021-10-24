@@ -6,48 +6,16 @@ on:
 jobs:
   previewPR:
     runs-on: ubuntu-latest
-    steps:      
-    ##############
-    
-      #- name: Clone new architecture
-       # uses: actions/checkout@v1
-        #with:
-          #ref: ${{ github.event.pull_request.head.sha }}
-          
-          
-     # - name: Run maven generate
-      #  run: |
-       #       mkdir PR_preview
-        #      cp -r solutions PR_preview
-         #     cp -a PRfiles/. PR_preview
-          #    cd PR_preview
-           #   mvn clean package
-              
-      #- name: Run image generate
-        #run: |
-            #  cd PR_preview
-            #  npm install node-html-to-image-cli -g
-            #  cd target/generated-docs
-            #  node-html-to-image-cli index.html image.png              
-        
-        
-      #- name: Artifact build
-      #  uses: actions/upload-artifact@v2
-      #  with: 
-       #   name: download-asset
-       #   path: |
-              #  PR_preview/target/generated-docs/image.png
-              #  PR_preview/target/generated-docs/index.html
-                
-  ###################
-      
+    steps:            
       - name: Checkout playbooks
         uses: actions/checkout@v2
         with:
           repository: devonfw-tutorials/tutorials
           path: playbooks
+          
       - id: changedfiles
         uses: jitterbit/get-changed-files@v1
+        
       - name: Setup matrix combinations
         id: setup-matrix-combinations
         run: |
@@ -61,16 +29,12 @@ jobs:
               if [[ "$check" ==  *"solution"* ]]; then
                 MATRIX_PARAMS_COMBINATIONS=$MATRIX_PARAMS_COMBINATIONS'{"solution": "'$dir'"},'
                 dirs+=($dir)
-                #echo $dir
-                #echo ------
                 echo $MATRIX_PARAMS_COMBINATIONS
-                #echo ------
-                #echo ::set-output name=matrix-combinations::{\"include\":[$MATRIX_PARAMS_COMBINATIONS]}.
               fi
            fi
-          #dirs+=($dir)
           done
           echo ::set-output name=matrix-combinations::{\"include\":[$MATRIX_PARAMS_COMBINATIONS]}
+          
     outputs:
       matrix-combinations: ${{ steps.setup-matrix-combinations.outputs.matrix-combinations }}
       
@@ -86,17 +50,13 @@ jobs:
           repository: devonfw/devonfw.github.io
           ref: develop
           submodules: recursive
-      #website repo
-
-      #delete architectures
+      
       - name: Delete old architectures
         run: |
-          echo ${{ matrix.solution }}
           cd ../../
           cd architectures/devonfw.github.io
           rm -r architectures
           
-      #clone architectures repo (path = architectures)
       - name: Add new architectures
         uses: actions/checkout@v1
         with:
@@ -187,8 +147,6 @@ jobs:
       # As this gems are not installed this is breaking the build.
       - name: Remove files that are breaking the build
         run: |
-          pwd
-          ls
           rm README.md || true
           rm index.scss || true
 
@@ -196,21 +154,15 @@ jobs:
         run: |
           cd ../../
           cd devonfw.github.io
+          
           #xmlstarlet sel -t -c "/" pom.xml 
           mvn -s ./.m2/unblock-rubygem-proxy-settings.xml clean package
-
           #xmlstarlet sel -t -c "/" pom.xml 
 
       - name: Create output for architectures
         run: |
           cd ../../
           cd devonfw.github.io
-          pwd
-          ls
-          pwd
-          ls architectures
-          pwd
-          ls architectures/solutions
 
           chmod +x architectures/scripts/createOutput.sh
           architectures/scripts/createOutput.sh
@@ -218,9 +170,6 @@ jobs:
       - name: Copy output of architectures
         run: |
           cd ../../
-          echo ${matrix}
-          pwd
-          #echo ${matrix.solution}
           cd devonfw.github.io
 
           cp -avr architectures/target/generated-docs/ target/generated-docs/website/pages/architectures/
@@ -229,33 +178,10 @@ jobs:
         run: |
               cd ../../
               cd devonfw.github.io
-              
-               
-              ls
-              pwd
-              ls target
-              pwd
-              ls target/generated-docs
-              pwd
-              ls target/generated-docs/architectures
-              pwd
-              ls target/generated-docs/architectures/solutions/communication
-              pwd
-              ls architectures
-              pwd
-              ls architectures/target
-              pwd
-              ls architectures/target/generated-docs/solutions/communication
-              pwd
-              ls architectures/solutions
-              pwd
-              ls architectures/solutions/communication
-              #pwd
-              
+                            
               npm install node-html-to-image-cli -g
-              #cd architectures/target/generated-docs
-              #cd architectures/solutions/${matrix.solution}
               cd target/generated-docs/architectures/solutions/${{ matrix.solution }}
+              
               mv index.html  ${{ matrix.solution }}.html
               node-html-to-image-cli ${{ matrix.solution }}.html ${{ matrix.solution }}.png 
         
@@ -276,9 +202,4 @@ jobs:
 
       #- name: run buildRun.sh
        # run: sh buildRun.sh --user ${{ github.actor }} --branch ${{ github.event.pull_request.head.ref }} -p ${{ matrix.solution }}
-       
-     # - name: run buildRun.sh
-       # run: |
-          #  touch buildRun.sh
-          # sh buildRun.sh ${{ matrix.solution }
           
