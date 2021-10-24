@@ -256,7 +256,8 @@ jobs:
               #cd architectures/target/generated-docs
               #cd architectures/solutions/${matrix.solution}
               cd target/generated-docs/architectures/solutions/${{ matrix.solution }}
-              node-html-to-image-cli index.html ${{ matrix.solution }}.png 
+              mv index.html  ${{ matrix.solution }}.html
+              node-html-to-image-cli ${{ matrix.solution }}.html ${{ matrix.solution }}.png 
         
       - name: Artifact build
         uses: actions/upload-artifact@v2
@@ -264,7 +265,7 @@ jobs:
           name: download-asset
           path: |
                 /home/runner/work/architectures/devonfw.github.io/target/generated-docs/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
-                /home/runner/work/architectures/devonfw.github.io/target/generated-docs/architectures/solutions/${{ matrix.solution }}/{{ matrix.solution }}.html
+                /home/runner/work/architectures/devonfw.github.io/target/generated-docs/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
                 
       - name: Test
         run: |
