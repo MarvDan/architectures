@@ -1,8 +1,9 @@
 name: add artifact links to pull request and related issues
 on:
   workflow_run:
-    workflows: previewPR
-    types: completed
+    workflows: ["previewPR"]
+    types:
+      - completed
 
 jobs:
   artifacts-url-comments:
@@ -16,5 +17,5 @@ jobs:
         with:
              prefix: Here is the preview of your changes at 'solutions' with asciidoc
              suffix: Have a nice day. Result is as html and png file.
-             format: name
-             addTo: pullandissues
+             format: previewPR
+             addTo: pull
