@@ -81,6 +81,8 @@ jobs:
           pwd
           ls
           
+          sed "/modules/, /\/modules/d" pom.xml
+          
           #xmlstarlet edit --update "project/modules/module/@website" --value "" pom.xml 
           #xmlstarlet ed -d "//project/modules[last()]" pom.xml 
           #xmlstarlet ed -d "//project[last()]" pom.xml 
