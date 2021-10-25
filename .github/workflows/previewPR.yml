@@ -97,7 +97,9 @@ jobs:
           
           #sed -n "s/<module>website<\/module>/<module>test<\/module>/p" pom.xml
           
-          xml ed -d "/project/modules" pom.xml
+          #xml ed -d "/project/modules" pom.xml
+          
+          xml ed -u "/project/modules/module" -v 0 pom.xml
           
           sed " " pom.xml
           
