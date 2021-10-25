@@ -95,7 +95,9 @@ jobs:
           #xml ed -d "/project/modules" pom.xml
           #xmlstarlet ed -d "/project/modules/module" pom.xml
           
-          sed -n "s/<module>website<\/module>/<module>test<\/module>/p" pom.xml
+          #sed -n "s/<module>website<\/module>/<module>test<\/module>/p" pom.xml
+          
+          xmlstarlet ed \ -u '/modules/module' -v TEST \
           sed " " pom.xml
           
           #sed "/modules/, /\/modules/d" pom.xml
