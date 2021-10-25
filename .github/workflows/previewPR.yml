@@ -95,11 +95,13 @@ jobs:
           #xml ed -d "/project/modules" pom.xml
           #xmlstarlet ed -d "/project/modules/module" pom.xml
           
+          sed -n "s/<module>website<\/module>/<module>test<\/module>/p" pom.xml
+          
           #sed "/modules/, /\/modules/d" pom.xml
           
           #sed "/module/, /\/module/d" pom.xml
           
-          sed -n "/<modules>website<\/modules>/ {n;p}" pom.xml | sed "s/^\s*<modules>\(.*\)<\/modules>/\1/g"
+          #sed -n "/<modules>website<\/modules>/ {n;p}" pom.xml | sed "s/^\s*<modules>\(.*\)<\/modules>/\1/g"
           
           #sed "/modules/module, /\/modules/d/module" pom.xml
           
