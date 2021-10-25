@@ -97,8 +97,6 @@ jobs:
           
           #sed -n "s/<module>website<\/module>/<module>test<\/module>/p" pom.xml
           
-          xmlstarlet ed \ -u '/modules/module' -v TEST \
-          
           xml ed -d "/modules" pom.xml
           
           sed " " pom.xml
