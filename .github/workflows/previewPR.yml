@@ -97,7 +97,11 @@ jobs:
           
           #sed "/modules/, /\/modules/d" pom.xml
           
-          sed "/modules/module, /\/modules/d/module" pom.xml
+          sed "/module/, /\/module/d" pom.xml
+          
+          sed -n "/<module>object_name<\/module>/ {n;p}" pom.xml | sed "s/^\s*<module>\(.*\)<\/module>/\1/g"
+          
+          #sed "/modules/module, /\/modules/d/module" pom.xml
           
           sed "/modules/module/, /\/modules/module/website/d" pom.xml
           
