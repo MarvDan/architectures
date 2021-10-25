@@ -101,7 +101,7 @@ jobs:
           
           #xml ed -u "/project/modules/module" -v 0 pom.xml
           
-          sed "/modules/,/\/modules/s/module/test/" pom.xml
+          sed -i "/modules/,/\/modules/s/module/test/g" pom.xml
           
           sed " " pom.xml
           
