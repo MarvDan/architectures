@@ -103,7 +103,7 @@ jobs:
           
           #sed -i "/modules/,/\/modules/s/module/test/g" pom.xml
           
-          sed '/website/{n;s/test1}' pom.xml
+          sed '/asciidoctor-stylesheet/{n;s/test1}' pom
           sed '/search-engine/{n;s/test2}' pom.xml
           
           sed " " pom.xml
