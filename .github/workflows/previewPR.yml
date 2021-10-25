@@ -99,9 +99,7 @@ jobs:
           
           xmlstarlet ed \ -u '/modules/module' -v TEST \
           
-          xmlstarlet ed \
-          -u '/modules/module' -v TEST \
-          pom.xml
+          xml ed -d "/modules" pom.xml
           
           sed " " pom.xml
           
