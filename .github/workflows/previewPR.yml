@@ -186,6 +186,15 @@ jobs:
          cd /home/runner/work/architectures/devonfw.github.io/target/generated-docs/architectures/solutions/${{ matrix.solution }}
          pwd
          ls
+         
+      - name: comment PR
+        uses: machine-learning-apps/pr-comment@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          path: |
+                /home/runner/work/architectures/devonfw.github.io/target/generated-docs/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
+                /home/runner/work/architectures/devonfw.github.io/target/generated-docs/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
           
 
       #- name: run buildRun.sh
