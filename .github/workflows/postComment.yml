@@ -15,7 +15,7 @@ jobs:
         uses: tonyhallett/artifacts-url-comments@v1.1.0
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
+      with:
              prefix: Here is the preview of your changes at 'solutions' with asciidoc
              suffix: Have a nice day. Result is as html and png file.
              format: name
