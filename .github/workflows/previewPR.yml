@@ -84,13 +84,13 @@ jobs:
           pwd
           echo "---------------------------------------------------------------------------------"
           
-          sed '/website/{n;s/search-engine//}' pom.xml > pom.xml
+          sed -i -e '/website/{n;s/search-engine//}' pom.xml     
           
           echo "---------------------------------------------------------------------------------"
           pwd
           echo "---------------------------------------------------------------------------------"
           
-          sed '/asciidoctor-stylesheet/{n;s/website//}' pom.xml > pom.xml
+          sed -i -e '/asciidoctor-stylesheet/{n;s/website//}' pom.xml
           
           echo "---------------------------------------------------------------------------------"
           pwd
