@@ -2,7 +2,7 @@ name: artifacts-url-comments
 on:
   workflow_run:
     workflows: 
-      - previewPR.yml
+      - previewPR
     types:
       - completed
 
