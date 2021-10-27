@@ -187,14 +187,14 @@ jobs:
          pwd
          ls
          
-      - name: comment PR
-        uses: machine-learning-apps/pr-comment@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          path: |
-            download-asset/${{ matrix.solution }}.png
-            download-asset/${{ matrix.solution }}.html
+      #- name: comment PR
+       # uses: machine-learning-apps/pr-comment@master
+        #env:
+         # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        #with:
+         # path: |
+          #  download-asset/${{ matrix.solution }}.png
+           # download-asset/${{ matrix.solution }}.html
 
       #- name: run buildRun.sh
        # run: sh buildRun.sh --user ${{ github.actor }} --branch ${{ github.event.pull_request.head.ref }} -p ${{ matrix.solution }}
