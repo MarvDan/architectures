@@ -8,7 +8,7 @@
 #name: artifacts-url-comments
 on:
   workflow_run:
-    workflows: ["previewPR.yml"]
+    workflows: ["previewPR"]
     types: [completed]
 jobs:    
   example:
