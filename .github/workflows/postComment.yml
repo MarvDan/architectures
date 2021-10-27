@@ -1,10 +1,8 @@
 name: artifacts-url-comments
 on:
   workflow_run:
-    workflows: 
-      - previewPR/previewPR
-    types:
-      - completed
+    workflows: ["previewPR"]
+    types: [completed]
 
 jobs:
   artifacts-url-comments:
