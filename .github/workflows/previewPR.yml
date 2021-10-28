@@ -50,7 +50,6 @@ jobs:
           repository: devonfw/devonfw.github.io
           ref: develop
           submodules: recursive
-          path: ./
       
       - name: Delete old architectures
         run: |
