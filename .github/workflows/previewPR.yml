@@ -53,6 +53,7 @@ jobs:
       
       - name: Delete old architectures
         run: |
+          ls
           rm -r architectures
           
       - name: Add new architectures
