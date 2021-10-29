@@ -118,12 +118,13 @@ jobs:
 
       - name: Solutions from Stack repositories
         run: |
-          cd ../
+          #cd ../
           pwd
           ls
           pwd
           ls architectures
-          cd architectures/scripts
+          #cd architectures/scripts
+          cd scripts
           
           npm install
           node copySolutionsFromStack.js ../../devonfw-guide
@@ -156,6 +157,8 @@ jobs:
       - name: Build
         run: |
           
+          pwd 
+          ls
           sed " " pom.xml
         
           mvn -s ./.m2/unblock-rubygem-proxy-settings.xml clean package
