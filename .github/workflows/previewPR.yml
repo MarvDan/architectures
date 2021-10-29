@@ -67,6 +67,11 @@ jobs:
           pwd
           ls
           rm -r architectures
+          rm -r devonfw.github.io/architectures
+          pwd 
+          ls
+          pwd
+          ls devonfw.github.io
           
       - name: Add new architectures
         uses: actions/checkout@v1
