@@ -108,6 +108,7 @@ jobs:
           
           npm install
           node copySolutionsFromStack.js ../../devonfw-guide
+          #cd ../../
 
       - name: Copy pom files for architectures
         run: |
@@ -118,7 +119,7 @@ jobs:
         run: |
           cd scripts
           npm install
-          cd ../../
+          #cd ../../
           
       - name: Compile sass for architectures
         uses: gha-utilities/sass-build@v0.4.2
