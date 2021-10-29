@@ -148,9 +148,12 @@ jobs:
 
       - name: Create output for architectures
         run: |
+          pwd
+          ls
           cd ../
           pwd
           ls
+          cd ../
           chmod +x architectures/scripts/createOutput.sh
           architectures/scripts/createOutput.sh
 
