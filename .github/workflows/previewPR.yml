@@ -164,6 +164,9 @@ jobs:
         run: |
           pwd
           ls
+          cd ../
+          pwd
+          ls
           cp -avr architectures/target/generated-docs/ target/generated-docs/website/pages/architectures/
           
       - name: Run image generate
