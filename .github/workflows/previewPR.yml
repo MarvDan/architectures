@@ -170,7 +170,10 @@ jobs:
           cp -avr architectures/target/generated-docs/ target/generated-docs/website/pages/architectures/
           
       - name: Run image generate
-        run: |     
+        run: |  
+              pwd
+              ls
+              cd ../
               pwd
               ls
               npm install node-html-to-image-cli -g
