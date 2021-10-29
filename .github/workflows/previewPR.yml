@@ -121,8 +121,6 @@ jobs:
           #cd ../
           pwd
           ls
-          pwd
-          ls architectures
           #cd architectures/scripts
           cd scripts
           
