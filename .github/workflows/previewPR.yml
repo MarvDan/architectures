@@ -139,7 +139,10 @@ jobs:
           
           pwd 
           ls
+          cd ../
           sed " " pom.xml
+          pwd 
+          ls 
         
           mvn -s ./.m2/unblock-rubygem-proxy-settings.xml clean package
 
