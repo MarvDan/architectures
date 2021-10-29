@@ -185,24 +185,12 @@ jobs:
         with: 
           name: download-asset
           path: |
-                target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
-       #target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
+                devonfw.github.io/target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
+                devonfw.github.io/target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
                 
       - name: Test
         run: |
          cd /home/runner/work/architectures/devonfw.github.io/target/generated-docs/architectures/solutions/${{ matrix.solution }}
          pwd
          ls
-         
-      #- name: comment PR
-       # uses: machine-learning-apps/pr-comment@master
-        #env:
-         # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        #with:
-         # path: |
-          #  download-asset/${{ matrix.solution }}.png
-           # download-asset/${{ matrix.solution }}.html
-
-      #- name: run buildRun.sh
-       # run: sh buildRun.sh --user ${{ github.actor }} --branch ${{ github.event.pull_request.head.ref }} -p ${{ matrix.solution }}
-          
+                  
