@@ -118,6 +118,7 @@ jobs:
 
       - name: Solutions from Stack repositories
         run: |
+          cd ../
           pwd
           ls
           pwd
