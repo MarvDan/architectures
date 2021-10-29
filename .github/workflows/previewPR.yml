@@ -83,6 +83,9 @@ jobs:
           
           #sudo apt-get install xmlstarlet
           
+          pwd 
+          ls
+          
           sed " " pom.xml
           
           echo "---------------------------------------------------------------------------------"
