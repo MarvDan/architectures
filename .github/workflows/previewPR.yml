@@ -76,7 +76,7 @@ jobs:
       - name: Add new architectures
         uses: actions/checkout@v1
         with:
-          path: architectures
+          path: architectures/devonfw.github.io
           
       - name: Edit pom.xml File 
         run: |
