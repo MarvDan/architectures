@@ -97,7 +97,7 @@ jobs:
           #sed -i -e '/asciidoctor-stylesheet/{n;s/website//}' pom.xml
           #sed -i -e '/asciidoctor-stylesheet/{n;s/website/test2/}' pom.xml
           
-          sed -i  -e '/<module>/,search-engine/,/<\/module>/d' pom.xml
+          sed -i  -e '/<module>search-engine/,/<\/module>/d' pom.xml
           
           echo "---------------------------------------------------------------------------------"
           pwd
