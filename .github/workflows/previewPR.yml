@@ -61,6 +61,7 @@ jobs:
       
       - name: Delete old architectures
         run: |
+          ls
           pwd
           ls
           #rm -r architectures
