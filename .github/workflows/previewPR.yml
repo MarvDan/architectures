@@ -86,7 +86,7 @@ jobs:
           
           #sed -i  -e '/<module>/,/<\/module>/d' pom.xml
           
-          sed -i  -e '/<module>/,/website/,/<\/module>/d' pom.xml
+          sed -i  -e '/<module>website/,/<\/module>/d' pom.xml
           
           sed " " pom.xml
           
