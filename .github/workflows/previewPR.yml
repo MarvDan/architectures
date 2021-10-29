@@ -53,8 +53,9 @@ jobs:
       
       - name: Delete old architectures
         run: |
+          pwd
           ls
-          rm -r architectures
+          #rm -r architectures
           
       - name: Add new architectures
         uses: actions/checkout@v1
