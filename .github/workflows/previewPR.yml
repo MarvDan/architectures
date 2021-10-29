@@ -55,6 +55,12 @@ jobs:
         run: |
           pwd
           ls
+          cd ../
+          pwd
+          ls
+          cd devonfw.github.io
+          pwd
+          ls
           #rm -r architectures
           
       - name: Add new architectures
