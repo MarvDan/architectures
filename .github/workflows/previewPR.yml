@@ -48,7 +48,7 @@ jobs:
       - name: Test Run
         run: |
           cd ../
-          rm -r architectures
+          #rm -r architectures
           pwd
           ls
     
@@ -57,11 +57,10 @@ jobs:
         with:
           repository: devonfw/devonfw.github.io
           ref: develop
-          submodules: recursive
+          #submodules: recursive
       
       - name: Delete old architectures
         run: |
-          ls
           pwd
           ls
           #rm -r architectures
