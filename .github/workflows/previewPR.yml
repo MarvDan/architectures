@@ -63,7 +63,10 @@ jobs:
         run: |
           pwd
           ls
-          #rm -r architectures
+          cd ../
+          pwd
+          ls
+          rm -r architectures
           
       - name: Add new architectures
         uses: actions/checkout@v1
