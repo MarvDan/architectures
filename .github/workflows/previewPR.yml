@@ -158,30 +158,30 @@ jobs:
         run: |
           pwd
           ls
-          cd ../
+          #cd ../
           pwd
           ls
           pwd
-          ls architectures
+          ls 
           pwd
-          ls architectures/scripts
-          chmod +x architectures/scripts/createOutput.sh
-          architectures/scripts/createOutput.sh
+          ls scripts
+          chmod +x scripts/createOutput.sh
+          scripts/createOutput.sh
 
       - name: Copy output of architectures
         run: |
           pwd
           ls
-          cd ../
+          #cd ../
           pwd
           ls
-          cp -avr architectures/target/generated-docs/ target/generated-docs/website/pages/architectures/
+          cp -avr target/generated-docs/ target/generated-docs/website/pages/architectures/
           
       - name: Run image generate
         run: |  
               pwd
               ls
-              cd ../
+              #cd ../
               pwd
               ls
               npm install node-html-to-image-cli -g
@@ -195,8 +195,8 @@ jobs:
         with: 
           name: download-asset
           path: |
-                /home/runner/work/architectures/devonfw.github.io/target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
-                /home/runner/work/architectures/devonfw.github.io/target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
+                /home/runner/work/architectures/devonfw.github.io/architectures/target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
+                /home/runner/work/architectures/devonfw.github.io/architectures/target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
                 
       - name: Test
         run: |
