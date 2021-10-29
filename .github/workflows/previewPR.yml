@@ -44,6 +44,15 @@ jobs:
     strategy:
       matrix: ${{ fromJson(needs.previewPR.outputs.matrix-combinations) }}
     steps:
+    
+      - name: Test Run
+        run: |
+          pwd
+          ls
+          cd ../
+          pwd
+          ls
+    
       - name: Clone
         uses: actions/checkout@v1
         with:
