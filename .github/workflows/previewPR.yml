@@ -176,11 +176,11 @@ jobs:
           pwd
           ls target
           pwd
-          ls target/generated-docs/
+          ls target/generated-docs
           pwd
-          ls target/generated-docs/website/
+          ls target/generated-docs/website
           pwd
-          ls target/generated-docs/website/pages/
+          ls target/generated-docs/website/pages
           pwd
           ls target/generated-docs/website/pages/architectures/
           cp -avr target/generated-docs/ target/generated-docs/website/pages/architectures/
