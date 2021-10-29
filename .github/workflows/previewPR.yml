@@ -153,7 +153,10 @@ jobs:
           cd ../
           pwd
           ls
-          cd ../
+          pwd
+          ls architectures
+          pwd
+          ls architectures/scripts
           chmod +x architectures/scripts/createOutput.sh
           architectures/scripts/createOutput.sh
 
