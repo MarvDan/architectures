@@ -47,9 +47,8 @@ jobs:
     
       - name: Test Run
         run: |
-          pwd
-          ls
           cd ../
+          rm -r architectures
           pwd
           ls
     
