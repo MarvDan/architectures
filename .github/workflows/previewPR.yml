@@ -148,17 +148,22 @@ jobs:
 
       - name: Create output for architectures
         run: |
-
+          cd ../
+          pwd
+          ls
           chmod +x architectures/scripts/createOutput.sh
           architectures/scripts/createOutput.sh
 
       - name: Copy output of architectures
         run: |
-
+          pwd
+          ls
           cp -avr architectures/target/generated-docs/ target/generated-docs/website/pages/architectures/
           
       - name: Run image generate
-        run: |                            
+        run: |     
+              pwd
+              ls
               npm install node-html-to-image-cli -g
               mv target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/index.html  target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
               node-html-to-image-cli target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png 
