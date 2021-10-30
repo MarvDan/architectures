@@ -192,7 +192,7 @@ jobs:
         run: |  
               pwd
               ls
-              #cd ../
+              cd ../
               pwd
               ls
               npm install node-html-to-image-cli -g
