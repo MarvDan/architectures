@@ -6,6 +6,8 @@ on:
 jobs:
   previewPR:
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./test
     steps:            
       - name: Checkout playbooks
         uses: actions/checkout@v2
