@@ -184,7 +184,7 @@ jobs:
           pwd
           ls target/generated-docs/website/pages
           pwd
-          ls target/generated-docs/website/pages/architectures/
+          #ls target/generated-docs/website/pages/architectures/
           cp -avr target/generated-docs/ target/generated-docs/website/pages/architectures/
           
       - name: Run image generate
