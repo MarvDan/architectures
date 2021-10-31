@@ -70,6 +70,8 @@ jobs:
 
       - name: Edit pom.xml File 
         run: |          
+          pwd
+          ls
           sudo apt-get install xmlstarlet
           
           sed " " pom.xml
