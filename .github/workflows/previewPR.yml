@@ -72,6 +72,8 @@ jobs:
           pwd
           ls
           rm -r architectures
+          pwd
+          ls
           #cd ../
 
       - name: Edit pom.xml File 
