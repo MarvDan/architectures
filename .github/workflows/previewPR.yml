@@ -77,16 +77,13 @@ jobs:
           cd devonfw.github.io
           pwd
           ls
+          pwd
+          ls architectures
 
       - name: Edit pom.xml File 
-        run: |
-          
-          pwd
-          ls
-          
+        run: |          
           sudo apt-get install xmlstarlet
           
-          #cd ../
           pwd 
           ls
           
@@ -98,6 +95,7 @@ jobs:
           
           #sed -i -e '/website/{n;s/search-engine//}' pom.xml 
           #sed -i -e '/website/{n;s/search-engine/test1/}' pom.xml 
+          
           
           #sed -i  -e '/<module>/,/<\/module>/d' pom.xml
           
