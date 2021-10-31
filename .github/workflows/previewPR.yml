@@ -74,7 +74,10 @@ jobs:
           ls
           cd ../
           pwd
-          ls
+          ls 
+          cd devonfw.github.io
+          pwd
+          ls devonfw.github.io
           
           sudo apt-get install xmlstarlet
           
