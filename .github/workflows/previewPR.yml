@@ -53,6 +53,7 @@ jobs:
           repository: devonfw/devonfw.github.io
           ref: develop
           submodules: recursive
+          path: main
       
       - name: Delete old architectures
         run: |
@@ -206,8 +207,8 @@ jobs:
         with: 
           name: download-asset
           path: |
-                /home/runner/work/architectures/devonfw.github.io/architectures/target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
-                /home/runner/work/architectures/devonfw.github.io/architectures/target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
+                ./target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
+                ./target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
                 
       - name: Test
         run: |
