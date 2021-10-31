@@ -62,24 +62,15 @@ jobs:
       
       - name: Delete old architectures
         run: |
-          pwd
-          ls
-          cd ../
-          pwd
-          ls
           rm -r devonfw.github.io/architectures
-          #mkdir devonfw.github.io/architectures
           cp -avr architectures devonfw.github.io
-          rm -r architectures
-          
-          pwd
-          ls devonfw.github.io/architectures
+          rm -r architectures         
 
-          
-
-          
       - name: Edit pom.xml File 
         run: |
+          
+          pwd
+          ls
           
           sudo apt-get install xmlstarlet
           
