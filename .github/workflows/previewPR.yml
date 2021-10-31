@@ -67,7 +67,7 @@ jobs:
           ls
           rm -r devonfw.github.io/architectures
           pwd
-          ls
+          ls devonfw.github.io
           cp -avr architectures devonfw.github.io  
           pwd
           ls
