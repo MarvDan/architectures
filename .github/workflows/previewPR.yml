@@ -62,6 +62,7 @@ jobs:
       
       - name: Delete old architectures
         run: |
+          cd ../
           pwd
           ls
           rm -r devonfw.github.io/architectures
