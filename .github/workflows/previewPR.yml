@@ -122,6 +122,16 @@ jobs:
           #cd architectures/scripts
           pwd
           ls
+          cd ../
+          pwd 
+          ls
+          cd ../
+          pwd 
+          ls
+          cd ../
+          pwd 
+          ls
+          cd ../
           cd scripts
           
           npm install
