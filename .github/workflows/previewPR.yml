@@ -75,6 +75,8 @@ jobs:
           pwd
           ls
           cd devonfw.github.io
+          pwd
+          ls
 
       - name: Edit pom.xml File 
         run: |
