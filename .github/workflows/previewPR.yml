@@ -63,8 +63,7 @@ jobs:
       - name: Delete old architectures
         run: |
           rm -r devonfw.github.io/architectures
-          cp -avr architectures devonfw.github.io
-          rm -r architectures         
+          cp -avr architectures devonfw.github.io    
 
       - name: Edit pom.xml File 
         run: |
