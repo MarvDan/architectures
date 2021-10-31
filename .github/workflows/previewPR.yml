@@ -74,7 +74,7 @@ jobs:
           rm -r architectures
           pwd
           ls
-          #cd ../
+          cd devonfw.github.io
 
       - name: Edit pom.xml File 
         run: |
