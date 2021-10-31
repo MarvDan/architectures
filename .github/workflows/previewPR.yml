@@ -120,6 +120,8 @@ jobs:
       - name: Solutions from Stack repositories
         run: |
           #cd architectures/scripts
+          pwd
+          ls
           cd scripts
           
           npm install
