@@ -68,8 +68,11 @@ jobs:
           rm -r devonfw.github.io/architectures
           pwd
           ls
-          cp -avr architectures devonfw.github.io    
-          cd ../
+          cp -avr architectures devonfw.github.io  
+          pwd
+          ls
+          rm -r architectures
+          #cd ../
 
       - name: Edit pom.xml File 
         run: |
