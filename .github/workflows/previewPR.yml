@@ -69,7 +69,7 @@ jobs:
           ls
           rm -r devonfw.github.io/architectures
           #mkdir devonfw.github.io/architectures
-          cp -avr arch devonfw.github.io
+          cp -avr architectures devonfw.github.io
           rm -r architectures
           
           pwd
