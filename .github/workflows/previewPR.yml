@@ -57,11 +57,13 @@ jobs:
         with:
           repository: devonfw/devonfw.github.io
           ref: develop
-          submodules: recursive
+          #submodules: recursive
           path: devonfw.github.io
       
       - name: Delete old architectures
         run: |
+          pwd
+          ls
           rm -r devonfw.github.io/architectures
           cp -avr architectures devonfw.github.io    
 
