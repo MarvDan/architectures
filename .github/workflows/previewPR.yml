@@ -50,7 +50,7 @@ jobs:
       - name: Add new architectures
         uses: actions/checkout@v1
         with:
-          path: architectures
+          path: arch
       
       - name: Clone
         uses: actions/checkout@v1
@@ -68,12 +68,12 @@ jobs:
           pwd
           ls
           rm -r devonfw.github.io/architectures
-          cp -avr architectures devonfw.github.io  
+          cp -avr arch devonfw.github.io  
           pwd
           ls
           pwd
-          ls architectures
-          #rm -r architectures
+          ls arch
+          #rm -r arch
           pwd
           ls
           pwd
