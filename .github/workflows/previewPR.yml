@@ -60,8 +60,8 @@ jobs:
           #cd ../
           pwd
           ls
-          rm -r architectures
-          mkdir architectures
+          #rm -r architectures
+          #mkdir architectures
           #cp -avr arch devonfw.github.io  
           #ls architectures
           
