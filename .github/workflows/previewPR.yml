@@ -65,6 +65,8 @@ jobs:
           cd ../
           rm -r devonfw.github.io/architectures
           cp -avr architectures devonfw.github.io  
+          pwd
+          ls
           rm -r architectures
           cd devonfw.github.io
 
