@@ -77,7 +77,7 @@ jobs:
           cd ../
           pwd
           ls 
-          cd devonfw.github.io
+          cd ../
           pwd
           ls 
           
