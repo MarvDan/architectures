@@ -29,7 +29,7 @@ name: artifacts-url-comments
 #name: artifacts-url-comments
 on:
   workflow_run:
-    workflows: ["build_pullRequest"]
+    workflows: ["test"]
     types: [completed]
 jobs:    
   example:
