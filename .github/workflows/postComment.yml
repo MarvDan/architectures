@@ -1,22 +1,23 @@
   name: add artifact links to pull request and related issues
   on: 
    workflow_run:
-    workflows: ["test"]
+    workflows: 
+      - "test"
     types:
       - "completed"
 
-  jobs:
-    artifacts-url-comments:
-      name: add artifact links to pull request and related issues job
-      runs-on: windows-2019
-      steps:
+  #jobs:
+    #artifacts-url-comments:
+      #name: add artifact links to pull request and related issues job
+      #runs-on: windows-2019
+      #steps:
       
-        - name: Download workflow artifact
-          uses: dawidd6/action-download-artifact@v2.11.0
-          with:
-                github_token: ${{ secrets.GITHUB_TOKEN }}
-                workflow: test.yml
-                run_id: ${{ github.event.workflow_run.id }}
+        #- name: Download workflow artifact
+          #uses: dawidd6/action-download-artifact@v2.11.0
+          #with:
+                #github_token: ${{ secrets.GITHUB_TOKEN }}
+                #workflow: test.yml
+                #run_id: ${{ github.event.workflow_run.id }}
 
 
 
@@ -32,25 +33,25 @@
   #workflow_run:
     #workflows: ["test"]
     #types: [completed]
-#jobs:    
-  #example:
-    #name: example
-    #runs-on: ubuntu-latest
-    #steps:
+jobs:    
+  example:
+    name: example
+    runs-on: ubuntu-latest
+    steps:
     
-     # - uses: actions/checkout@v1
-     # - run: mkdir -p output/
-     # - run: echo "This is fancy a comment" > output/results.html
-     # - uses: actions/upload-artifact@v1
-     #   with:
-     #     name: results
-     #     path: output
-     # - uses: actions/download-artifact@v1
-     #   with:
-     #     name: results
-     #     
-     # - name: comment PR
-     #   uses: machine-learning-apps/pr-comment@master
+      - uses: actions/checkout@v1
+      - run: mkdir -p output/
+      - run: echo "This is fancy a comment" > output/results.html
+      - uses: actions/upload-artifact@v1
+        with:
+          name: results
+          path: output
+      - uses: actions/download-artifact@v1
+        with:
+          name: results
+          
+      - name: comment PR
+        uses: machine-learning-apps/pr-comment@master
      #   env:
      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
      #   with:
