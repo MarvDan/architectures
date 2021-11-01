@@ -155,12 +155,17 @@ jobs:
 
       - name: Create output for architectures
         run: |
+          pwd 
+          ls ../website
           chmod +x scripts/createOutput.sh
           scripts/createOutput.sh
 
       - name: Copy output of architectures
         run: |
-          cp -avr target/generated-docs/ ../target/generated-docs/website/pages/architectures/
+            pwd 
+            ls ../website
+
+            cp -avr target/generated-docs/ ../target/generated-docs/website/pages/architectures/
 
           
       - name: Run image generate
