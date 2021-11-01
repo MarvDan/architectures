@@ -209,8 +209,8 @@ jobs:
         with: 
           name: download-asset
           path: |
-                ./devonfw.github.io/target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
-                ./devonfw.github.io/target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
+                /home/runner/work/architectures/devonfw.github.io/target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
+                /home/runner/work/architectures/devonfw.github.io/target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
                 
       - name: Test
         run: |
