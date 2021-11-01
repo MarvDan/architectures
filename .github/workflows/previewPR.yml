@@ -72,6 +72,7 @@ jobs:
 
       - name: Edit pom.xml File 
         run: |          
+          ls
           cd ../
           
           sudo apt-get install xmlstarlet
