@@ -3,7 +3,7 @@ name: TestComment
 on:
   workflow_run:
     workflows:
-      - Preflight
+      - test
     types:
       - completed
 
