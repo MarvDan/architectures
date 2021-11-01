@@ -1,25 +1,23 @@
-name: add artifact links to pull request and related issues
-on:
-  workflow_run:
-    workflows: 
-      - test
-    types: 
-      - completed
+  name: add artifact links to pull request and related issues
+  on: 
+   workflow_run:
+    workflows: ["test"]
+    types:
+      - "completed"
 
-jobs:
-  artifacts-url-comments:
-    name: add artifact links to pull request and related issues job
-    runs-on: windows-2019
-    steps:
-      - name: add artifact links to pull request and related issues step
-        uses: tonyhallett/artifacts-url-comments@v1.1.0
-        env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-            prefix: Here are the artifacts 
-            suffix: Have a nice day.
-            format: name
-            addTo: pullandissues
+  jobs:
+    artifacts-url-comments:
+      name: add artifact links to pull request and related issues job
+      runs-on: windows-2019
+      steps:
+      
+        - name: Download workflow artifact
+          uses: dawidd6/action-download-artifact@v2.11.0
+          with:
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                workflow: test.yml
+                run_id: ${{ github.event.workflow_run.id }}
+
 
 
 
