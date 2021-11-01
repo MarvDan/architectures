@@ -67,7 +67,13 @@ jobs:
           cp -avr architectures devonfw.github.io  
           pwd
           ls
+          pwd
+          ls architectures
           rm -r architectures
+          pwd
+          ls
+          pwd
+          ls architectures
           cd devonfw.github.io
 
       - name: Edit pom.xml File 
