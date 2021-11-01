@@ -77,9 +77,6 @@ jobs:
           cd ../
           pwd
           ls 
-          cd ../
-          pwd
-          ls 
           
           sudo apt-get install xmlstarlet
           
