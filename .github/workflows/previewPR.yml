@@ -47,11 +47,7 @@ jobs:
       matrix: ${{ fromJson(needs.previewPR.outputs.matrix-combinations) }}
     steps:
     
-      - name: Add new architectures
-        uses: actions/checkout@v1
-        with:
-          path: architectures
-    
+          
       - name: Clone
         uses: actions/checkout@v1
         with:
@@ -59,10 +55,19 @@ jobs:
           ref: develop
           #submodules: recursive
           path: devonfw.github.io
+    
+      - name: Add new architectures
+        uses: actions/checkout@v1
+        with:
+          path: architectures
       
       - name: Delete old architectures
         run: |
+          pwd
+          ls
           cd ../
+          pwd
+          ls
           rm -r devonfw.github.io/architectures
           cp -avr architectures devonfw.github.io  
           pwd
