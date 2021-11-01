@@ -133,17 +133,8 @@ jobs:
           #cd architectures/scripts
           pwd
           ls
-          cd ../
-          pwd 
-          ls
-          cd ../
-          pwd 
-          ls
-          cd ../
-          pwd 
-          ls
-          cd ../
-          cd scripts
+          cd ../../
+          cd devonfw.github.io/architectures/scripts
           
           npm install
           node copySolutionsFromStack.js ../../devonfw-guide
