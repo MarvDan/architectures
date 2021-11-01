@@ -1,13 +1,15 @@
 name: TestComment
 
-
 on:
-  - pull_request
-  - push
+  workflow_run:
+    workflows:
+      - Preflight
+    types:
+      - completed
 
 jobs:
-  preflight-job:
-    name: Preflight Step
+  test-job:
+    name: Test Step
     runs-on: ubuntu-latest
     steps:
       - run: env
