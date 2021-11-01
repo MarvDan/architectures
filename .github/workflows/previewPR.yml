@@ -55,16 +55,6 @@ jobs:
           #submodules: recursive
           path: devonfw.github.io
           
-      - name: Delete old architectures
-        run: |
-          #cd ../
-          pwd
-          ls
-          #rm -r architectures
-          #mkdir architectures
-          #cp -avr arch devonfw.github.io  
-          #ls architectures
-          
       - name: Add new architectures
         uses: actions/checkout@v1
         with:
@@ -74,6 +64,12 @@ jobs:
         run: |          
           ls
           cd ../
+          
+          pwd 
+          ls website
+          pwd 
+          ls website/images
+          pwd
           
           sudo apt-get install xmlstarlet
           
@@ -120,6 +116,11 @@ jobs:
 
       - name: npm install for architectures
         run: |
+          pwd 
+          ls ../website
+          pwd 
+          ls ../website/images
+          pwd
           cd scripts
           npm install
           cd ../
@@ -148,6 +149,7 @@ jobs:
           ls website
           pwd 
           ls website/images
+          pwd
         
           mvn -s ./.m2/unblock-rubygem-proxy-settings.xml clean package
 
