@@ -1,23 +1,26 @@
-name: artifacts-url-comments
-#on: pull_request
-  #workflow_run:
-   # workflows: ["previewPR"]
-    #types: [completed]
+name: add artifact links to pull request and related issues
+on:
+  workflow_run:
+    workflows: 
+      - test
+    types: 
+      - completed
 
-#jobs:
-  #artifacts-url-comments:
-    #name: add artifact links to pull request and related issues job
-    #runs-on: windows-2019
-    #steps:
-      #- name: add artifact links to pull request and related issues step
-        #uses: tonyhallett/artifacts-url-comments@v1.1.0
-        #env:
-           #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        #with:
-             #prefix: Here is the preview of your changes at solutions with asciidoc
-             #suffix: Have a nice day. Result is as html and png file.
-             #format: name
-             #addTo: pullandissues
+jobs:
+  artifacts-url-comments:
+    name: add artifact links to pull request and related issues job
+    runs-on: windows-2019
+    steps:
+      - name: add artifact links to pull request and related issues step
+        uses: tonyhallett/artifacts-url-comments@v1.1.0
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+            prefix: Here are the artifacts 
+            suffix: Have a nice day.
+            format: name
+            addTo: pullandissues
+
 
 
 ######################
@@ -27,32 +30,32 @@ name: artifacts-url-comments
 #on: pull_request
 #jobs:
 #name: artifacts-url-comments
-on:
-  workflow_run:
-    workflows: ["test"]
-    types: [completed]
-jobs:    
-  example:
-    name: example
-    runs-on: ubuntu-latest
-    steps:
+#on:
+  #workflow_run:
+    #workflows: ["test"]
+    #types: [completed]
+#jobs:    
+  #example:
+    #name: example
+    #runs-on: ubuntu-latest
+    #steps:
     
-      - uses: actions/checkout@v1
-      - run: mkdir -p output/
-      - run: echo "This is fancy a comment" > output/results.html
-      - uses: actions/upload-artifact@v1
-        with:
-          name: results
-          path: output
-      - uses: actions/download-artifact@v1
-        with:
-          name: results
-          
-      - name: comment PR
-        uses: machine-learning-apps/pr-comment@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          path: results/results.html
+     # - uses: actions/checkout@v1
+     # - run: mkdir -p output/
+     # - run: echo "This is fancy a comment" > output/results.html
+     # - uses: actions/upload-artifact@v1
+     #   with:
+     #     name: results
+     #     path: output
+     # - uses: actions/download-artifact@v1
+     #   with:
+     #     name: results
+     #     
+     # - name: comment PR
+     #   uses: machine-learning-apps/pr-comment@master
+     #   env:
+     #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+     #   with:
+     #     path: results/results.html
 
 
