@@ -72,18 +72,12 @@ jobs:
 
       - name: Edit pom.xml File 
         run: |          
-          pwd
-          ls
           cd ../
-          pwd
-          ls 
           
           sudo apt-get install xmlstarlet
           
           sed " " pom.xml
           
-          echo "---------------------------------------------------------------------------------"
-          pwd
           echo "---------------------------------------------------------------------------------"
           
           #sed -i -e '/website/{n;s/search-engine//}' pom.xml 
@@ -92,21 +86,17 @@ jobs:
           
           #sed -i  -e '/<module>/,/<\/module>/d' pom.xml
           
-          sed -i  -e '/<module>website/,/<\/module>/d' pom.xml
+          ##sed -i  -e '/<module>website/,/<\/module>/d' pom.xml
           
           sed " " pom.xml
           
-          echo "---------------------------------------------------------------------------------"
-          pwd
           echo "---------------------------------------------------------------------------------"
           
           #sed -i -e '/asciidoctor-stylesheet/{n;s/website//}' pom.xml
           #sed -i -e '/asciidoctor-stylesheet/{n;s/website/test2/}' pom.xml
           
-          sed -i  -e '/<module>search-engine/,/<\/module>/d' pom.xml
+          ##sed -i  -e '/<module>search-engine/,/<\/module>/d' pom.xml
           
-          echo "---------------------------------------------------------------------------------"
-          pwd
           echo "---------------------------------------------------------------------------------"
           
           sed " " pom.xml
@@ -118,7 +108,6 @@ jobs:
       - name: Solutions from Stack repositories
         run: |
           cd scripts
-          
           npm install
           node copySolutionsFromStack.js ../../devonfw-guide
           cd ../
@@ -161,48 +150,20 @@ jobs:
 
       - name: Create output for architectures
         run: |
-          pwd
-          ls
-          #cd ../
-          pwd
-          ls
-          pwd
-          ls 
-          pwd
-          ls scripts
           chmod +x scripts/createOutput.sh
           scripts/createOutput.sh
 
       - name: Copy output of architectures
         run: |
-          pwd
-          ls
-          cd ../
-          pwd
-          ls target
-          pwd
-          ls target/generated-docs
-          pwd
-          ls target/generated-docs/website
-          pwd
-          ls target/generated-docs/website/pages
-          pwd
-          #ls target/generated-docs/website/pages/architectures/
-          cp -avr architectures/target/generated-docs/ target/generated-docs/website/pages/architectures/
-          ls target/generated-docs/website/pages/architectures/
+          cp -avr target/generated-docs/ ../target/generated-docs/website/pages/architectures/
+
           
       - name: Run image generate
         run: |  
-              pwd
-              ls
-              cd ../
-              pwd
-              ls
               npm install node-html-to-image-cli -g
-              mv target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/index.html  target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
-              node-html-to-image-cli target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png 
-              pwd
-              ls
+              
+              mv ../target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/index.html  ../target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
+              node-html-to-image-cli ../target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html ../target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png 
         
       - name: Artifact build
         uses: actions/upload-artifact@v2
