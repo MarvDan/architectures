@@ -170,6 +170,8 @@ jobs:
           
       - name: Run image generate
         run: |  
+              pwd 
+              ls ../website
               npm install node-html-to-image-cli -g
               
               mv ../target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/index.html  ../target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
