@@ -133,7 +133,7 @@ jobs:
           #cd architectures/scripts
           pwd
           ls
-          cd ../../
+          cd ../
           pwd
           ls
           cd devonfw.github.io/architectures/scripts
