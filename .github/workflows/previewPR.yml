@@ -146,6 +146,8 @@ jobs:
           sed " " pom.xml
           pwd 
           ls website
+          pwd 
+          ls website/images
         
           mvn -s ./.m2/unblock-rubygem-proxy-settings.xml clean package
 
