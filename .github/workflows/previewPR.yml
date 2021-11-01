@@ -73,7 +73,7 @@ jobs:
           ls
           pwd
           ls arch
-          #rm -r arch
+          rm -r arch
           pwd
           ls
           pwd
