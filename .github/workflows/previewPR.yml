@@ -177,8 +177,9 @@ jobs:
               mv ../target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/index.html  ../target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
               node-html-to-image-cli ../target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html ../target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
               
-              mkdir ../target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}
-              mv ../target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }} ../target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}/
+              mkdir ../previewSolutions
+              mkdir ../previewSolutions/${{ matrix.solution }}
+              mv ../target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }} ../previewSolutions/${{ matrix.solution }}
             
         
       - name: Artifact build
@@ -188,5 +189,6 @@ jobs:
           path: |
                 #/home/runner/work/architectures/devonfw.github.io/target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
                 #/home/runner/work/architectures/devonfw.github.io/target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
-                /home/runner/work/architectures/devonfw.github.io/target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution  }}
+                #/home/runner/work/architectures/devonfw.github.io/target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution  }}
+                /home/runner/work/architectures/devonfw.github.io/previewSolutions/${{ matrix.solution }}
                   
