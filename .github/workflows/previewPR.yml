@@ -83,7 +83,7 @@ jobs:
           
           #sed -i  -e '/<module>/,/<\/module>/d' pom.xml
           
-          sed -i  -e '/<module>website/,/<\/module>/d' pom.xml
+          ##sed -i  -e '/<module>website/,/<\/module>/d' pom.xml
           
           sed " " pom.xml
           
@@ -92,7 +92,7 @@ jobs:
           #sed -i -e '/asciidoctor-stylesheet/{n;s/website//}' pom.xml
           #sed -i -e '/asciidoctor-stylesheet/{n;s/website/test2/}' pom.xml
           
-          sed -i  -e '/<module>search-engine/,/<\/module>/d' pom.xml
+          ##sed -i  -e '/<module>search-engine/,/<\/module>/d' pom.xml
           
           echo "---------------------------------------------------------------------------------"
           
