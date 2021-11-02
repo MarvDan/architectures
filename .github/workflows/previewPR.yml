@@ -186,5 +186,5 @@ jobs:
           path: |
                 #/home/runner/work/architectures/devonfw.github.io/target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
                 #/home/runner/work/architectures/devonfw.github.io/target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
-                /home/runner/work/architectures/devonfw.github.io/target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution  }}/
+                /home/runner/work/architectures/devonfw.github.io/target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution  }}
                   
