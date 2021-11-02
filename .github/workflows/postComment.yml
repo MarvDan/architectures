@@ -11,6 +11,7 @@ jobs:
     name: add artifact links to pull request and related issues job
     runs-on: windows-2019
     steps:
+        #workflow_run only get triggered in 'default' Branch
       - name: add artifact links to pull request and related issues step
         uses: tonyhallett/artifacts-url-comments@v1.1.0
         env:
