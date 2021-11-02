@@ -177,7 +177,7 @@ jobs:
               mv ../target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/index.html  ../target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
               node-html-to-image-cli ../target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html ../target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
               
-              cp -avr ../target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }} ../target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution}}/${{ matrix.solution}}
+              cp -R ../target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }} ../target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution}}/${{ matrix.solution}}
         
       - name: Artifact build
         uses: actions/upload-artifact@v2
