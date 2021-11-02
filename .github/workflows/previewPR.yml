@@ -1,7 +1,7 @@
 name: previewPR
 
 on:
-  pull_request_target  
+  pull_request 
   
 jobs:
   previewPR:
@@ -175,7 +175,14 @@ jobs:
               npm install node-html-to-image-cli -g
               
               mv ../target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/index.html  ../target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
-              node-html-to-image-cli ../target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html ../target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
+              cd ../target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
+              node-html-to-image-cli ${{ matrix.solution }}.html ${{ matrix.solution }}.png
+              
+              pwd 
+              ls
+              cd ../../../../../../../
+              pwd
+              ls
               
               mkdir ../previewSolutions
               mkdir ../previewSolutions/${{ matrix.solution }}
