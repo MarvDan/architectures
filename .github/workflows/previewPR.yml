@@ -21,12 +21,9 @@ jobs:
           
       - name: Select Changed Files
         id: changedfiles
-        run: |
-            pwd
-            ls
-            node changedFilesArchitectures.js
+        run: node changedFilesArchitectures.js
         
-      - name: Get Playbook Checkout
+      - name: Get Architectures Checkout
         id: get_checkout
         run: node getPlaybookCheckout.js
         
