@@ -1,4 +1,6 @@
 name: previewPR
+env:
+  PR_NUMBER: ${{github.event.number}}
 
 on:
   pull_request_target 
@@ -6,18 +8,20 @@ on:
 jobs:
   previewPR:
     runs-on: ubuntu-latest
-    env:
-      working-directory: ./test
-    steps:
     
+    steps:
       - name: Checkout playbooks
         uses: actions/checkout@v2
-        with:
-          repository: devonfw-tutorials/tutorials
-
+      - name: Install node environment
+        uses: actions/setup-node@v2-beta
+      - name: npm install
+        run: npm install
       - name: Select Changed Files
         id: changedfiles
         run: node selectChangedFiles.js
+      - name: Get Playbook Checkout
+        id: get_checkout
+        run: node getPlaybookCheckout.js
         
       - name: Setup matrix combinations
         id: setup-matrix-combinations
