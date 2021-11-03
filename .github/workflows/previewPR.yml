@@ -15,6 +15,9 @@ jobs:
          
       - name: Install node environment
         uses: actions/setup-node@v2-beta
+        
+      - name: npm install
+        run: npm install
           
       - name: Select Changed Files
         id: changedfiles
