@@ -8,35 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     env:
       working-directory: ./test
-    steps:            
+    steps:
+    
       - name: Checkout playbooks
         uses: actions/checkout@v2
         with:
           repository: devonfw-tutorials/tutorials
-          path: playbooks
-
-      - name: Test Path
-        run: |
-              cd playbooks
-              pwd
-              ls
-              cd ../
-              pwd
-              ls
-              cd ../
-              pwd
-              ls
-              
-      - name: Install node environment
-        uses: actions/setup-node@v2-beta
-        
-      - name: npm install
-        run: npm install
-        
-      - name: Install node steps
-        run: |
-          npm install @actions/core
-          npm install @octokit/core
 
       - name: Select Changed Files
         id: changedfiles
