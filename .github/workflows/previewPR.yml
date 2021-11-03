@@ -29,8 +29,14 @@ jobs:
               
       - name: Install node environment
         uses: actions/setup-node@v2-beta
+        
       - name: npm install
         run: npm install
+        
+      - name: Install node steps
+        run: |
+          npm install @actions/core
+          npm install @octokit/core
 
       - name: Select Changed Files
         id: changedfiles
