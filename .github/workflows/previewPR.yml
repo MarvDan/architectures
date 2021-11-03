@@ -102,51 +102,16 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: devonfw.github.io/architectures
-
-      - name: Edit pom.xml File 
-        run: |          
-          ls
-          cd ../
-          
-          pwd 
-          ls website
-          pwd 
-          ls website/images
-          pwd
-          
-          sudo apt-get install xmlstarlet
-          
-          sed " " pom.xml
-          
-          echo "---------------------------------------------------------------------------------"
-          
-          #sed -i -e '/website/{n;s/search-engine//}' pom.xml 
-          #sed -i -e '/website/{n;s/search-engine/test1/}' pom.xml 
-          
-          
-          #sed -i  -e '/<module>/,/<\/module>/d' pom.xml
-          
-          ##sed -i  -e '/<module>website/,/<\/module>/d' pom.xml
-          
-          sed " " pom.xml
-          
-          echo "---------------------------------------------------------------------------------"
-          
-          #sed -i -e '/asciidoctor-stylesheet/{n;s/website//}' pom.xml
-          #sed -i -e '/asciidoctor-stylesheet/{n;s/website/test2/}' pom.xml
-          
-          ##sed -i  -e '/<module>search-engine/,/<\/module>/d' pom.xml
-          
-          echo "---------------------------------------------------------------------------------"
-          
-          sed " " pom.xml
-
           
       - name: Setup Node
         uses: actions/setup-node@v2
 
       - name: Solutions from Stack repositories
         run: |
+          pwd
+          ls
+          pwd
+          ls devonfw.github.io
           cd scripts
           npm install
           node copySolutionsFromStack.js ../../devonfw-guide
