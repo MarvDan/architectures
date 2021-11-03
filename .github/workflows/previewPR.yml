@@ -21,6 +21,11 @@ jobs:
           
       - name: View PR author
         run: echo "This PR is opened by ${{ github.event.pull_request.user.login }} ."
+        
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
           
       - name: Select Changed Files
         id: changedfiles
@@ -104,6 +109,7 @@ jobs:
       - name: Add new architectures
         uses: actions/checkout@v2
         with:
+          repository: ${{ github.event.pull_request.user.login }}/architectures
           path: devonfw.github.io/architectures
           
       - name: Setup Node
