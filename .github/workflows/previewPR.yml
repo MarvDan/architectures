@@ -25,6 +25,10 @@ jobs:
         id: changedfiles
         run: node selectChangedFiles.js
         
+      - name: Get Playbook Checkout
+        id: get_checkout
+        run: node getPlaybookCheckout.js
+        
       - name: Setup matrix combinations
         id: setup-matrix-combinations
         run: |
@@ -40,6 +44,11 @@ jobs:
             fi
           done
           echo ::set-output name=matrix-combinations::{\"include\":[$MATRIX_PARAMS_COMBINATIONS]}
+          
+    outputs:
+      matrix-combinations: ${{ steps.setup-matrix-combinations.outputs.matrix-combinations }}
+      checkout_ref: ${{ steps.get_checkout.outputs.ref}}
+      checkout_name: ${{ steps.get_checkout.outputs.name}}
           
       #- id: changedfiles
        # uses: jitterbit/get-changed-files@v1
@@ -63,8 +72,8 @@ jobs:
           #done
           #echo ::set-output name=matrix-combinations::{\"include\":[$MATRIX_PARAMS_COMBINATIONS]}
           
-    outputs:
-      matrix-combinations: ${{ steps.setup-matrix-combinations.outputs.matrix-combinations }}
+    #outputs:
+     # matrix-combinations: ${{ steps.setup-matrix-combinations.outputs.matrix-combinations }}
       
   build_pullRequest:
     runs-on: ubuntu-latest
