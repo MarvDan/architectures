@@ -7,8 +7,8 @@ async function selectChangedFiles() {
     let arr = [];
     try {
         let get = await octokit.request('GET /repos/{owner}/{repo}/pulls/{pull_number}/files', {
-            owner: 'devonfw-tutorials',
-            repo: 'tutorials',
+            owner: 'devonfw',
+            repo: 'architectures',
             pull_number: pr
         });
         let files = get.data;
