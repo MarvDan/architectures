@@ -17,7 +17,20 @@ jobs:
         run: npm install
       - name: Select Changed Files
         id: changedfiles
-        run: node selectChangedFiles.js
+        run: |
+              pwd
+              ls
+              cd ../
+              pwd
+              ls
+              cd ../
+              pwd
+              ls
+              cd ../
+              pwd
+              ls
+              cd ../
+              node selectChangedFiles.js
       - name: Get Playbook Checkout
         id: get_checkout
         run: node getPlaybookCheckout.js
