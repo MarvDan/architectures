@@ -24,7 +24,7 @@ jobs:
         run: |
             pwd
             ls
-            node selectChangedFiles.js
+            node changedFilesArchitectures.js
         
       - name: Get Playbook Checkout
         id: get_checkout
