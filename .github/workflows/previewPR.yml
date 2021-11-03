@@ -16,13 +16,15 @@ jobs:
           path: playbooks
 
       - name: Test Path
-        run: cd ../
-
-      - name: Test Path1
-        run: pwd
-        
-      - name: Test Path2
-        run: ls
+        run: |
+              pwd
+              ls
+              cd ../
+              pwd
+              ls
+              cd ../
+              pwd
+              ls
 
       - name: Select Changed Files
         id: changedfiles
