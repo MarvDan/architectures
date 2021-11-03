@@ -21,7 +21,10 @@ jobs:
           
       - name: Select Changed Files
         id: changedfiles
-        run: node selectChangedFiles.js
+        run: |
+            pwd
+            ls
+            node selectChangedFiles.js
         
       - name: Get Playbook Checkout
         id: get_checkout
