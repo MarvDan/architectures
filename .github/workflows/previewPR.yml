@@ -1,5 +1,7 @@
 name: previewPR
-
+env:
+  PR_NUMBER: ${{github.event.number}}
+  
 on:
   pull_request_target 
   
