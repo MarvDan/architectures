@@ -17,7 +17,7 @@ jobs:
 
       - name: Select Changed Files
         id: changedfiles
-        run: node playbooks/selectChangedFiles.js
+        run: node selectChangedFiles.js
         
       - name: Setup matrix combinations
         id: setup-matrix-combinations
