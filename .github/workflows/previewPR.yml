@@ -25,6 +25,7 @@ jobs:
             pwd
             ls
             npm install @actions/core
+            npm install @actions/github
             node changedFilesArchitectures.js
         
       - name: Get Architectures Checkout
