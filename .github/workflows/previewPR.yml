@@ -15,27 +15,47 @@ jobs:
           repository: devonfw-tutorials/tutorials
           path: playbooks
           
-      - id: changedfiles
-        uses: jitterbit/get-changed-files@v1
+      - name: Select Changed Files
+        id: changedfiles
+        run: node selectChangedFiles.js
         
       - name: Setup matrix combinations
         id: setup-matrix-combinations
         run: |
           dirs=()
-          for changed_file in ${{ steps.changedfiles.outputs.all }}; do
-          
-            dir="$(echo ${changed_file} | cut -d/ -f2)"           
-            check="$(echo $changed_file | cut -d/ -f1)"
-           
-          if [[ ! " ${dirs[@]} " =~ " ${dir} " ]]; then
+          for changed_file in ${{ steps.changedfiles.outputs.changedFiles }}; do
+            dir="$(echo $changed_file | cut -d/ -f1)"
+            if [[ ! " ${dirs[@]} " =~ " ${dir} " ]]; then
               if [[ "$check" ==  *"solution"* ]]; then
-                MATRIX_PARAMS_COMBINATIONS=$MATRIX_PARAMS_COMBINATIONS'{"solution": "'$dir'"},'
-                dirs+=($dir)
-                echo $MATRIX_PARAMS_COMBINATIONS
+                  MATRIX_PARAMS_COMBINATIONS=$MATRIX_PARAMS_COMBINATIONS'{"solution": "'$dir'"},'
+                  dirs+=($dir)
+                  echo $MATRIX_PARAMS_COMBINATIONS
               fi
-           fi
+            fi
           done
           echo ::set-output name=matrix-combinations::{\"include\":[$MATRIX_PARAMS_COMBINATIONS]}
+          
+      #- id: changedfiles
+       # uses: jitterbit/get-changed-files@v1
+        
+      #- name: Setup matrix combinations
+       # id: setup-matrix-combinations
+        #run: |
+         # dirs=()
+          #for changed_file in ${{ steps.changedfiles.outputs.all }}; do
+          #
+           # dir="$(echo ${changed_file} | cut -d/ -f2)"           
+            #check="$(echo $changed_file | cut -d/ -f1)"
+           
+          #if [[ ! " ${dirs[@]} " =~ " ${dir} " ]]; then
+           #   if [[ "$check" ==  *"solution"* ]]; then
+            #    MATRIX_PARAMS_COMBINATIONS=$MATRIX_PARAMS_COMBINATIONS'{"solution": "'$dir'"},'
+             #   dirs+=($dir)
+              #  echo $MATRIX_PARAMS_COMBINATIONS
+              #fi
+           #fi
+          #done
+          #echo ::set-output name=matrix-combinations::{\"include\":[$MATRIX_PARAMS_COMBINATIONS]}
           
     outputs:
       matrix-combinations: ${{ steps.setup-matrix-combinations.outputs.matrix-combinations }}
