@@ -23,6 +23,10 @@ jobs:
         id: changedfiles
         run: node selectChangedFiles.js
         
+      - name: Get Playbook Checkout
+        id: get_checkout
+        run: node getPlaybookCheckout.js
+        
       - name: Setup matrix combinations
         id: setup-matrix-combinations
         run: |
