@@ -2,8 +2,8 @@ name: Check PR Katacoda Syntax
 env:
   PR_NUMBER: ${{github.event.number}}
 on:
-  pull_request_target:
-    branches: [ main ]
+  pull_request_target
+  
 jobs:
   setup-matrix:
     runs-on: ubuntu-latest
