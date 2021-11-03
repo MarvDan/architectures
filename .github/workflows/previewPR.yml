@@ -25,7 +25,7 @@ jobs:
         
       - name: Get Architectures Checkout
         id: get_checkout
-        run: node getPlaybookCheckout.js
+        run: node getArchitecturesCheckout.js
         
       - name: Setup matrix combinations
         id: setup-matrix-combinations
