@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout playbooks
         uses: actions/checkout@v2
+        with:
+          repository: devonfw-tutorials/tutorials
       - name: Install node environment
         uses: actions/setup-node@v2-beta
       - name: npm install
