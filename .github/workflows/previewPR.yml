@@ -15,6 +15,9 @@ jobs:
           repository: devonfw-tutorials/tutorials
           path: playbooks
 
+      - name: Test Path
+        run: cd ../
+
       - name: Test Path1
         run: pwd
         
