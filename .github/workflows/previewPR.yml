@@ -21,7 +21,10 @@ jobs:
           
       - name: Select Changed Files
         id: changedfiles
-        run: node changedFilesArchitectures.js
+        run: | 
+            pwd
+            ls
+            node changedFilesArchitectures.js
         
       - name: Get Architectures Checkout
         id: get_checkout
