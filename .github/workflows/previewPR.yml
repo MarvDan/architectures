@@ -132,6 +132,11 @@ jobs:
 
       - name: Solutions from Stack repositories
         run: |
+          pwd
+          ls
+          pwd
+          ls architectures
+        
           cd architectures/scripts
           npm install
           node copySolutionsFromStack.js ../../devonfw-guide
@@ -151,8 +156,8 @@ jobs:
       - name: Compile sass for architectures
         uses: gha-utilities/sass-build@v0.4.2
         with:
-          source: index.scss
-          destination: index.css
+          source: architectures/index.scss
+          destination: architectures/index.css
           
       # asciidoctor tries to load gems dynamically to convert md and scss files.
       # As this gems are not installed this is breaking the build.
