@@ -125,8 +125,12 @@ jobs:
               cd target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
               
               npm install node-html-to-image-cli -g
-              node-html-to-image-cli ${{ matrix.solution }}.html ${{ matrix.solution }}.png
-            
+              npm install @actions/github
+              node generatePNGtoHTML.js
+              #node-html-to-image-cli ${{ matrix.solution }}.html ${{ matrix.solution }}.png
+        env:
+          PR_SOLUTION: ${{ matrix.solution }}
+          PR_REPO: ${{github.event.pull_request.head.repo.name}}  
         
       - name: Artifact build
         uses: actions/upload-artifact@v2
