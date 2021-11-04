@@ -124,8 +124,15 @@ jobs:
               ls target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
               #cd target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
               
+              pwd
+              ls
+              
               npm install node-html-to-image-cli -g
               npm install @actions/github
+              
+              pwd
+              ls
+              
               node generatePNGfromHTML.js
               #node-html-to-image-cli ${{ matrix.solution }}.html ${{ matrix.solution }}.png
         env:
