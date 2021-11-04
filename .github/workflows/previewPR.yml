@@ -119,13 +119,13 @@ jobs:
           repository: devonfw/devonfw.github.io
           ref: develop
           #submodules: recursive
-          path: devonfw.github.io
           
       - name: Add new architectures
         uses: actions/checkout@v2
         with:
-          repository: ${{ github.event.pull_request.user.login }}/${{ github.event.pull_request.head.repo.name }}
-          path: devonfw.github.io/architectures
+          ref: ${{github.event.pull_request.head.ref}}
+          repository: ${{github.event.pull_request.head.repo.full_name}}
+          path: architectures
           
       - name: Setup Node
         uses: actions/setup-node@v2
