@@ -1,15 +1,4 @@
-const browser = await puppeteer.launch();
- const page = await browser.newPage();
- await page.setViewport({
-     width: 960,
-     height: 760,
-     deviceScaleFactor: 1,
- });            
- await page.setContent(imgHTML);
- await page.screenshot({path: example.png});
- await browser.close();
-
-/*const nodeHtmlToImage = require('node-html-to-image')
+const nodeHtmlToImage = require('node-html-to-image')
 const fs = require('fs');
 const { Octokit } = require("@octokit/core");
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
@@ -42,4 +31,4 @@ nodeHtmlToImage({
   html: '<html><body><img src="{{imageSource}}" /></body></html>',
   content: { imageSource: dataURI }
 })
-*/
+
