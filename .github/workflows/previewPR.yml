@@ -175,7 +175,7 @@ jobs:
           architectures/scripts/createOutput.sh
 
       - name: Copy output of architectures
-        run: cp -avr target/generated-docs/ ../target/generated-docs/website/pages/architectures/
+        run: cp -avr architectures/target/generated-docs/ target/generated-docs/website/pages/architectures/
 
           
       - name: Run image generate
