@@ -12,48 +12,20 @@ jobs:
     steps:
       - name: Checkout architectures
         uses: actions/checkout@v2
-        #with:
-          #ref: ${{github.event.pull_request.head.ref}}
-          #repository: ${{github.event.pull_request.head.repo.full_name}}
-         
       - name: Install node environment
         uses: actions/setup-node@v2-beta
-        
       - name: npm install
         run: npm install
-          
-      - name: View PR author
-        run: echo "This PR is opened by ${{ github.event.pull_request.user.login }} ."
-        
-      - name: View PR Branch
-        run: echo "This PR is opened by ${{ github.event.pull_request.head.repo.name }} ."
-        
-      - name: View PR Branch 2
-        run: echo "This PR is opened by ${{ github.event.pull_request.head.repo.default_branch }} ."
-        
-      - name: View PR Branch 3
-        run: echo "This PR is opened by ${{ github.event.pull_request.head.repo.branches_url }} ."
-        
-      - name: Extract branch name
-        shell: bash
-        run: echo " ${{ github.ref }}"
-        id: extract_branch
           
       - name: Select Changed Files
         id: changedfiles
         run: | 
-            pwd
-            ls
             npm install @actions/core
             npm install @actions/github
             node changedFilesArchitectures.js
         env:
           PR_OWNER: ${{github.event.pull_request.head.repo.owner.login}}
           PR_REPO: ${{github.event.pull_request.head.repo.name}}
-        
-     # - name: Get Architectures Checkout
-      #  id: get_checkout
-       # run: node getArchitecturesCheckout.js
         
       - name: Setup matrix combinations
         id: setup-matrix-combinations
@@ -78,33 +50,7 @@ jobs:
           
     outputs:
       matrix-combinations: ${{ steps.setup-matrix-combinations.outputs.matrix-combinations }}
-      checkout_ref: ${{ steps.get_checkout.outputs.ref}}
-      checkout_name: ${{ steps.get_checkout.outputs.name}}
-          
-      #- id: changedfiles
-       # uses: jitterbit/get-changed-files@v1
-        
-      #- name: Setup matrix combinations
-       # id: setup-matrix-combinations
-        #run: |
-         # dirs=()
-          #for changed_file in ${{ steps.changedfiles.outputs.all }}; do
-          #
-           # dir="$(echo ${changed_file} | cut -d/ -f2)"           
-            #check="$(echo $changed_file | cut -d/ -f1)"
-           
-          #if [[ ! " ${dirs[@]} " =~ " ${dir} " ]]; then
-           #   if [[ "$check" ==  *"solution"* ]]; then
-            #    MATRIX_PARAMS_COMBINATIONS=$MATRIX_PARAMS_COMBINATIONS'{"solution": "'$dir'"},'
-             #   dirs+=($dir)
-              #  echo $MATRIX_PARAMS_COMBINATIONS
-              #fi
-           #fi
-          #done
-          #echo ::set-output name=matrix-combinations::{\"include\":[$MATRIX_PARAMS_COMBINATIONS]}
-          
-    #outputs:
-     # matrix-combinations: ${{ steps.setup-matrix-combinations.outputs.matrix-combinations }}
+      
       
   build:
     runs-on: ubuntu-latest
@@ -118,7 +64,6 @@ jobs:
         with:
           repository: devonfw/devonfw.github.io
           ref: develop
-          #submodules: recursive
           
       - name: Add new architectures
         uses: actions/checkout@v2
@@ -127,16 +72,12 @@ jobs:
           repository: ${{github.event.pull_request.head.repo.full_name}}
           path: architectures
           
+          
       - name: Setup Node
         uses: actions/setup-node@v2
 
       - name: Solutions from Stack repositories
-        run: |
-          pwd
-          ls
-          pwd
-          ls architectures
-        
+        run: |        
           cd architectures/scripts
           npm install
           node copySolutionsFromStack.js ../../devonfw-guide
@@ -159,8 +100,6 @@ jobs:
           source: architectures/index.scss
           destination: architectures/index.css
           
-      # asciidoctor tries to load gems dynamically to convert md and scss files.
-      # As this gems are not installed this is breaking the build.
       - name: Remove files that are breaking the build
         run: |
           rm architectures/README.md || true
@@ -179,11 +118,11 @@ jobs:
 
           
       - name: Run image generate
-        run: |  
-              npm install node-html-to-image-cli -g
-              
+        run: |                           
               mv target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/index.html  target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
               cd target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
+              
+              npm install node-html-to-image-cli -g
               node-html-to-image-cli ${{ matrix.solution }}.html ${{ matrix.solution }}.png
             
         
