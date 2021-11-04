@@ -22,6 +22,9 @@ jobs:
       - name: View PR author
         run: echo "This PR is opened by ${{ github.event.pull_request.user.login }} ."
         
+      - name: View PR Branch
+        run: echo "This PR is opened by ${{ github.event.pull_request.repository }} ."
+        
       - name: Extract branch name
         shell: bash
         run: echo " ${{ github.ref }}"
