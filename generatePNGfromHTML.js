@@ -1,4 +1,4 @@
-const nodeHtmlToImage = require('node-html-to-image')
+const nodeHtmlToImage = require('node-html-to-image');
 const fs = require('fs');
 const { Octokit } = require("@octokit/core");
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
