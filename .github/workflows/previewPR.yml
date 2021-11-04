@@ -10,8 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout architectures
-        uses: actions/checkout@v2
+      #- name: Checkout architectures
+        #uses: actions/checkout@v2
+        #with:
+          #ref: ${{github.event.pull_request.head.ref}}
+          #repository: ${{github.event.pull_request.head.repo.full_name}}
          
       - name: Install node environment
         uses: actions/setup-node@v2-beta
@@ -44,6 +47,9 @@ jobs:
             npm install @actions/core
             npm install @actions/github
             node changedFilesArchitectures.js
+        env:
+          PR_OWNER: ${{github.event.pull_request.owner}}
+          PR_REPO: ${{github.event.pull_request.repo}}
         
       - name: Get Architectures Checkout
         id: get_checkout
