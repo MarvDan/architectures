@@ -26,10 +26,10 @@ jobs:
         run: echo "This PR is opened by ${{ github.event.pull_request.head.repo.name }} ."
         
       - name: View PR Branch 2
-        run: echo "This PR is opened by ${{ github.event.pull_request.head.default_branch }} ."
+        run: echo "This PR is opened by ${{ github.event.pull_request.head.repo.default_branch }} ."
         
       - name: View PR Branch 3
-        run: echo "This PR is opened by ${{ github.event.pull_request.head.branches_url }} ."
+        run: echo "This PR is opened by ${{ github.event.pull_request.head.repo.branches_url }} ."
         
       - name: Extract branch name
         shell: bash
