@@ -7,8 +7,8 @@ async function getPlaybookCheckout() {
     let head = "";
     try {
         let get = await octokit.request('GET /repos/{owner}/{repo}/pulls/{pull_number}', {
-            owner: 'devonfw',
-            repo: 'architectures',
+            owner: process.env.PR_OWNER,
+            repo: process.env.PR_REPO,
             pull_number: pr
         });
         head = get.data.head;
