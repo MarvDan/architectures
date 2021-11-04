@@ -48,8 +48,8 @@ jobs:
             npm install @actions/github
             node changedFilesArchitectures.js
         env:
-          PR_OWNER: ${{github.event.pull_request.owner}}
-          PR_REPO: ${{github.event.pull_request.repo}}
+          PR_OWNER: ${{github.event.pull_request.head.repo.owner.login}}
+          PR_REPO: ${{github.event.pull_request.head.repo.name}}
         
       - name: Get Architectures Checkout
         id: get_checkout
