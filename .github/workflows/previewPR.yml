@@ -125,6 +125,8 @@ jobs:
               #cd target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
 
               pwd
+              ls ../../
+              pwd
               ls ../
               pwd
               ls
