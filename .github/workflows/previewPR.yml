@@ -118,7 +118,7 @@ jobs:
       - name: Add new architectures
         uses: actions/checkout@v2
         with:
-          repository: ${{ github.event.pull_request.user.login }}/architectures
+          repository: ${{ github.event.pull_request.user.login }}/${{ github.event.pull_request.head.repo.name }}
           path: devonfw.github.io/architectures
           
       - name: Setup Node
