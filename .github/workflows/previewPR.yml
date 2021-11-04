@@ -131,7 +131,7 @@ jobs:
               pwd
               ls
               pwd
-              ls/architectures
+              ls architectures
               
               npm install node-html-to-image-cli -g
               npm install @actions/github
