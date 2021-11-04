@@ -51,9 +51,9 @@ jobs:
           PR_OWNER: ${{github.event.pull_request.head.repo.owner.login}}
           PR_REPO: ${{github.event.pull_request.head.repo.name}}
         
-      - name: Get Architectures Checkout
-        id: get_checkout
-        run: node getArchitecturesCheckout.js
+     # - name: Get Architectures Checkout
+      #  id: get_checkout
+       # run: node getArchitecturesCheckout.js
         
       - name: Setup matrix combinations
         id: setup-matrix-combinations
