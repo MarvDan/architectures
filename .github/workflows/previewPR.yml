@@ -133,7 +133,7 @@ jobs:
               pwd
               ls
               
-              node generatePNGfromHTML.js
+              node architectures/generatePNGfromHTML.js
               #node-html-to-image-cli ${{ matrix.solution }}.html ${{ matrix.solution }}.png
         env:
           PR_SOLUTION: ${{ matrix.solution }}
