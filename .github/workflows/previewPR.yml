@@ -136,7 +136,7 @@ jobs:
               npm install node-html-to-image-cli -g
               npm install @actions/github
               
-              node generatePNGfromHTML.js
+              node architectures/generatePNGfromHTML.js
               #node-html-to-image-cli ${{ matrix.solution }}.html ${{ matrix.solution }}.png
         env:
           PR_SOLUTION: ${{ matrix.solution }}
