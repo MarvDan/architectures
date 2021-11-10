@@ -13,7 +13,7 @@ async function selectChangedFiles() {
   core.setOutput('get', get);
   core.setOutput('files', files);
 }
-const image = fs.readFileSync('./image.jpg');
+//const image = fs.readFileSync('./image.jpg');
 const base64Image = new Buffer.from(image).toString('base64');
 const dataURI = 'data:image/jpeg;base64,' + base64Image
 
