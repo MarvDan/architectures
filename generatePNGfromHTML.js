@@ -26,7 +26,7 @@ async function selectChangedFiles() {
 
 nodeHtmlToImage({
  // output: './image.png',
-  //html: '<html><body><img src="{{imageSource}}" /></body></html>',
+  html: '<html><body><img src="{{imageSource}}" /></body></html>',
   //content: { imageSource: dataURI }
 })
 
