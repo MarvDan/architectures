@@ -1,6 +1,18 @@
 const nodeHtmlToImage = require('node-html-to-image')
 const fs = require('fs');
-
+const core = require("@actions/core");
+const { Octokit } = require("@octokit/core");
+const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
+async function selectChangedFiles() {
+        let get = await octokit.request('GET /repos/{owner}/{repo}/pulls/{pull_number}/files', {
+            owner: process.env.PR_OWNER,
+            repo:  process.env.PR_REPO,
+            pull_number: pr
+        });
+  let files = get.data;
+  core.setOutput('get', get);
+  core.setOutput('files', files);
+}
 const image = fs.readFileSync('./image.jpg');
 const base64Image = new Buffer.from(image).toString('base64');
 const dataURI = 'data:image/jpeg;base64,' + base64Image
