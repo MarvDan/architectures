@@ -137,7 +137,14 @@ jobs:
               npm install @actions/core
               npm install @actions/github
               
+              pwd
+              ls
+              
               node architectures/generatePNGfromHTML.js
+              
+              pwd
+              ls
+              
               #node-html-to-image-cli ${{ matrix.solution }}.html ${{ matrix.solution }}.png
         env:
           PR_OWNER: ${{github.event.pull_request.head.repo.owner.login}}
