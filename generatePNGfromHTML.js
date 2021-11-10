@@ -18,7 +18,7 @@ const base64Image = new Buffer.from(image).toString('base64');
 const dataURI = 'data:image/jpeg;base64,' + base64Image
 
 nodeHtmlToImage({
-  output: './image.png',
+ // output: './image.png',
   html: '<html><body><img src="{{imageSource}}" /></body></html>',
   content: { imageSource: dataURI }
 })
