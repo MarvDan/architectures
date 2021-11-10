@@ -9,9 +9,16 @@ async function selectChangedFiles() {
             repo:  process.env.PR_REPO,
             pull_number: pr
         });
-  let files = get.data;
-  core.setOutput('get', get);
-  core.setOutput('files', files);
+        let arr = [];
+        let files = get.data;
+        
+        files.forEach(file => {
+            arr.push(file.filename)
+        });
+        
+  let output = arr.join(' ');
+  core.info(`Changed Files: ${output}`);
+  core.setOutput('changedFiles', output);
 }
 //const image = fs.readFileSync('./image.jpg');
 //const base64Image = new Buffer.from(image).toString('base64');
