@@ -134,6 +134,7 @@ jobs:
               ls architectures
               
               npm install node-html-to-image
+              npm install @actions/core
               npm install @actions/github
               
               node architectures/generatePNGfromHTML.js
