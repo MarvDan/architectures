@@ -140,12 +140,12 @@ jobs:
               pwd
               ls
               
-              node architectures/generatePNGfromHTML.js
+              #node architectures/generatePNGfromHTML.js
               
               pwd
               ls
               
-              #node-html-to-image-cli ${{ matrix.solution }}.html ${{ matrix.solution }}.png
+              node-html-to-image-cli ${{ matrix.solution }}.html ${{ matrix.solution }}.png
         env:
           PR_SOLUTION: ${{matrix.solution}}
           PR_REPO: ${{github.event.pull_request.head.repo.name}}
