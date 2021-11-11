@@ -14,6 +14,8 @@ jobs:
         run: | 
           pwd
           ls
+          pwd
+          ls ../
     
       - name: comment PR
         uses: machine-learning-apps/pr-comment@master
