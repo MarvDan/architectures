@@ -137,6 +137,8 @@ jobs:
               #npm install @actions/core
               #npm install @actions/github
               
+              npm i puppeteer
+              
               pwd
               ls
               
