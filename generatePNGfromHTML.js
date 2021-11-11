@@ -8,6 +8,40 @@ async function selectChangedFiles() {
     let pr = process.env.PR_NUMBER;
     let arr = [];
     try {
+        let get = await octokit.request('GET /target/generated-docs/website/pages/architectures/solutions/{solution}', {
+            owner: process.env.PR_SOLUTION,
+            repo:  process.env.PR_REPO,
+            pull_number: pr
+        });
+        let files = get.data;
+        files.forEach(file => {
+            arr.push(file.filename)
+        });
+        
+       core.info(`Changed Files1: ${get}`);
+       core.setOutput('changedFiles1', get);
+        
+       core.info(`Changed Files2: ${files}`);
+       core.setOutput('changedFiles2', files);
+        
+    } catch(e) {
+        throw e;
+    }
+    let output = arr.join(' ');
+    core.info(`Changed Files: ${output}`);
+    core.setOutput('changedFiles', output);
+}
+
+selectChangedFiles().catch(err => {
+    console.log(err);
+    process.exit(1); 
+});
+
+/*
+async function selectChangedFiles() {
+    let pr = process.env.PR_NUMBER;
+    let arr = [];
+    try {
         let get = await octokit.request('GET /repos/{owner}/{repo}/pulls/{pull_number}/files', {
             owner: process.env.PR_OWNER,
             repo:  process.env.PR_REPO,
@@ -36,6 +70,7 @@ selectChangedFiles().catch(err => {
     console.log(err);
     process.exit(1); 
 });
+*/
 
 //const image = fs.readFileSync('./image.jpg');
 //const base64Image = new Buffer.from(image).toString('base64');
