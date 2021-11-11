@@ -1,5 +1,5 @@
-//const nodeHtmlToImage = require('node-html-to-image')
-//const fs = require('fs');
+const nodeHtmlToImage = require('node-html-to-image')
+const fs = require('fs');
 const core = require("@actions/core");
 const { Octokit } = require("@octokit/core");
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
@@ -17,6 +17,13 @@ async function selectChangedFiles() {
         files.forEach(file => {
             arr.push(file.filename)
         });
+        
+       core.info(`Changed Files1: ${get}`);
+       core.setOutput('changedFiles1', get);
+        
+       core.info(`Changed Files2: ${files}`);
+       core.setOutput('changedFiles2', files);
+        
     } catch(e) {
         throw e;
     }
