@@ -1,3 +1,36 @@
+const puppeteer = require('puppeteer');
+const fs = require('fs-extra');
+
+(async function()
+{
+    try
+    {
+        const browser = await puppeteer.launch();
+        const page = await browser.newPage();
+        
+        await page.setContent('<h1>hello</h1>');
+        await page.emulateMedia('screen');
+        await page.pdf
+        ({
+            path: 'mypdf.pdf',
+            format: 'A4',
+            printBackground: true
+        });
+        
+        console.log('done');
+        await browser.close();
+        process.exit();
+    
+    } catch(e)
+    {
+        console.log('our error', e);
+    }
+
+    
+})();
+
+
+/*
 const nodeHtmlToImage = require('node-html-to-image')
 const fs = require('fs');
 const core = require("@actions/core");
@@ -36,7 +69,7 @@ selectChangedFiles().catch(err => {
     console.log(err);
     process.exit(1); 
 });
-
+*/
 /*
 async function selectChangedFiles() {
     let pr = process.env.PR_NUMBER;
