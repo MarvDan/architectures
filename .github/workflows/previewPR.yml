@@ -122,7 +122,7 @@ jobs:
               #ls target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
               mv target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/index.html  target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
               #ls target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
-              #cd target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
+              cd target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
 
               
               pwd
