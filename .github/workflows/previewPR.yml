@@ -130,7 +130,9 @@ jobs:
 
               #sudo npm install -g pageres-cli
               
-              #pageres ${{ matrix.solution }}.com 1280x800 --format=jpg
+              npm install --global pageres-cli
+              
+              pageres ${{ matrix.solution }}.html 1280x800 --format=png --filename="${{ matrix.solution }}"
               
               pwd
               ls
