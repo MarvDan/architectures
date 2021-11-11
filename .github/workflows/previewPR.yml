@@ -147,7 +147,7 @@ jobs:
               
               #node-html-to-image-cli ${{ matrix.solution }}.html ${{ matrix.solution }}.png
         env:
-          PR_OWNER: ${{github.event.pull_request.head.repo.owner.login}}
+          PR_SOLUTION: ${{matrix.solution}
           PR_REPO: ${{github.event.pull_request.head.repo.name}}
         
       - name: Artifact build
