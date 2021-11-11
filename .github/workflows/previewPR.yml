@@ -119,48 +119,22 @@ jobs:
           
       - name: Run image generate
         run: |                           
-              ls target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
+              #ls target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
               mv target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/index.html  target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
-              ls target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
+              #ls target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
               #cd target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
 
-              pwd
-              ls ../../
-              pwd
-              ls ../
-              pwd
-              ls
-              pwd
-              ls architectures
-              
-              #npm install node-html-to-image -g
-              #npm install @actions/core
-              #npm install @actions/github
-              
-              #npm i puppeteer
-              #npm i fs-extra
               
               pwd
               ls
-              
-              #node architectures/generatePNGfromHTML.js
-              
-              #npm install phantom
-              #phantom rasterize.js http://www.${{ matrix.solution }}.com TEST.png
 
-              
-              #node-html-to-image-cli ${{ matrix.solution }}.html ${{ matrix.solution }}.png
-              
-              npm i pageres-cli
+              sudo npm install -g pageres-cli
               
               pageres ${{ matrix.solution }}.com 1280x800 --format=jpg
               
               pwd
               ls
               
-        env:
-          PR_SOLUTION: ${{matrix.solution}}
-          PR_REPO: ${{github.event.pull_request.head.repo.name}}
         
       - name: Artifact build
         uses: actions/upload-artifact@v2
