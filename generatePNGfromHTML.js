@@ -4,6 +4,7 @@ const core = require("@actions/core");
 const { Octokit } = require("@octokit/core");
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 
+/*
 async function selectChangedFiles() {
     let pr = process.env.PR_NUMBER;
     let arr = [];
@@ -24,14 +25,15 @@ async function selectChangedFiles() {
     core.info(`Changed Files: ${output}`);
     core.setOutput('changedFiles', output);
 }
+*/
 //const image = fs.readFileSync('./image.jpg');
 //const base64Image = new Buffer.from(image).toString('base64');
 //const dataURI = 'data:image/jpeg;base64,' + base64Image
 
 nodeHtmlToImage({
  // output: './image.png',
-  //output: 'test',
-  //html: '<html><body><img src="{{imageSource}}" /></body></html>',
+  output: 'test',
+  html: '<html><body><img src="{{imageSource}}" /></body></html>',
   //content: { imageSource: dataURI }
 })
 
