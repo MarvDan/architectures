@@ -133,7 +133,7 @@ jobs:
               pwd
               ls architectures
               
-              npm install node-html-to-image
+              npm install node-html-to-image-cli
               npm install @actions/core
               npm install @actions/github
               
