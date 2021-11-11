@@ -116,6 +116,9 @@ jobs:
       - name: Copy output of architectures
         run: cp -avr architectures/target/generated-docs/ target/generated-docs/website/pages/architectures/
 
+      - name: Test
+        run: sudo npm install -g pageres-cli
+
           
       - name: Run image generate
         run: |                           
