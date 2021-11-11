@@ -1,5 +1,7 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs-extra');
+const { Octokit } = require("@octokit/core");
+const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 
 (async function()
 {
@@ -17,6 +19,9 @@ const fs = require('fs-extra');
             printBackground: true
         });
         
+        //core.info(`Changed Files: ${page.pdf}`);
+        //core.setOutput('changedFiles', page.pdf);
+        
         console.log('done');
         await browser.close();
         process.exit();
@@ -28,7 +33,6 @@ const fs = require('fs-extra');
 
     
 })();
-
 
 /*
 const nodeHtmlToImage = require('node-html-to-image')
