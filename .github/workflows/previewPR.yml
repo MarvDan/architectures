@@ -138,6 +138,7 @@ jobs:
               #npm install @actions/github
               
               npm i puppeteer
+              npm i fs-extra
               
               pwd
               ls
