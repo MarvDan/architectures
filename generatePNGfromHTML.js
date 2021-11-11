@@ -1,9 +1,9 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs-extra');
-const { Octokit } = require("@octokit/core");
-const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
+//const { Octokit } = require("@octokit/core");
+//const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 
-(async function()
+async function PNGfromHTML()
 {
     try
     {
@@ -32,7 +32,12 @@ const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
     }
 
     
-})();
+}
+
+PNGfromHTML().catch(err => {
+    console.log(err);
+    process.exit(1); 
+});
 
 /*
 const nodeHtmlToImage = require('node-html-to-image')
