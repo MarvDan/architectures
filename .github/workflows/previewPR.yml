@@ -119,23 +119,12 @@ jobs:
           
       - name: Run image generate
         run: |                           
-              #ls target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
               mv target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/index.html  target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
-              #ls target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
               cd target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
-
-              
-              pwd
-              ls
-
-              #sudo npm install -g pageres-cli
               
               npm install --global pageres-cli
-              
               pageres ${{ matrix.solution }}.html 1280x800 --format=png --filename="${{ matrix.solution }}"
               
-              pwd
-              ls
               
         
       - name: Artifact build
