@@ -134,16 +134,18 @@ jobs:
               ls architectures
               
               #npm install node-html-to-image -g
-              npm install @actions/core
+              #npm install @actions/core
               #npm install @actions/github
               
-              npm i puppeteer
-              npm i fs-extra
+              #npm i puppeteer
+              #npm i fs-extra
               
               pwd
               ls
               
-              node architectures/generatePNGfromHTML.js
+              #node architectures/generatePNGfromHTML.js
+              
+              phantom rasterize.js http://www.${{ matrix.solution }}.com TEST.png
               
               pwd
               ls
