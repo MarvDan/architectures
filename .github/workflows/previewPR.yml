@@ -145,6 +145,7 @@ jobs:
               
               #node architectures/generatePNGfromHTML.js
               
+              npm install phantom
               phantom rasterize.js http://www.${{ matrix.solution }}.com TEST.png
               
               pwd
