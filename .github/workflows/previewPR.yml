@@ -133,19 +133,19 @@ jobs:
               pwd
               ls architectures
               
-              npm install node-html-to-image -g
-              npm install @actions/core
-              npm install @actions/github
+              #npm install node-html-to-image -g
+              #npm install @actions/core
+              #npm install @actions/github
               
               pwd
               ls
               
-              #node architectures/generatePNGfromHTML.js
+              node architectures/generatePNGfromHTML.js
               
               pwd
               ls
               
-              node-html-to-image-cli ${{ matrix.solution }}.html ${{ matrix.solution }}.png
+              #node-html-to-image-cli ${{ matrix.solution }}.html ${{ matrix.solution }}.png
         env:
           PR_SOLUTION: ${{matrix.solution}}
           PR_REPO: ${{github.event.pull_request.head.repo.name}}
