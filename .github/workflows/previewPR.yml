@@ -115,10 +115,7 @@ jobs:
 
       - name: Copy output of architectures
         run: cp -avr architectures/target/generated-docs/ target/generated-docs/website/pages/architectures/
-
-      - name: Test
-        run: sudo npm install -g pageres-cli
-
+        
           
       - name: Run image generate
         run: |                           
@@ -131,9 +128,9 @@ jobs:
               pwd
               ls
 
-              sudo npm install -g pageres-cli
+              #sudo npm install -g pageres-cli
               
-              pageres ${{ matrix.solution }}.com 1280x800 --format=jpg
+              #pageres ${{ matrix.solution }}.com 1280x800 --format=jpg
               
               pwd
               ls
