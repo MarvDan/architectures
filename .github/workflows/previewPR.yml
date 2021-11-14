@@ -133,12 +133,22 @@ jobs:
         uses: actions/upload-artifact@master
         with: 
           name: download-asset
-          path: target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
+          path: target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
           
   comment:
       needs: build
       runs-on: windows-2019
       steps:
+      
+      - name: add artifact links to pull request and related issues step
+        uses: tonyhallett/artifacts-url-comments@v1.1.0
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+            prefix: Here are the artifacts 
+            suffix: Have a nice day.
+            format: name
+            addTo: pullandissues
       
       - name: Action Checkout master
         uses: actions/checkout@master
@@ -148,21 +158,14 @@ jobs:
         with:
           name: my-artifact
           path: target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
-      - name: Check 
-        run: |
-           pwd
-           ls
-           pwd
-           ls target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
+          
+      #- name: Check 
+        #run: |
+           #pwd
+           #ls
+           #pwd
+           #ls target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
       
 
 
-      - name: add artifact links to pull request and related issues step
-        uses: tonyhallett/artifacts-url-comments@v1.1.0
-        env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-            prefix: Here are the artifacts 
-            suffix: Have a nice day.
-            format: name
-            addTo: pullandissues              
+              
