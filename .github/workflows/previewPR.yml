@@ -164,7 +164,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          path: allArtifacts
+          path: allArtifacts/
       
      # - name: Download artifact
         #uses: dawidd6/action-download-artifact@v2
