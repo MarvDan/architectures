@@ -136,6 +136,7 @@ jobs:
           path: target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
           
   comment:
+      needs: build
       runs-on: windows-2019
       steps:
       
