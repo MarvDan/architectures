@@ -127,9 +127,17 @@ jobs:
               
               pwd
               ls
+              pwd
+              cd ../../../../../../../
+              pwd
+              ls
               
               mkdir artifactsTEST
+              mv target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
               mv getArtifact.js artifactsTEST
+              
+              pwd
+              ls artifactsTEST
               
       - name: Action Checkout 1
         uses: actions/checkout@v1
