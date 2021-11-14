@@ -158,13 +158,26 @@ jobs:
           ls
           pwd 
           ls allArtifacts
+          echo OWNER: ${github.repository_owner}
+          echo REPO:  ${github.repository}
           
-      - name: comment PR
-        uses: machine-learning-apps/pr-comment@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Upload
+        uses: mshick/add-pr-comment@v1
         with:
-          path: allArtifacts/
+          message: |
+            The artifacts url is https://github.com/repos/${github.repository_owner}/${github.repository}/actions/artifacts
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
+          allow-repeats: false # This is the default
+          
+          
+      #- name: comment PR
+       # uses: machine-learning-apps/pr-comment@master
+        #env:
+         # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       # with:
+        #  path: allArtifacts/
       
      # - name: Download artifact
         #uses: dawidd6/action-download-artifact@v2
