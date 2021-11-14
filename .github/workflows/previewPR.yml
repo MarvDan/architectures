@@ -135,7 +135,7 @@ jobs:
         uses: actions/upload-artifact@v2
         #uses: actions/upload-artifact@master
         with: 
-          name: download-asset
+          name: my-artifact
           path: target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
           
   comment:
@@ -150,7 +150,12 @@ jobs:
         uses: actions/download-artifact@master
         with:
           name: my-artifact
-          path: artifactsTEST
+          #path: artifactsTEST
+          
+      - name: Show
+        run: |
+          pwd
+          ls
       
       - name: Download artifact
         uses: dawidd6/action-download-artifact@v2
