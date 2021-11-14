@@ -158,15 +158,15 @@ jobs:
           ls
           pwd 
           ls allArtifacts
-          echo OWNER: ${github.repository_owner}
-          echo REPO:  ${github.repository}
+          echo OWNER: ${{github.event.pull_request.head.repo.owner.login}}
+          echo REPO:   ${{github.event.pull_request.head.repo.name}}
           
           
       - name: Upload
         uses: mshick/add-pr-comment@v1
         with:
           message: |
-            The artifacts url is https://github.com/repos/${github.repository_owner}/${github.repository}/actions/artifacts
+            The artifacts url is https://github.com/repos/${{github.event.pull_request.head.repo.owner.login}}/${{github.event.pull_request.head.repo.name}}/actions/artifacts
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
           allow-repeats: false # This is the default
