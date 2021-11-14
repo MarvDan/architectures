@@ -158,7 +158,7 @@ jobs:
         with:
           name: my-artifact
           path: target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
-          
+          #
       #- name: Check 
         #run: |
            #pwd
