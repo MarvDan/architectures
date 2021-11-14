@@ -133,7 +133,7 @@ jobs:
         uses: actions/upload-artifact@master
         with: 
           name: download-asset
-          path: target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
+          path: target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
           
   comment:
       needs: build
