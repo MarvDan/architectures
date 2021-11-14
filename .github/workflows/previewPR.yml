@@ -150,18 +150,27 @@ jobs:
         uses: actions/download-artifact@master
         with:
           name: my-artifact
-          #path: artifactsTEST
+          path: allArtifacts
           
       - name: Show
         run: |
           pwd
           ls
-      
-      - name: Download artifact
-        uses: dawidd6/action-download-artifact@v2
+          pwd 
+          ls allArtifacts
+          
+      - name: comment PR
+        uses: machine-learning-apps/pr-comment@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          workflow: ${{ github.event.workflow_run.workflow_id }}
-          workflow_conclusion: success
+          path: allArtifacts
+      
+     # - name: Download artifact
+        #uses: dawidd6/action-download-artifact@v2
+        #with:
+          #workflow: ${{ github.event.workflow_run.workflow_id }}
+          #workflow_conclusion: success
 
           #
       #- name: Check 
