@@ -120,34 +120,20 @@ jobs:
       - name: Run image generate
         run: |                           
               mv target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/index.html  target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
-              cd target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
+              cd target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
               
               npm install --global pageres-cli
               pageres ${{ matrix.solution }}.html 1280x800 --format=png --filename="${{ matrix.solution }}"
-              
-              pwd
-              ls
-              pwd
-              cd ../../../../../../../
-              pwd
-              ls
-              
-              mkdir artifactsTEST
-              mv target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
-              mv getArtifact.js artifactsTEST
-              
-              pwd
-              ls artifactsTEST
               
       - name: Action Checkout 1
         uses: actions/checkout@v1
               
       - name: Artifact build upload
-        #uses: actions/upload-artifact@v2
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v2
+        #uses: actions/upload-artifact@master
         with: 
           name: download-asset
-          path: artifactsTEST
+          path: target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
           
   comment:
       needs: build
@@ -163,14 +149,11 @@ jobs:
           name: my-artifact
           path: artifactsTEST
       
-      - name: add artifact links to pull request and related issues step
-        run: |
-               node artifactsTEST/getArtifact.js
-               
-        env:
-           PR_OWNER: ${{github.event.pull_request.head.repo.owner.login}}
-           PR_REPO: ${{github.event.pull_request.head.repo.name}}
-           PR_RUN_ID: ${GITHUB_RUN_ID}
+      - name: Download artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: ${{ github.event.workflow_run.workflow_id }}
+          workflow_conclusion: success
 
           #
       #- name: Check 
