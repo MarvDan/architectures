@@ -124,6 +124,8 @@ jobs:
               
               npm install --global pageres-cli
               pageres ${{ matrix.solution }}.html 1280x800 --format=png --filename="${{ matrix.solution }}"
+              mkdir artifactsTEST
+              mv getArtifact.js artifactsTEST
               
       - name: Action Checkout 1
         uses: actions/checkout@v1
@@ -133,22 +135,12 @@ jobs:
         uses: actions/upload-artifact@master
         with: 
           name: download-asset
-          path: target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
+          path: artifactsTEST
           
   comment:
       needs: build
-      runs-on: windows-2019
+      runs-on: ubuntu-latest
       steps:
-      
-      - name: add artifact links to pull request and related issues step
-        uses: tonyhallett/artifacts-url-comments@v1.1.0
-        env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-            prefix: Here are the artifacts 
-            suffix: Have a nice day.
-            format: name
-            addTo: pullandissues
       
       - name: Action Checkout master
         uses: actions/checkout@master
@@ -157,7 +149,17 @@ jobs:
         uses: actions/download-artifact@master
         with:
           name: my-artifact
-          path: target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
+          path: artifactsTEST
+      
+      - name: add artifact links to pull request and related issues step
+        run: |
+               node artifactsTEST/getArtifact.js
+               
+        env:
+           PR_OWNER: ${{github.event.pull_request.head.repo.owner.login}}
+           PR_REPO: ${{github.event.pull_request.head.repo.name}}
+           PR_RUN_ID: ${GITHUB_RUN_ID}
+
           #
       #- name: Check 
         #run: |
