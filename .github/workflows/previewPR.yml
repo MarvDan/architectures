@@ -183,7 +183,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          path: my-artifact/allArtifacts
+          path: my-artifact/communication.png
       
       #- name: Download artifact
        # uses: dawidd6/action-download-artifact@v2
