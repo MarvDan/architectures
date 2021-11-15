@@ -160,7 +160,7 @@ jobs:
           ls allArtifacts
           echo OWNER: ${{github.event.pull_request.head.repo.owner.login}}
           echo REPO:   ${{github.event.pull_request.head.repo.name}}
-          echo: -------------
+          echo -------------
           echo testREPO: ${{ github.repository }}
           echo testID: ${{ github.event.client_payload.checkrunid }}
           
