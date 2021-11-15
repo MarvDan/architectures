@@ -177,18 +177,18 @@ jobs:
           allow-repeats: false # This is the default
           
           
-      #- name: comment PR
-       # uses: machine-learning-apps/pr-comment@master
-        #env:
-         # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-       # with:
-        #  path: allArtifacts/
-      
-      - name: Download artifact
-        uses: dawidd6/action-download-artifact@v2
+      - name: comment PR
+        uses: machine-learning-apps/pr-comment@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          workflow: ${{ github.event.workflow_run.workflow_id }}
-          workflow_conclusion: success
+          path: allArtifacts/communication.png
+      
+      #- name: Download artifact
+       # uses: dawidd6/action-download-artifact@v2
+        #with:
+         # workflow: ${{ github.event.workflow_run.workflow_id }}
+          #workflow_conclusion: success
 
           #
       #- name: Check 
