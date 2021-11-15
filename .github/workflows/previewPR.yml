@@ -173,7 +173,7 @@ jobs:
             #The artifacts url is https://github.com/repos/${{github.event.pull_request.head.repo.owner.login}}/${{github.event.pull_request.head.repo.name}}/actions/artifacts
             #The artifacts url is https://github.com/${{github.event.pull_request.head.repo.owner.login}}/${{github.event.pull_request.head.repo.name}}/${{github.event.pull_request.head.repo.owner.login}}/${{ github.event.client_payload.checkrunid }}/artifacts
             #The artifacts url is https://github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts
-            The artifacts url is GET /repos/${{github.event.pull_request.head.repo.owner.login}}/${{github.event.pull_request.head.repo.name}}/actions/artifacts
+            The artifacts url is https://github.com/repos/${{github.event.pull_request.head.repo.owner.login}}/${{github.event.pull_request.head.repo.name}}/actions/artifacts
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
           allow-repeats: false # This is the default
