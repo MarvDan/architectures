@@ -26,10 +26,6 @@ jobs:
         env:
           PR_OWNER: ${{github.event.pull_request.head.repo.owner.login}}
           PR_REPO: ${{github.event.pull_request.head.repo.name}}
-          
-      - name: Target architect
-        run: |
-              ${{artifacts.url}}
         
       - name: Setup matrix combinations
         id: setup-matrix-combinations
