@@ -170,24 +170,24 @@ jobs:
           echo testID: ${{ github.event.client_payload.checkrunid }}
           
           
-      - name: Upload
-        uses: mshick/add-pr-comment@v1
-        with:
-          message: |
-            The artifacts url is https://github.com/repos/${{github.event.pull_request.head.repo.owner.login}}/${{github.event.pull_request.head.repo.name}}/actions/artifacts
-            The artifacts url is https://github.com/${{github.event.pull_request.head.repo.owner.login}}/${{github.event.pull_request.head.repo.name}}/${{github.event.pull_request.head.repo.owner.login}}/${{ github.event.client_payload.checkrunid }}/artifacts
-            The artifacts url is https://github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
+      #- name: Upload
+       # uses: mshick/add-pr-comment@v1
+        #with:
+         # message: |
+          #  The artifacts url is https://github.com/repos/${{github.event.pull_request.head.repo.owner.login}}/${{github.event.pull_request.head.repo.name}}/actions/artifacts
+           # The artifacts url is https://github.com/${{github.event.pull_request.head.repo.owner.login}}/${{github.event.pull_request.head.repo.name}}/${{github.event.pull_request.head.repo.owner.login}}/${{ github.event.client_payload.checkrunid }}/artifacts
+            #The artifacts url is https://github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts
+          #repo-token: ${{ secrets.GITHUB_TOKEN }}
+          #repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
           allow-repeats: false # This is the default
           
           
-      #- name: comment PR
-       # uses: machine-learning-apps/pr-comment@master
-        #env:
-         # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        #with:
-         # path: allArtifacts/communication.png
+      - name: comment PR
+        uses: machine-learning-apps/pr-comment@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          path: allArtifacts
       
       #- name: Download artifact
        # uses: dawidd6/action-download-artifact@v2
