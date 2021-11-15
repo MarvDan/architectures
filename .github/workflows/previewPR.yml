@@ -29,13 +29,7 @@ jobs:
           
       - name: Target architect
         run: |
-            npm install @actions/core
-            npm install @actions/github
-            node getArchitact.js
-        env:
-          PR_OWNER: ${{github.event.pull_request.head.repo.owner.login}}
-          PR_REPO: ${{github.event.pull_request.head.repo.name}}   
-          PR_RUN_ID: ${{ github.run_id }}
+              ${{artifacts.url}}
         
       - name: Setup matrix combinations
         id: setup-matrix-combinations
