@@ -151,6 +151,7 @@ jobs:
         with:
           name: my-artifact
           path: allArtifacts
+          target: my-artifact
           
       - name: Show
         run: |
@@ -177,12 +178,12 @@ jobs:
           allow-repeats: false # This is the default
           
           
-      - name: comment PR
-        uses: machine-learning-apps/pr-comment@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          path: allArtifacts/communication.png
+      #- name: comment PR
+       # uses: machine-learning-apps/pr-comment@master
+        #env:
+         # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        #with:
+         # path: allArtifacts/communication.png
       
       #- name: Download artifact
        # uses: dawidd6/action-download-artifact@v2
