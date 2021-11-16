@@ -9,6 +9,7 @@ Communication is a very important aspect while building IT application, especial
 
 * Which services have to communicate with which services? to exchange which type of data?
 * How should the communication look like? in a synchronous way or asynchronous way?
+*TESTING SCRIPT
 
 Once you have your answers, make your choices on concrete protocols, products and libraries. Using multiple of them in your application is fine.
 

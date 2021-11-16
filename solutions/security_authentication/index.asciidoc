@@ -47,6 +47,7 @@ We recommend the following conventions:
 * use a cloud infrastructure platform that allows to manage an overlay network so you can configure loadbalancers or even a https://platform9.com/blog/kubernetes-service-mesh-a-comparison-of-istio-linkerd-and-consul/[service-mesh] mapping your service entry points to a consistent URL schema such as `https://«app-id»:8443/«app-id»/`
 * this way you do not need any configuration or business knowledge inside your gateway as the routing can be implemented fully generic
 * use `app-id.` as a prefix to all permission groups/roles specific to your service to avoid name clashing in your central IAM
+* TESTING
 
 === Related documentations
 
