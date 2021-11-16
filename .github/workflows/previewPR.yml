@@ -168,7 +168,7 @@ jobs:
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v1
         with:
-          token: ${{ secrets.PAT1 }}
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
           repository: ${{github.event.pull_request.head.repo.owner.login}}/${{github.event.pull_request.head.repo.name}}
           event-type: my-event
           client-payload: '{"prnumber": "${{ github.event.number }}", "checkrunid": "${{ github.run_id }}"}'
