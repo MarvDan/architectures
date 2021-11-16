@@ -38,11 +38,6 @@ jobs:
               if [[ "$check" ==  *"solution"* ]]; then
                   MATRIX_PARAMS_COMBINATIONS=$MATRIX_PARAMS_COMBINATIONS'{"solution": "'$dir'"},'
                   dirs+=($dir)
-                  echo $MATRIX_PARAMS_COMBINATIONS
-                  echo $changed_file
-                  echo $check
-                  echo ${dir}
-                  echo ----
               fi
             fi
           done
@@ -124,16 +119,10 @@ jobs:
               
               npm install --global pageres-cli
               pageres ${{ matrix.solution }}.html 1280x800 --format=png --filename="${{ matrix.solution }}"
-              
-              pwd
-              ls
-              
-      #- name: Action Checkout 1
-        #uses: actions/checkout@v1
+
               
       - name: Artifact build upload
         uses: actions/upload-artifact@v2
-        #uses: actions/upload-artifact@master
         with: 
           name: my-artifact
           path: target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
@@ -143,27 +132,11 @@ jobs:
       runs-on: ubuntu-latest
       steps:
       
-    #  - name: Action Checkout master
-     #   uses: actions/checkout@master
-      
       - name: Download Artifact
         uses: actions/download-artifact@master
         with:
           name: my-artifact
           path: allArtifacts
-          #target: my-artifact
-          
-      - name: Show
-        run: |
-          pwd
-          ls
-          pwd 
-          ls allArtifacts
-          echo OWNER: ${{github.event.pull_request.head.repo.owner.login}}
-          echo REPO:   ${{github.event.pull_request.head.repo.name}}
-          echo -------------
-          #echo testREPO: ${{ github.repository }}
-          echo testID: ${{ github.event.client_payload.checkrunid }}
           
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v1
@@ -174,40 +147,14 @@ jobs:
           client-payload: '{"prnumber": "${{ github.event.number }}", "checkrunid": "${{ github.run_id }}"}'
           
 
-      #- name: Upload
-        #uses: mshick/add-pr-comment@v1
-        #with:
-          #message: |
-            #The artifacts url is https://github.com/repos/${{github.event.pull_request.head.repo.owner.login}}/${{github.event.pull_request.head.repo.name}}/actions/artifacts
-            #The artifacts url is https://github.com/${{github.event.pull_request.head.repo.owner.login}}/${{github.event.pull_request.head.repo.name}}/${{github.event.pull_request.head.repo.owner.login}}/${{ github.event.client_payload.checkrunid }}/artifacts
-            #The artifacts url is https://github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts
-            #The artifacts url is https://github.com/${{github.event.pull_request.head.repo.owner.login}}/${{github.event.pull_request.head.repo.name}}/suites/${{ github.event.client_payload.checkrunid }}/artifacts/
-           # The perfect artifact url is https://github.com/MarvDan/architectures/suites/4363851864/artifacts/114690774
-          #repo-token: ${{ secrets.GITHUB_TOKEN }}
-          #repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
-          #allow-repeats: false # This is the default
-          
-          
-      #- name: comment PR
-       # uses: machine-learning-apps/pr-comment@master
-        #env:
-         # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        #with:
-         # path: my-artifact/communication.png
-      
-      #- name: Download artifact
-       # uses: dawidd6/action-download-artifact@v2
-        #with:
-         # workflow: ${{ github.event.workflow_run.workflow_id }}
-          #workflow_conclusion: success
-
-          #
-      #- name: Check 
-        #run: |
-           #pwd
-           #ls
-           #pwd
-           #ls target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
+      - name: Upload Comment
+        uses: mshick/add-pr-comment@v1
+        with:
+          message: |
+            The artifact is build and you can see it at: Actions - choose your workflow - below you can download your generated artifact
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
+          allow-repeats: false # This is the default
       
 
 
