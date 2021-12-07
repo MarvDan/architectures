@@ -1,28 +1,39 @@
 name: previewPR
+
 env:
   PR_NUMBER: ${{github.event.number}}
   
 on:
   pull_request_target 
   
+  
+  
 jobs:
   setup-matrix:
     runs-on: ubuntu-latest
+    
     
     steps:
       - name: Checkout architectures
         uses: actions/checkout@v2
       - name: Install node environment
         uses: actions/setup-node@v2-beta
+        
       - name: npm install
-        run: npm install
+        run: |
+          cd scripts
+          npm install
+          cd ../
           
       - name: Select Changed Files
         id: changedfiles
         run: | 
+            cd scripts
             npm install @actions/core
             npm install @actions/github
             node changedFilesArchitectures.js
+            cd ../
+
         env:
           PR_OWNER: ${{github.event.pull_request.head.repo.owner.login}}
           PR_REPO: ${{github.event.pull_request.head.repo.name}}
@@ -48,12 +59,14 @@ jobs:
       
       
       
+      
   build:
     runs-on: ubuntu-latest
     needs: setup-matrix
     strategy:
       matrix: ${{ fromJson(needs.setup-matrix.outputs.matrix-combinations) }}
     steps:
+      
       
       - name: Clone
         uses: actions/checkout@v2
@@ -110,7 +123,6 @@ jobs:
 
       - name: Copy output of architectures
         run: cp -avr architectures/target/generated-docs/ target/generated-docs/website/pages/architectures/
-        
           
       - name: Run image generate
         run: |                           
@@ -119,7 +131,6 @@ jobs:
               
               npm install --global pageres-cli
               pageres ${{ matrix.solution }}.html 1280x800 --format=png --filename="${{ matrix.solution }}"
-
               
       - name: Artifact build upload
         uses: actions/upload-artifact@v2
@@ -129,10 +140,12 @@ jobs:
           
           
           
+          
   comment:
       needs: build
       runs-on: ubuntu-latest
       steps:
+      
       
       - name: Download Artifact
         uses: actions/download-artifact@master
@@ -148,7 +161,6 @@ jobs:
           event-type: my-event
           client-payload: '{"prnumber": "${{ github.event.number }}", "checkrunid": "${{ github.run_id }}"}'
           
-
       - name: Upload Comment
         uses: mshick/add-pr-comment@v1
         with:
@@ -157,4 +169,4 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
           allow-repeats: false # This is the default
-     
+    
