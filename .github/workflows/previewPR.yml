@@ -21,11 +21,9 @@ jobs:
         
       - name: npm install
         run: |
-            pwd 
-            ls
-            cd scripts
-            npm install
-            cd ../
+          cd scripts
+          npm install
+          cd ../
           
       - name: Select Changed Files
         id: changedfiles
@@ -35,6 +33,7 @@ jobs:
             npm install @actions/github
             node changedFilesArchitectures.js
             cd ../
+
         env:
           PR_OWNER: ${{github.event.pull_request.head.repo.owner.login}}
           PR_REPO: ${{github.event.pull_request.head.repo.name}}
@@ -170,5 +169,4 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
           allow-repeats: false # This is the default
-      
-        
+    
