@@ -17,6 +17,7 @@ You should be not forced to rewrite big amount of business logic code just becau
 * or replace storage technology,
 * or you want to migrate from one cloud provider to another cloud provider,
 * or ...
+* test final
 
 Eventually, you don't want your domain code base to be scattered and obscured with technological details such as HTTP exceptions, SQL code, JPA/Spring annotations, etc.
 
