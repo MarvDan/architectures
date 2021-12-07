@@ -13,7 +13,6 @@ This article mainly focuses on below topics:
 - Cloud Storage requirement
 - Types of Cloud Storage
 - Product and services offered by different vendors
-- test
 
 === What is Cloud Storage?
 
