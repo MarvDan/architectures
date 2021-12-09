@@ -30,9 +30,7 @@ jobs:
         run: | 
             cd scripts
             npm install @actions/core
-            npm install @actions/github
-            npm fund
-            npm audit fix
+            #npm install @actions/github
             node changedFilesArchitectures.js
             cd ../
         env:
