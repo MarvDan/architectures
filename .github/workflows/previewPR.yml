@@ -53,9 +53,9 @@ jobs:
             fi
             
             #if [[ ! " ${dirs[@]} " =~ " ${dir} " ]]; then
-            if[-z "$check"]; then
+            if["$check"]; then
                #MATRIX_PARAMS_COMBINATIONS=$MATRIX_PARAMS_COMBINATIONS'{"solution": "'noChange'"}'
-               echo test
+               echo $check
             fi
           done
           echo ::set-output name=matrix-combinations::{\"include\":[$MATRIX_PARAMS_COMBINATIONS]}
