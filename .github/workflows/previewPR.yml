@@ -53,7 +53,7 @@ jobs:
             fi
             
             #if [[ ! " ${dirs[@]} " =~ " ${dir} " ]]; then
-            if[-z "$dir"]; then
+            if[-z "$check"]; then
                #MATRIX_PARAMS_COMBINATIONS=$MATRIX_PARAMS_COMBINATIONS'{"solution": "'noChange'"}'
                echo test
             fi
