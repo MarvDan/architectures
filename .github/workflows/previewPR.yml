@@ -51,7 +51,7 @@ jobs:
                   echo $MATRIX_PARAMS_COMBINATIONS
               fi
             fi
-            if[[ -z "${MATRIX_PARAMS_COMBINATIONS// }" ]]
+            if[[ -z "${dir// }" ]]
                # MATRIX_PARAMS_COMBINATIONS=$MATRIX_PARAMS_COMBINATIONS'{"solution": "'noChange'"}'
             fi
           done
