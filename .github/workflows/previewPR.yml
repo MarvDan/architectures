@@ -52,8 +52,8 @@ jobs:
               fi
             fi
             
-            if [[ ! " ${dirs[@]} " =~ " ${dir} " ]]; then
-            #if[[-z "$dir"]]; then
+            #if [[ ! " ${dirs[@]} " =~ " ${dir} " ]]; then
+            if[-z "$dir"]; then
                #MATRIX_PARAMS_COMBINATIONS=$MATRIX_PARAMS_COMBINATIONS'{"solution": "'noChange'"}'
                echo test
             fi
