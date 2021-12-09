@@ -51,8 +51,10 @@ jobs:
                   echo $MATRIX_PARAMS_COMBINATIONS
               fi
             fi
-            if[[ -z "${dir// }" ]]
-               # MATRIX_PARAMS_COMBINATIONS=$MATRIX_PARAMS_COMBINATIONS'{"solution": "'noChange'"}'
+            
+            if[-z "$dir"]
+               #MATRIX_PARAMS_COMBINATIONS=$MATRIX_PARAMS_COMBINATIONS'{"solution": "'noChange'"}'
+               echo test
             fi
           done
           echo ::set-output name=matrix-combinations::{\"include\":[$MATRIX_PARAMS_COMBINATIONS]}
