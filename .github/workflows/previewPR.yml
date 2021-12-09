@@ -57,6 +57,8 @@ jobs:
           
           if [ "$MATRIX_PARAMS_COMBINATIONS" == "" ]; then
             echo leer
+            MATRIX_PARAMS_COMBINATIONS=$MATRIX_PARAMS_COMBINATIONS'{"solution": "'noChange'"}'
+            echo ::set-output name=matrix-combinations::{\"include\":[$MATRIX_PARAMS_COMBINATIONS]}
           else
             echo voll
           fi
