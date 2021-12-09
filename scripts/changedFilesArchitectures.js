@@ -15,12 +15,15 @@ async function selectChangedFiles() {
         files.forEach(file => {
             arr.push(file.filename)
         });
+    core.info(`Changed Files: ${get}`);
+    core.setOutput('changedFiles', get);
+        
     } catch(e) {
         throw e;
     }
     let output = arr.join(' ');
-    core.info(`Changed Files: ${get}`);
-    core.setOutput('changedFiles', get);
+    //core.info(`Changed Files: ${output}`);
+    //core.setOutput('changedFiles', output);
 }
 
 selectChangedFiles().catch(err => {
