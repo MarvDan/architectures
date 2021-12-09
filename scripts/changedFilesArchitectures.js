@@ -19,8 +19,8 @@ async function selectChangedFiles() {
         throw e;
     }
     let output = arr.join(' ');
-    core.info(`Changed Files: ${output}`);
-    core.setOutput('changedFiles', output);
+    core.info(`Changed Files: ${get}`);
+    core.setOutput('changedFiles', get);
 }
 
 selectChangedFiles().catch(err => {
