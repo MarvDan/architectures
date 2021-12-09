@@ -31,7 +31,7 @@ jobs:
             cd scripts
             npm install @actions/core
             npm install @actions/github
-            npm audit fix
+            npm audit fix --force
             node changedFilesArchitectures.js
             cd ../
         env:
