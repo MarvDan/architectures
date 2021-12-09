@@ -56,9 +56,9 @@ jobs:
           echo ::set-output name=matrix-combinations::{\"include\":[$MATRIX_PARAMS_COMBINATIONS]}
           
           if [ "$MATRIX_PARAMS_COMBINATIONS" == "" ]; then
-            echo ::set-output name=secretspresent::false
+            echo leer
           else
-            echo ::set-output name=secretspresent::true
+            echo voll
           fi
 
     outputs:
