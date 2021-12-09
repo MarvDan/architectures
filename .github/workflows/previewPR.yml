@@ -23,14 +23,14 @@ jobs:
         run: |
             cd scripts
             npm install
+            npm install @actions/core
+            npm install @actions/github
             cd ../
           
       - name: Select Changed Files
         id: changedfiles
         run: | 
             cd scripts
-            npm install @actions/core
-            #npm install @actions/github
             node changedFilesArchitectures.js
             cd ../
         env:
