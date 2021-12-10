@@ -177,7 +177,7 @@ jobs:
                 mv target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/index.html  target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
                 cd target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
                 
-                npm install pageres-cli
+                npm install --global pageres-cli
                 pageres ${{ matrix.solution }}.html 1280x800 --format=png --filename="${{ matrix.solution }}"
               fi
               
