@@ -119,7 +119,11 @@ jobs:
           
       - name: npm install for tutorials
         run: |
+          pwd
+          ls
           cd wiki-tutorials/scripts
+          pwd
+          ls
           npm install
           cd ../../
           
