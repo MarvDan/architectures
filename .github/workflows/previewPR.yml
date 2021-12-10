@@ -195,21 +195,6 @@ jobs:
       needs: build
       runs-on: ubuntu-latest
       steps:
-      
-      
-      - name: Download Artifact
-        uses: actions/download-artifact@master
-        with:
-          name: my-artifact
-          path: allArtifacts
-          
-      - name: Repository Dispatch
-        uses: peter-evans/repository-dispatch@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{github.event.pull_request.head.repo.owner.login}}/${{github.event.pull_request.head.repo.name}}
-          event-type: my-event
-          client-payload: '{"prnumber": "${{ github.event.number }}", "checkrunid": "${{ github.run_id }}"}'
           
       - name: Upload Comment
         uses: mshick/add-pr-comment@v1
