@@ -77,11 +77,20 @@ jobs:
     steps:
       
       
+      #- name: Clone
+       # uses: actions/checkout@v2
+        #with:
+         # repository: devonfw/devonfw.github.io
+          #ref: develop
+          
+       # own repo  
       - name: Clone
         uses: actions/checkout@v2
         with:
-          repository: devonfw/devonfw.github.io
-          ref: develop
+          repository: MarvDan/devonfw.github.io/
+          ref: test
+          
+
           
       - name: Add new architectures
         uses: actions/checkout@v2
