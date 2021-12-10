@@ -121,7 +121,7 @@ jobs:
           pwd
           ls ../
           pwd
-          ls ../../
+          ls architectures
           pwd
           ls wiki-tutorials
           pwd
