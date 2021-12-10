@@ -82,6 +82,7 @@ jobs:
         with:
           repository: devonfw/devonfw.github.io
           ref: develop
+          submodules: recursiv
           
        # own repo  
       #- name: Clone
