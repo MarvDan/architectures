@@ -84,15 +84,6 @@ jobs:
           ref: develop
           submodules: true
           
-       # own repo  
-      #- name: Clone
-       # uses: actions/checkout@v2
-        #with:
-         # repository: MarvDan/devonfw.github.io
-          #ref: test
-          
-
-          
       - name: Add new architectures
         uses: actions/checkout@v2
         with:
@@ -117,24 +108,18 @@ jobs:
 
       - name: Copy pom files for tutorials
         run: |
-          pwd
-          ls
-          pwd
-          ls ../
-          pwd
-          ls architectures
-          pwd
-          ls katacoda-scenarios
-          pwd
-          ls wiki-tutorials
-          pwd
-          ls wiki-tutorials/scripts
           chmod +x wiki-tutorials/scripts/copyPomFiles.sh
           wiki-tutorials/scripts/copyPomFiles.sh
 
       - name: npm install for architectures
         run: |
           cd architectures/scripts
+          npm install
+          cd ../../
+          
+      - name: npm install for tutorials
+        run: |
+          cd wiki-tutorials/scripts
           npm install
           cd ../../
           
@@ -177,7 +162,8 @@ jobs:
                 mv target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/index.html  target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
                 cd target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
                 
-                npm install --global pageres-cli
+                #npm install --global pageres-cli
+                npm i pageres-cli
                 pageres ${{ matrix.solution }}.html 1280x800 --format=png --filename="${{ matrix.solution }}"
               fi
               
