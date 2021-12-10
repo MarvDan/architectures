@@ -87,7 +87,7 @@ jobs:
       - name: Clone
         uses: actions/checkout@v2
         with:
-          repository: MarvDan/devonfw.github.io/
+          repository: MarvDan/devonfw.github.io
           ref: test
           
 
