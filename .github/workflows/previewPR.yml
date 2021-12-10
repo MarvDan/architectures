@@ -155,6 +155,8 @@ jobs:
             pwd
             ls
             pwd
+            ls ../
+            pwd
             ls home/runner/work/architectures/architectures/wiki-tutorials/
             pwd
             ls home/runner/work/architectures/architectures/
