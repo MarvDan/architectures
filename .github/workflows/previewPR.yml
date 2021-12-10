@@ -116,6 +116,10 @@ jobs:
 
       - name: Copy pom files for tutorials
         run: |
+          pwd
+          ls
+          pwd
+          ls wiki-tutorials/scripts/
           chmod +x wiki-tutorials/scripts/copyPomFiles.sh
           wiki-tutorials/scripts/copyPomFiles.sh
 
