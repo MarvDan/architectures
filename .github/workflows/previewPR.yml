@@ -119,6 +119,8 @@ jobs:
           pwd
           ls
           pwd
+          ls ../
+          pwd
           ls wiki-tutorials
           pwd
           ls wiki-tutorials/scripts
