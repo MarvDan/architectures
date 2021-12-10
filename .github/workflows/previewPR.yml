@@ -122,6 +122,8 @@ jobs:
           pwd
           ls ../
           pwd
+          ls architectures
+          pwd
           ls katacoda-scenarios
           pwd
           ls wiki-tutorials
