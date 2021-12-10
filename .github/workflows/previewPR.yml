@@ -158,16 +158,7 @@ jobs:
           rm wiki-tutorials/index.scss || true
 
       - name: Build
-        run: |
-            pwd
-            ls
-            pwd
-            ls ../
-            pwd
-            ls home/runner/work/architectures/architectures/wiki-tutorials/
-            pwd
-            ls home/runner/work/architectures/architectures/
-            mvn -s ./.m2/unblock-rubygem-proxy-settings.xml clean package
+        run: mvn -s ./.m2/unblock-rubygem-proxy-settings.xml clean package
 
       - name: Create output for architectures
         run: |
