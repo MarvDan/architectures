@@ -119,7 +119,9 @@ jobs:
           pwd
           ls
           pwd
-          ls wiki-tutorials/scripts/
+          ls wiki-tutorials
+          pwd
+          ls wiki-tutorials/scripts
           chmod +x wiki-tutorials/scripts/copyPomFiles.sh
           wiki-tutorials/scripts/copyPomFiles.sh
 
