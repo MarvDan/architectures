@@ -170,19 +170,23 @@ jobs:
           
       - name: Run image generate
         run: |
-              echo ${{ matrix.solution }}
         
-              mv target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/index.html  target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
-              cd target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
-              
-              npm install --global pageres-cli
-              pageres ${{ matrix.solution }}.html 1280x800 --format=png --filename="${{ matrix.solution }}"
+              if [ "${{ matrix.solution }}" == "noChange" ]; then
+                echo ${{ matrix.solution }}
+              else
+                mv target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/index.html  target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
+                cd target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
+                
+                npm install pageres-cli
+                pageres ${{ matrix.solution }}.html 1280x800 --format=png --filename="${{ matrix.solution }}"
+              fi
               
       - name: Artifact build upload
         uses: actions/upload-artifact@v2
         with: 
           name: my-artifact
           path: target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
+          if-no-files-found: ignore
           
           
           
