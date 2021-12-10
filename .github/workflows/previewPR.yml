@@ -117,16 +117,6 @@ jobs:
           npm install
           cd ../../
           
-      - name: npm install for tutorials
-        run: |
-          pwd
-          ls
-          cd wiki-tutorials/scripts
-          pwd
-          ls
-          npm install
-          cd ../../
-          
       - name: Compile sass for architectures
         uses: gha-utilities/sass-build@v0.4.2
         with:
