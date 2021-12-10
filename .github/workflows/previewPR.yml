@@ -189,6 +189,6 @@ jobs:
             The artifact is build and you can see it at: Actions - choose your workflow - below you can download your generated artifact
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
-          allow-repeats: false # This is the default
+          allow-repeats: true 
       
         
