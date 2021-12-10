@@ -1,4 +1,4 @@
-
+//Category=Microservice Platforms;Kubernetes
 //Product=Azure Kubernetes Service;Azure Container Instances;Azure Red Hat OpenShift
 //Platform=Azure
 //Maturity level=Complete
