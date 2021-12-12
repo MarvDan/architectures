@@ -5,6 +5,7 @@
   <artifactId>website-architecture-browser-solutions</artifactId>
   <version>dev-SNAPSHOT</version>
   <packaging>pom</packaging>
+  
 
   <parent>
     <groupId>com.devonfw.website</groupId>
