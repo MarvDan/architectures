@@ -16,10 +16,7 @@ Application scenarios can range from relatively simple (Just the users with a fe
 
 * *Simple:* User and an application with a few extra attributes.
 * *Middle:* Users with different scopes. Global users are independent from the app whereas app specific users are targeted to a certain application only (See https://stackoverflow.com/questions/46879039/azure-ad-b2c-for-supporting-multiple-apps[here] for details).
-* *Very complex*
-+
---
-Online marketing (also known as internet marketing or web marketing) includes all marketing activities that are carried out online to achieve marketing goals, from brand awareness to closing an online business. Factors that make it complex:
+*  to closing an online business. Factors that make it complex:
 
 ** *State change:* Various events can trigger state changes in such a scenario. Targeting users with marketing content usually requires consent by the user. Expiry or explicit withdrawal must be reflected in those systems.
 ** *Business partners* as endusers: Business partners have to go through a much more complicated process before being verified. This might also include backoffice activities that trigger further state changes. Leaving the business or closing of business triggers state changes in the associated users.
