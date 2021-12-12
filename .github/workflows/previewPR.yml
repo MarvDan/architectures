@@ -179,7 +179,7 @@ jobs:
         uses: mshick/add-pr-comment@v1
         with:
           message: |
-            The artifact is build and you can see it at: Actions - choose your workflow - below you can download your generated artifact
+            the artifact has been generated and you can find a preview of your change here: Actions - select your pull request workflow - scroll to the bottom, there you should be able to download the artifact (only works if something has been changed in solutions)
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
           allow-repeats: true 
