@@ -30,11 +30,14 @@ jobs:
       - name: Select Changed Files
         id: changedfiles
         run: | 
+            echo GITHUB_REPOSITORY
+            echo $GITHUB_REPOSITORY
+            echo $x
             cd scripts
             node changedFilesArchitectures.js
             cd ../
         env:
-          PR_OWNER: ${{github.event.pull_request.head.repo.owner.login}}
+          PR_OWNER: GITHUB_REPOSITORY
           PR_REPO: ${{github.event.pull_request.head.repo.name}}
         
       - name: Setup matrix combinations
