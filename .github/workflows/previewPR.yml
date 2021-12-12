@@ -30,6 +30,7 @@ jobs:
       - name: Select Changed Files
         id: changedfiles
         run: |
+            echo $GITHUB_REPOSITORY
             cd scripts
             node changedFilesArchitectures.js
             cd ../
