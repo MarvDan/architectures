@@ -10,8 +10,8 @@ async function selectChangedFiles() {
             //owner: process.env.PR_OWNER,
             //repo:  process.env.PR_REPO,
             //pull_number: pr
-            owner: devonfw,
-            repo:  solutions,
+            owner: "devonfw",
+            repo:  "solutions",
             pull_number: 96
         });
         let files = get.data;
