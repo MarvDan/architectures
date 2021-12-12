@@ -35,7 +35,7 @@ jobs:
             node changedFilesArchitectures.js
             cd ../
         env:
-          PR_OWNER_REPO: ${ GITHUB_REPOSITORY }
+          PR_OWNER_REPO: ${{github.repository}}
         
       - name: Setup matrix combinations
         id: setup-matrix-combinations
