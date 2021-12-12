@@ -37,7 +37,7 @@ jobs:
         env:
           PR_OWNER_REPO: ${{github.repository}}
           PR_OWNER: ${{ github.repository_owner	}}
-          PR_REPO:  ${{ github.repository_name	}}
+          PR_REPO:  ${{ github.event.repository.name }}
         
       - name: Setup matrix combinations
         id: setup-matrix-combinations
