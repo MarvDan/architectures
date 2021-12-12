@@ -6,20 +6,15 @@ async function selectChangedFiles() {
     let pr = process.env.PR_NUMBER;
     let arr = [];
     try {
-        let get = await octokit.request('GET /repos/{owner_repo}/pulls/{pull_number}/files', {
-            owner_repo: process.env.PR_OWNER_REPO,
+        let get = await octokit.request('GET /repos/{owner}/{repo}/pulls/{pull_number}/files', {
+            owner: process.env.PR_OWNER,
+            repo:  process.env.PR_REPO,
             pull_number: pr
-            //owner: "devonfw",
-            //repo:  "solutions",
-            //pull_number: 96
         });
         let files = get.data;
         files.forEach(file => {
             arr.push(file.filename)
         });
-    //core.info(`Changed Files: ${get}`);
-    //core.setOutput('changedFiles', get);
-        
     } catch(e) {
         throw e;
     }
