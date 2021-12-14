@@ -89,8 +89,8 @@ jobs:
           ls
           pwd
           #TODO: change to solutions
-          ls architectures
-          rm -rf architectures
+          ls solutions
+          rm -rf solutions
           
       - name: Add new solutions
         uses: actions/checkout@v2
