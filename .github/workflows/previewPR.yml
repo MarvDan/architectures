@@ -14,7 +14,7 @@ jobs:
     
     
     steps:
-      - name: Checkout architectures
+      - name: Checkout solutions
         uses: actions/checkout@v2
       - name: Install node environment
         uses: actions/setup-node@v2-beta
@@ -23,8 +23,8 @@ jobs:
         run: |
             cd scripts
             npm install
-            npm install @actions/core
-            npm install @actions/github
+            npm install @actions/core --save
+            npm install @actions/github --save
             cd ../
           
       - name: Select Changed Files
@@ -32,7 +32,7 @@ jobs:
         run: |
             echo $GITHUB_REPOSITORY
             cd scripts
-            node changedFilesArchitectures.js
+            node changedFilesSolutions.js
             cd ../
         env:
           PR_OWNER: ${{ github.repository_owner	}}
@@ -41,8 +41,6 @@ jobs:
       - name: Setup matrix combinations
         id: setup-matrix-combinations
         run: |
-          echo
-        
           dirs=()
           for changed_file in ${{ steps.changedfiles.outputs.changedFiles }}; do
             dir="$(echo $changed_file | cut -d/ -f2)"
@@ -57,11 +55,11 @@ jobs:
           echo ::set-output name=matrix-combinations::{\"include\":[$MATRIX_PARAMS_COMBINATIONS]}
           
           if [ "$MATRIX_PARAMS_COMBINATIONS" == "" ]; then
-            echo leer
+            echo empty Matrix
             MATRIX_PARAMS_COMBINATIONS=$MATRIX_PARAMS_COMBINATIONS'{"solution": "'noChange'"}'
             echo ::set-output name=matrix-combinations::{\"include\":[$MATRIX_PARAMS_COMBINATIONS]}
           else
-            echo voll
+            echo filled Matrix
           fi
 
     outputs:
@@ -84,45 +82,57 @@ jobs:
           repository: devonfw/devonfw.github.io
           ref: develop
           submodules: true
+        
+      - name: Remove old Solutions
+        run: |
+          pwd
+          ls
+          pwd
+          ls solutions
+          rm solutions
           
-      - name: Add new architectures
+      - name: Add new solutions
         uses: actions/checkout@v2
         with:
           ref: ${{github.event.pull_request.head.ref}}
           repository: ${{github.event.pull_request.head.repo.full_name}}
-          path: architectures
+          path: solutions
           
       - name: Setup Node
         uses: actions/setup-node@v2
 
       - name: Solutions from Stack repositories
-        run: |        
-          cd architectures/scripts
+        run: |     
+          pwd
+          ls
+          pwd
+          ls solutions
+          cd solutions/scripts
           npm install
           node copySolutionsFromStack.js ../../devonfw-guide
           cd ../../
 
-      - name: Copy pom files for architectures
+      - name: Copy pom files for solutions
         run: |
-          chmod +x architectures/scripts/copyPomFiles.sh
-          architectures/scripts/copyPomFiles.sh
+          chmod +x solutions/scripts/copyPomFiles.sh
+          solutions/scripts/copyPomFiles.sh
 
       - name: Copy pom files for tutorials
         run: |
           chmod +x wiki-tutorials/scripts/copyPomFiles.sh
           wiki-tutorials/scripts/copyPomFiles.sh
 
-      - name: npm install for architectures
+      - name: npm install for solutions
         run: |
-          cd architectures/scripts
+          cd solutions/scripts
           npm install
           cd ../../
           
-      - name: Compile sass for architectures
+      - name: Compile sass for solutions
         uses: gha-utilities/sass-build@v0.4.2
         with:
-          source: architectures/index.scss
-          destination: architectures/index.css
+          source: solutions/index.scss
+          destination: solutions/index.css
           
       - name: Compile sass for tutorials
         uses: gha-utilities/sass-build@v0.4.2
@@ -132,31 +142,39 @@ jobs:
           
       - name: Remove files that are breaking the build
         run: |
-          rm architectures/README.md || true
-          rm architectures/index.scss || true
+          rm solutions/README.md || true
+          rm solutions/index.scss || true
           rm wiki-tutorials/README.md || true
           rm wiki-tutorials/index.scss || true
 
       - name: Build
         run: mvn -s ./.m2/unblock-rubygem-proxy-settings.xml clean package
 
-      - name: Create output for architectures
+      - name: Create output for solutions
         run: |
-          chmod +x architectures/scripts/createOutput.sh
-          architectures/scripts/createOutput.sh
+          chmod +x solutions/scripts/createOutput.sh
+          solutions/scripts/createOutput.sh
 
-      - name: Copy output of architectures
-        run: cp -avr architectures/target/generated-docs/ target/generated-docs/website/pages/architectures/
+      - name: Copy output of solutions
+        run: |
+          cp -avr solutions/target/generated-docs/ target/generated-docs/website/pages/solutions/
+          mv target/generated-docs/website/pages/solutions/solutions target/generated-docs/website/pages/solutions/solution
           
       - name: Run image generate
         run: |
+          pwd
+          ls
+          pwd
+          ls target/generated-docs/website/pages/solutions
+          pwd
+          ls target/generated-docs/website/pages/solutions/solution
         
               if [ "${{ matrix.solution }}" == "noChange" ]; then
                 echo ${{ matrix.solution }}
               else
-                if [[ -d "target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}" ]]; then
-                  mv target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/index.html  target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
-                  cd target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}
+                if [[ -d "target/generated-docs/website/pages/solutions/solution/solutions/${{ matrix.solution }}" ]]; then
+                  mv target/generated-docs/website/pages/solutions/solution/solutions/${{ matrix.solution }}/index.html  target/generated-docs/website/pages/solutions/solution/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
+                  cd target/generated-docs/website/pages/solutions/solution/solutions/${{ matrix.solution }}
 
                   npm install --global pageres-cli
                   pageres ${{ matrix.solution }}.html 1280x800 --format=png --filename="${{ matrix.solution }}"
@@ -169,7 +187,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with: 
           name: my-artifact
-          path: target/generated-docs/website/pages/architectures/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
+          path: target/generated-docs/website/pages/solutions/solution/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
           if-no-files-found: ignore
           
           
