@@ -75,7 +75,6 @@ jobs:
       matrix: ${{ fromJson(needs.setup-matrix.outputs.matrix-combinations) }}
     steps:
       
-      
       - name: Clone
         uses: actions/checkout@v2
         with:
@@ -84,13 +83,7 @@ jobs:
           submodules: true
         
       - name: Remove old Solutions
-        run: |
-          pwd
-          ls
-          pwd
-          #TODO: change to solutions
-          ls solutions
-          rm -rf solutions
+        run: rm -rf solutions
           
       - name: Add new solutions
         uses: actions/checkout@v2
@@ -104,10 +97,6 @@ jobs:
 
       - name: Solutions from Stack repositories
         run: |     
-          pwd
-          ls
-          pwd
-          ls solutions
           cd solutions/scripts
           npm install
           node copySolutionsFromStack.js ../../devonfw-guide
@@ -159,17 +148,9 @@ jobs:
       - name: Copy output of solutions
         run: |
           cp -avr solutions/target/generated-docs/ target/generated-docs/website/pages/solutions/
-          #mv target/generated-docs/website/pages/solutions/solutions target/generated-docs/website/pages/solutions
           
       - name: Run image generate
-        run: |
-          pwd
-          ls
-          pwd
-          ls target/generated-docs/website/pages/solutions
-          pwd
-          ls target/generated-docs/website/pages/solutions/solutions
-        
+        run: |        
               if [ "${{ matrix.solution }}" == "noChange" ]; then
                 echo ${{ matrix.solution }}
               else
@@ -205,7 +186,7 @@ jobs:
           message: |
             the artifact has been generated and you can find a preview of your change here: Actions - select your pull request workflow - scroll to the bottom, there you should be able to download the artifact (only works if something has been changed in solutions)
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
+          repo-token-user-login: 'github-actions[bot]' 
           allow-repeats: true 
       
         
