@@ -2,6 +2,7 @@
 //Product=Keycloak;WSO2;Gluu;ForgeRock
 //Standard=OAuth;OIDC;JWT;SAML;WebAuthn
 //Maturity level=Complete
+//
 
 = Authorization
 
