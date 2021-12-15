@@ -159,7 +159,7 @@ jobs:
       - name: Copy output of solutions
         run: |
           cp -avr solutions/target/generated-docs/ target/generated-docs/website/pages/solutions/
-          mv target/generated-docs/website/pages/solutions/solutions target/generated-docs/website/pages/solutions/solution
+          #mv target/generated-docs/website/pages/solutions/solutions target/generated-docs/website/pages/solutions
           
       - name: Run image generate
         run: |
@@ -168,14 +168,14 @@ jobs:
           pwd
           ls target/generated-docs/website/pages/solutions
           pwd
-          ls target/generated-docs/website/pages/solutions/solution
+          ls target/generated-docs/website/pages/solutions/solutions
         
               if [ "${{ matrix.solution }}" == "noChange" ]; then
                 echo ${{ matrix.solution }}
               else
-                if [[ -d "target/generated-docs/website/pages/solutions/solution/solutions/${{ matrix.solution }}" ]]; then
-                  mv target/generated-docs/website/pages/solutions/solution/solutions/${{ matrix.solution }}/index.html  target/generated-docs/website/pages/solutions/solution/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
-                  cd target/generated-docs/website/pages/solutions/solution/solutions/${{ matrix.solution }}
+                if [[ -d "target/generated-docs/website/pages/solutions/solutions/${{ matrix.solution }}" ]]; then
+                  mv target/generated-docs/website/pages/solutions/solutions/${{ matrix.solution }}/index.html  target/generated-docs/website/pages/solutions/solutions/${{ matrix.solution }}/${{ matrix.solution }}.html
+                  cd target/generated-docs/website/pages/solutions/solutions/${{ matrix.solution }}
 
                   npm install --global pageres-cli
                   pageres ${{ matrix.solution }}.html 1280x800 --format=png --filename="${{ matrix.solution }}"
@@ -188,7 +188,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with: 
           name: my-artifact
-          path: target/generated-docs/website/pages/solutions/solution/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
+          path: target/generated-docs/website/pages/solutions/solutions/${{ matrix.solution }}/${{ matrix.solution }}.png
           if-no-files-found: ignore
           
           
