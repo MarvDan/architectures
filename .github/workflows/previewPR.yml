@@ -25,7 +25,7 @@ jobs:
             npm install
             #npm install @actions/core --save
             #npm install @actions/github --save
-            npm install --save \
+            npm install --save-dev \
             @actions/core \
             @actions/github
             cd ../
