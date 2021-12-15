@@ -23,11 +23,7 @@ jobs:
         run: |
             cd scripts
             npm install
-            #npm install @actions/core --save
-            #npm install @actions/github --save
-            npm install --save-dev \
-            @actions/core \
-            @actions/github
+            npm install --save-prod @actions/github @actions/core
             cd ../
           
       - name: Select Changed Files
