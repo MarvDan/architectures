@@ -1,0 +1,315 @@
+//Category=Communication;Kubernetes;Microservice Platforms;Monitoring;
+//Product=Istio;Grafana;
+//Maturity level=Initial
+
+// Variables
+:folder: https://github.com/MarvDan/architectures/tree/DanBranch/solutions/monitoring_istio/Files/
+
+= Istio Microservice Monitoring
+
+== Why do I need monitoring?
+
+For most of your questions you might want to read the https://istio.io/latest/docs/concepts/observability/["Observability"] section from the official istio https://istio.io/latest/docs/[documentation].
+
+//Abstract
+== Core elements of the problem and its solution
+
+Standardization of communication in a kubernetes cluster between different microservices. Subsequent monitoring with Prometheus and Grafana. 
+
+We used the following tools to solve the problem:
+
+* Rancher (Docker)
+* Kubernetes
+* Istio
+* Grafana
+* Prometheus
+
+Our solution is tailored for when istio is running on the existing cluster and monitoring of the various microservices is attempted.
+We are in an environment of docker, kubernetes, microservices and istio. The idea here is that a cluster consists of microservices and runs with docker over kubernetes.  Now, we want to maintain the communication between the individual microservices uniformly by default. In addition, we would like to find a way how we can monitor our cluster with the individual microservices and accordingly make some analyses via prometheus or grafana. Now we present a solution following for how we have implemented this scenario. Our final project was a cluster with three different namespaces: Istio, Application and Monitoring. On the Istio namespace the normal istio system is running and the solution was tested with the default demo https://istio.io/latest/docs/setup/additional-setup/config-profiles/[profile]. The application namespace runs all microservices and the monitoring namespace is where we want to do the monitoring.
+
+//Instruction and goals
+== Introduction
+Assumed is a kubernernetes cluster with istio installed and running microservices. We will continuously show how you can monitor your cluster with the microservices using prometheus/grafana and how you can split the tasks into different namespaces. 
+The prerequisite is that there is a Kubernetes cluster with microservices and istio is already running on it. In case istio isn't installed already check https://istio.io/latest/docs/setup/getting-started/#download[here]. Adapt the walkthrough of deploying the sample application to deploy your own application and you will need a gateway that exposes your application to incoming traffic. If your existing application doesn't satisfy this requirement you can setup an istio ingress-gateway by following this https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/[link] and adapt the configuration to your needs. We offer a basic xref:Files/ingressgateway.yaml[ingressgateway.yaml] for this step but the configuration varies drastically depending on your specific application. Configuring an istio-ingressgateway or any other gateway is most likely mandatory but out of scope for this solution. Therefor we only covered the bare minimum. 
+
+//Context and Scope
+== Context and Scope
+Since this solution is tailored towards an existing application you may have gateways (like Kubernetes Virtual Service) configured that expose your application to outside traffic already. With Istio you can define traffic routes and destination rules inside your cluster. Monitoring with Istio will help you to analyze the performance of your cluster regardless of your gateway cofiguration. Just note that configuring an ingress-gateway will enable other benefits that are likely going to influence the monitoring of your application. 
+
+//Solution Strategy
+== Solution Strategy
+The setup of the namespace *istio-system* is indirectly already done, because istio is already installed on our system and therefore the namespace is created automatically. The next namespace where we don't have to care much is the *application* namespace, there we only have to add all our microservices which run in our cluster.
+ 
+Create Namespaces
+```Kubernetes
+  kubectl label namespace application istio-injection=enabled
+```
+```Kubernetes
+  kubectl label namespace monitoring istio-injection=enabled
+```
+The namespace with the *monitoring* will be a bit more complex, because we have to adjust the config files of Prometheus and Grafana. We have oriented ourselves as it can be seen in this https://istiobyexample.dev/prometheus/[example] +
+ *(1) Grafana Monitoring Namespace* - Part 1
+```YAML
+  ---
+# Source: grafana/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    helm.sh/chart: grafana-6.18.2
+    app.kubernetes.io/name: grafana
+    app.kubernetes.io/instance: grafana
+    app.kubernetes.io/version: "8.3.1"
+    app.kubernetes.io/managed-by: Helm
+  name: grafana
+  namespace: monitoring
+---
+# Source: grafana/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana
+  namespace: monitoring
+``` 
+Part 2
+
+```YAML
+---
+# Source: grafana/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana
+  namespace: monitoring
+  labels:
+    helm.sh/chart: grafana-6.18.2
+    app.kubernetes.io/name: grafana
+    app.kubernetes.io/instance: grafana
+    app.kubernetes.io/version: "8.3.1"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - name: service
+      port: 3000
+      protocol: TCP
+      targetPort: 3000
+
+  selector:
+    app.kubernetes.io/name: grafana
+    app.kubernetes.io/instance: grafana
+---
+# Source: grafana/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana
+  namespace: monitoring
+``` 
+Part 3
+
+```YAML
+---
+
+apiVersion: v1
+data:
+  istio-performance-dashboard.json: | [....]
+  pilot-dashboard.json: | [....]
+
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: istio-grafana-dashboards
+  namespace: monitoring
+
+---
+``` 
+
+Part 4
+
+```YAML
+---
+
+apiVersion: v1
+data:
+  istio-extension-dashboard.json: | [....]
+  istio-mesh-dashboard.json: | [....]
+  istio-workload-dashboard.json: [....]
+  istio-service-dashboard.json: [....]
+
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: istio-services-grafana-dashboards
+  namespace: monitoring
+
+---
+``` 
+
+See xref:Files/grafana.yaml[Grafana] for full example + 
+ 
+  
+
+*(2) Prometheus Monitoring Namespace* - Part 1
+ 
+```YAML
+ ---
+# Source: prometheus/templates/server/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    component: "server"
+    app: prometheus
+    release: prometheus
+    chart: prometheus-15.0.1
+    heritage: Helm
+  name: prometheus
+  namespace: monitoring
+  annotations:
+    {}
+---
+# Source: prometheus/templates/server/cm.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    component: "server"
+    app: prometheus
+    release: prometheus
+    chart: prometheus-15.0.1
+    heritage: Helm
+  name: prometheus
+  namespace: monitoring
+```
+Part 2
+
+```YAML
+---
+# Source: prometheus/templates/server/clusterrolebinding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    component: "server"
+    app: prometheus
+    release: prometheus
+    chart: prometheus-15.0.1
+    heritage: Helm
+  name: prometheus
+subjects:
+  - kind: ServiceAccount
+    name: prometheus
+    namespace: monitoring
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: prometheus
+---
+# Source: prometheus/templates/server/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    component: "server"
+    app: prometheus
+    release: prometheus
+    chart: prometheus-15.0.1
+    heritage: Helm
+  name: prometheus
+  namespace: monitoring
+spec:
+  ports:
+    - name: http
+      port: 9090
+      protocol: TCP
+      targetPort: 9090
+  selector:
+    component: "server"
+    app: prometheus
+    release: prometheus
+  sessionAffinity: None
+  type: "ClusterIP"
+---
+# Source: prometheus/templates/server/deploy.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    component: "server"
+    app: prometheus
+    release: prometheus
+    chart: prometheus-15.0.1
+    heritage: Helm
+  name: prometheus
+  namespace: monitoring
+``` 
+See xref:Files/prometheus/deployment.yml[Prometheus] for full example
+
+//TODO: Images
+//IDEA IMAGE: How Istio works
+//IDEA IMAGE: How Grafana/Prometheus works
+//IDEA IMAGE: How cluster would be without Istio -> benefit why to use istio
+//ADD IMAGE: Architecture from Namespaces and there workflow
+
+
+The tools we used were Rancher, Kubernetes, Istio, Grafana and Prometheus. +
+Rancher because it ran docker and rancher provides you with a local kubernetes cluster https://rancher.com/docs/rancher/v2.6/en/[(more about Rancher)]. +
+Kubernetes to integrate the microservices into our cluster https://kubernetes.io/docs/home/[(more about Kubernetes)]. +
+Istio ultimately for all the communication and for generating the metrics that we want to evaluate for monitoring https://istio.io/latest/docs/[(more about Istio)]. +
+Grafana and Prometheus to collect and process the metrics collected by istio https://grafana.com/docs/[(more about Grafana)] and https://prometheus.io/docs/introduction/overview/[(more about Prometheus)].
+
+
+
+//Constraints and Alternatives
+//TODO
+
+
+
+== How to implement our solution
+
+You need to tell Kiali where to listen for Prometheus: The url consists of service.namespace:PORT
+```YAML
+---
+ external_services:
+      custom_dashboards:
+        enabled: true
+      istio:
+        root_namespace: istio-system
+      prometheus:
+        url: "http://prometheus.monitoring:9090/"
+```
+//Concrete Steps to create the solution
+
+// Not finished yet
+First of all, you need the prerequisites as described above. Then it makes sense to start and set up Rancher using "dockerd(moby)" and not "containerd" under the Kubernetes Setting - Container Runtime. Also note that there may be difficulties trying to start the cluster if you are connected via VPN. After Rancher has started the cluster add your microservices as you like. Important is to add them directly into the namespace: Application. 
+
+Create Namespace(*directly with istio enabled*): 
+```KUBERNETES
+---
+kubectl label namespace  application istio-injection=enabled
+``` 
+
+Add microservice retroactively to our application namespace:
+```KUBERNETES
+---
+ kubectl apply -f MICROSERVICE.yaml -n application `
+```
+
+Now you can install istio on your cluster. You only have to install istio in general as described above. Afterwards you can activate istio on single namespaces as soon as istio is installed on the cluster. To enable istio on our application namespace we have to do the following(if namespace created as described above, no action needed): [ADD CODE FRAGMENT].
+//istio-sidecar?
+
+Now our cluster should already have our microservices running under the application namespace, istio should be installed and enabled on our namespace and now only the monitoring is missing. For this we focus on Grafana and Prometheus. With the istio installation Grafana and Prometheus are directly provided (istio\samples\addons). Now it is important not to use the standard config files of the monitoring tools, because they will be installed on the istio namespace and run over it. However we want to run them on our own monitoring namespace. Therefore we have to change the config files (grafana.yaml/prometheus.yaml). To do this you can follow our sample code from above. This shows an example of how to edit the config files to run on the separate monitoring namespace. Once you have customized your config files, you can enable them on your cluster with the simple kubernetes command: [ADD CODE FRAGMENT]. 
+
+//Option 1
+// kubectl apply -f GRAFANA/PROMETHEUS.yaml
+
+//Option 2
+// kubectl apply -f GRAFANA/PROMETHEUS.yaml -n monitoring
+
+*This way we now have our tasks divided into the different namespaces and can still use each service as usual.*
+
+
+
+
+
