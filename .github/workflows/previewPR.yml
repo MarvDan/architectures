@@ -159,7 +159,7 @@ jobs:
           pwd ./
           ls ./
           pwd ./.m2/
-          ls ./.m2/
+          cd ./.m2/
           pwd
           
           #mvn -s ./.m2/unblock-rubygem-proxy-settings.xml clean package
