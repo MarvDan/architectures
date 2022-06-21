@@ -156,9 +156,9 @@ jobs:
         run: |
           pwd
           ls
-          pwd
+          pwd ./
           ls ./
-          pwd
+          pwd ./.m2/
           ls ./.m2/
           pwd
           
