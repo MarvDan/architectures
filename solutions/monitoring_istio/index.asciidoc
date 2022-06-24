@@ -434,7 +434,8 @@ First of all, you need the prerequisites as described above. Then it makes sense
 *If you also use Rancher desktop pay attention to the following things:* +
 Rancher Desktop using "dockerd(moby)" and not "containerd" under the Kubernetes Setting - Container Runtime. Also note that there may be difficulties trying to start the cluster if you are connected to a VPN. After Rancher Desktop has started the cluster add your microservices as you like. 
 
-*Code explanation:* _Creates namespace(Application) with Istio enabled on namespace_
+//Whats missing?
+//*Code explanation:* _Creates namespace(Application) with Istio enabled on namespace_
 
 
 Add microservice retroactively to our application namespace:
@@ -446,7 +447,7 @@ $ kubectl apply -f MICROSERVICE.yaml -n application
 
 Now you can install Istio on your cluster. You only have to install Istio in general as described above. Afterwards you can activate Istio on single namespaces as soon as Istio is installed on the cluster. To enable Istio on our application namespace we are done, because the namespace created as described above already enabled it. 
 
-Now our cluster should already have our microservices running under the application namespace, Istio should be installed and enabled on our namespace and now only the monitoring is missing. For this we focus on Grafana and Prometheus. With the Istio installation Grafana and Prometheus are directly provided (istio\samples\addons). Now it is important not to use the standard config files of the monitoring tools, because they will be installed on the istio namespace and run over it. However we want to run them on our own monitoring namespace. Therefore we have to change the config files (grafana.yaml/prometheus.yaml). To do this you can follow our sample code from above. This shows an example of how to edit the config files to run on the separate monitoring namespace. Once you have customized your config files, you can enable them on your cluster with the simple kubernetes command. 
+Now our cluster should already have our microservices running under the application namespace, Istio should be installed and enabled on our namespace and now only the monitoring is missing. For this we focus on Grafana and Prometheus. With the Istio installation Grafana and Prometheus are directly provided (istio\samples\addons). Now it is important not to use the standard config files of the monitoring tools, because they will be installed on the istio namespace and run over it. However we want to run them on our own monitoring namespace. Therefore we have to change the config files (grafana.yaml/prometheus.yaml). To do this you can follow our sample code from above. This shows an example of how to edit the config files to run on the separate monitoring namespace. Once you have customized your config files, you can enable them on your cluster with the simple kubernetes command. The same config steps have to be done with the kiali config.
 
 *Apply Prometheus:*
 ```KUBERNETES
@@ -464,7 +465,14 @@ $ kubectl apply -f kiali.yaml
 ```
 *Code explanation:* _Applies our new config files to the cluster_
 
-*This way we now have our tasks divided into the different namespaces and can still use each service as usual.*
+*This way we now have our tasks divided into the different namespaces and can still use each service as usual.* 
+
+If you want to test if the configurations have been successfully revised and the cluster works with the namespaces as desired you can test the following with prometheus or grafana: 
+
+* istio_requests_total{destination_app="NAME_OF_YOUR_MICROSERVICE"} to get all requests of this microservice 
+* sum(irate(istio_requests_total{destination_app="NAME_OF_YOUR_MICROSERVICE"}[60s])) to get the sum of all requests to this microservice, within the last 60sec. 
+
+This way you can analyze if the microservices are working as desired and are recorded as desired by our monitoring tools.
 
 
 == Conclusion
