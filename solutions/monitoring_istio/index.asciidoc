@@ -16,7 +16,8 @@ These two articles should give you an idea why you need monitoring and why you w
 
 == Why should you use Istio?
 
-Istio makes traffic management transparent to the application, moving this functionality out of the application and into the platform layer as a cloud native infrastructure. Istio complements Kubernetes, by enhancing its traffic management, observability and security for cloud native applications. On top Istio has much more functions like: secure, connect, and monitor microservices. We will mainly only highlight the monitoring here. Istio was developed at the time specifically for the Kubernetes cluster environment, among other things. Istio should solve the problem of overcoming the loss of observability and communication and interaction control that occurs with a larger number of microservices. Istio acts as an infrastructure layer between the application service and the network to provide a unified (non-language specific) way to control microservices. Theoretically, istio still has many functions: Automatic load balancing, fine-grained traffic control, access control, visibility but we have only covered a fraction of them in this solution. However, this can be seen as a chance to get more out of the tool when istio is already running in the cluster.
+Istio makes traffic management transparent to the application, moving this functionality out of the application and into the platform layer as a cloud native infrastructure. Istio complements Kubernetes, by enhancing its traffic management, observability and security for cloud native applications. On top Istio has much more functions like: secure, connect, and monitor microservices. We will mainly only highlight the monitoring here. Istio was developed at the time specifically for the Kubernetes cluster environment, among other things. Istio should solve the problem of overcoming the loss of observability and communication and interaction control that occurs with a larger number of microservices. Istio acts as an infrastructure layer between the application service and the network to provide a unified (non-language specific) way to control microservices. Theoretically, istio still has many functions: Automatic load balancing, fine-grained traffic control, access control, visibility but we have only covered a fraction of them in this solution. However, this can be seen as a chance to get more out of the tool when istio is already running in the cluster. Some functionalities, such as the gateway function of istio, can also be implemented using alternative software. For now, we will only look at software that is generally used in our project environment anyway. For other independent alternative solutions see below in the conclusion, but there they are only mentioned and not discussed further, because this is not the focus of this solution. The above mentioned functionalities like gateway and others can also be implemented independently from istio with only kubernetes. Kubernetes Ingress can't be managed by the Istio control plane. Kubernetes Ingress can only provide very basic layer 7 capabilities. 
+
 
 //Abstract
 == Core elements of the problem and its solution
@@ -137,7 +138,7 @@ For a better understanding follow the <<Prometheus_instructions>>.
 image::monitoring-architecture-implementation.png[Monitoring Implementation, width=100%, height=100%] 
 [.small]#Description: Visualization of code implementation inside your architecture#
 
-=== Configuring Prometheus, Grafana and Kiali
+=== Configuring Prometheus, Grafana and Kiali [[prometheus_grafana_kiali_config]]
 
 The namespace with the *Monitoring* will be a bit more complex, because we have to adjust the config files of Prometheus and Grafana. We have oriented ourselves as it can be seen in this https://istiobyexample.dev/prometheus/[example] +
 
@@ -426,7 +427,7 @@ See xref:Files/prometheus/deployment.yml[Prometheus] for full example
         url: "http://prometheus.monitoring:9090/"
 ```
 
-=== Apply your configurations
+=== Apply your configurations [[apply_config]]
 
 // Not finished yet
 First of all, you need the prerequisites as described above. Then it makes sense to start and set up Docker. Now you can build the images for your microservices. After that you can add your microservices directly to the cluster.
@@ -445,9 +446,9 @@ $ kubectl apply -f MICROSERVICE.yaml -n application
 *Code explanation:* _Add microservice to our created namespace(Application)_
 
 
-Now you can install Istio on your cluster. You only have to install Istio in general as described above. Afterwards you can activate Istio on single namespaces as soon as Istio is installed on the cluster. To enable Istio on our application namespace we are done, because the namespace created as described above already enabled it. 
+Now you can install Istio on your cluster. You only have to install Istio in general as described above <<creating_namespaces>>. Afterwards you can activate Istio on single namespaces as soon as Istio is installed on the cluster. To enable Istio on our application namespace we are done, because the namespace created as described above already enabled it. 
 
-Now our cluster should already have our microservices running under the application namespace, Istio should be installed and enabled on our namespace and now only the monitoring is missing. For this we focus on Grafana and Prometheus. With the Istio installation Grafana and Prometheus are directly provided (istio\samples\addons). Now it is important not to use the standard config files of the monitoring tools, because they will be installed on the istio namespace and run over it. However we want to run them on our own monitoring namespace. Therefore we have to change the config files (grafana.yaml/prometheus.yaml). To do this you can follow our sample code from above. This shows an example of how to edit the config files to run on the separate monitoring namespace. Once you have customized your config files, you can enable them on your cluster with the simple kubernetes command. The same config steps have to be done with the kiali config.
+Now our cluster should already have our microservices running under the application namespace, Istio should be installed and enabled on our namespace and now only the monitoring is missing. For this we focus on Grafana and Prometheus. With the Istio installation Grafana and Prometheus are directly provided (istio\samples\addons). Now it is important not to use the standard config files of the monitoring tools, because they will be installed on the istio namespace and run over it. However we want to run them on our own monitoring namespace. Therefore we have to change the config files (grafana.yaml/prometheus.yaml). To do this you can follow our sample code from above <<prometheus_grafana_kiali_config>>. This shows an example of how to edit the config files to run on the separate monitoring namespace. Once you have customized your config files, you can enable them on your cluster with the simple kubernetes command. The same config steps have to be done with the kiali config.
 
 *Apply Prometheus:*
 ```KUBERNETES
@@ -469,10 +470,26 @@ $ kubectl apply -f kiali.yaml
 
 If you want to test if the configurations have been successfully revised and the cluster works with the namespaces as desired you can test the following with prometheus or grafana: 
 
-* istio_requests_total{destination_app="NAME_OF_YOUR_MICROSERVICE"} to get all requests of this microservice 
-* sum(irate(istio_requests_total{destination_app="NAME_OF_YOUR_MICROSERVICE"}[60s])) to get the sum of all requests to this microservice, within the last 60sec. 
+* istio_requests_total{destination_app="NAME_OF_YOUR_MICROSERVICE"} - _to get all requests of this microservice_ 
+* sum(irate(istio_requests_total{destination_app="NAME_OF_YOUR_MICROSERVICE"}[60s]))  - _to get the sum of all requests to this microservice, within the last 60sec._
 
 This way you can analyze if the microservices are working as desired and are recorded as desired by our monitoring tools.
+
+== Common mistakes 
+
+* I use Rancher Desktop and on startup it loads infinitely / no cluster can be loaded 
+** Possible error: are you connected to the vpn? this may cause problems
+
+* I use Rancher Desktop and it will not recognize docker 
+** Possible errors: is docker set as default on Rancher Desktop? <<apply_config>>
+
+* I can't find my microservices in my namespace
+** Did you specify the correct namespace when you created the microservice? 
+** Does the microservice define a different namespace internally? 
+
+* I have changed my monitoring config but when I start the cluster and want to monitor I still use the old default config 
+** Possible errors: have you not applied the changed config yet? <<apply_config>>
+
 
 
 == Conclusion
