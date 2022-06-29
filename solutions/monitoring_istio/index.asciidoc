@@ -152,7 +152,6 @@ Part 1
 
 - Register Grafana as a ServiceAccount to allow it to authenticate while contacting the api server
 ```YAML
-  ---
 # Source: grafana/templates/serviceaccount.yaml
 apiVersion: v1
 kind: ServiceAccount
@@ -170,7 +169,6 @@ Part 2
 
 - Expose Grafana as a network service to give each of its pods an IP adress within your cluster
 ```YAML
----
 # Source: grafana/templates/service.yaml
 apiVersion: v1
 kind: Service
@@ -194,7 +192,7 @@ spec:
   selector:
     app.kubernetes.io/name: grafana
     app.kubernetes.io/instance: grafana
----
+
 # Source: grafana/templates/deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -207,8 +205,6 @@ Part 3
 - Configure Grafana according to your needs by using Kubernetes ConfigMaps
 
 ```YAML
----
-
 apiVersion: v1
 data:
   istio-performance-dashboard.json: | [...]
@@ -219,8 +215,6 @@ metadata:
   creationTimestamp: null
   name: istio-grafana-dashboards
   namespace: monitoring
-
----
 ``` 
 
 Part 4
@@ -228,8 +222,6 @@ Part 4
 - replace `[...]` with your configurations
 
 ```YAML
----
-
 apiVersion: v1
 data:
   istio-extension-dashboard.json: | [...]
@@ -242,8 +234,6 @@ metadata:
   creationTimestamp: null
   name: istio-services-grafana-dashboards
   namespace: monitoring
-
----
 ``` 
 
 See xref:Files/grafana.yaml[Grafana] for full example + 
@@ -257,7 +247,6 @@ Part 1
 - Register Prometheus as a ServiceAccount to allow it to authenticate while contacting the api server
 
 ```YAML
- ---
 # Source: prometheus/templates/server/serviceaccount.yaml
 apiVersion: v1
 kind: ServiceAccount
@@ -272,7 +261,6 @@ metadata:
   namespace: monitoring
   annotations:
     {}
----
 ```
 Part 2
 
@@ -319,7 +307,6 @@ Part 3
 - grant Prometheus permission and define rules
 
 ```YAML
----
 # Source: prometheus/templates/server/clusterrole.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -333,7 +320,7 @@ metadata:
   name: prometheus
 rules:
   # ...
----
+  
 # Source: prometheus/templates/server/clusterrolebinding.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -353,15 +340,12 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: prometheus
----
-
 ```
 Part 4
 
 - Expose Prometheus as a network service to give each of its pods an IP adress within your cluster
 
 ```YAML
----
 # Source: prometheus/templates/server/service.yaml
 apiVersion: v1
 kind: Service
@@ -386,7 +370,6 @@ spec:
     release: prometheus
   sessionAffinity: None
   type: "ClusterIP"
----
 ```
 
 Part 5
@@ -394,7 +377,6 @@ Part 5
 - Finally declare the current Prometheus configuration as a desired state
 
 ```YAML
----
 # Source: prometheus/templates/server/deploy.yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -417,7 +399,6 @@ See xref:Files/prometheus/deployment.yml[Prometheus] for full example
 
 - You need to tell Kiali where to listen for Prometheus: The url consists of service.namespace:PORT
 ```YAML
----
  external_services:
       custom_dashboards:
         enabled: true
